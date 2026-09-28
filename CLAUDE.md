@@ -272,9 +272,12 @@ python classroom.py <document_path_or_youtube_url> <student_name> ["optional top
 - No mic/speaker in cloud sandboxes; voice must be tested on the laptop.
 - Import side effects: importing `teacher_natural` probes the TTS engine,
   `voice_io` imports sounddevice — so `import classroom` needs audio libs.
-- Not a git repo yet. `.gitignore` exists (2026-09-28): ignores `.env`,
-  `.venv`, caches, `*.db` session data, PDFs except
-  `sample_test_document.pdf`, generated `.wav/.mp3`.
+- Git repo since 2026-09-28 (first commit `bcae1f8`; this repo's
+  `user.email` = kaustubhjeet2019@gmail.com, set locally). `.gitignore`
+  ignores `.env`, `.venv`, caches, `*.db` session data, PDFs except
+  `sample_test_document.pdf`, generated `.wav/.mp3`. `.gitattributes`
+  marks pdf/images/audio binary (git misdetected the sample PDF as text;
+  Windows CRLF conversion would have broken it).
 
 ## Fragile coupling — check before changing
 - `ClassroomState` fields / meaning of `idx`, `outline`, `section_context`
