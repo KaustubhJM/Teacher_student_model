@@ -1,0 +1,9 @@
+# Never line-ending-convert binary files (Git misdetected the hand-made
+# sample PDF as text; converting it on checkout would break the PDF).
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.wav binary
+*.mp3 binary

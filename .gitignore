@@ -1,0 +1,36 @@
+# --- Secrets (API keys) — never commit ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# --- Rebuildable caches (vector index, OCR, vision + Gemini quota state) ---
+.rag_cache/
+.ocr_cache/
+.vision_cache/
+
+# --- Personal session data (LangGraph checkpoints, lecture progress) ---
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# --- Study material (large / third-party). The small test PDF stays tracked. ---
+*.pdf
+!sample_test_document.pdf
+
+# --- Generated audio ---
+*.wav
+*.mp3
+
+# --- Editors / OS / local tool settings ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+.claude/settings.local.json
