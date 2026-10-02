@@ -34,3 +34,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .claude/settings.local.json
+
+# --- Evaluation caches (LLM-judge results, DeepEval run cache) ---
+evaluation/.judge_cache/
+.deepeval/

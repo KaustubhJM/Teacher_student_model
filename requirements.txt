@@ -40,3 +40,4 @@ edge-tts>=7.0.0
 soundfile>=0.12.1
 rapidocr_onnxruntime>=1.4.0
 wordninja>=2.0.0
+deepeval>=4.2.0

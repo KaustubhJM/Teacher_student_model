@@ -101,6 +101,101 @@ python classroom.py <document_path_or_youtube_url> <student_name> ["optional top
   (using the checkpoint's `document_path`) when the next node is
   `teach_and_listen` — `plan_lecture` is skipped on resume, so without this
   `search_document` had no index.
+- **evaluation/** (2026-09-28) — RAG eval metrics, standalone (NOT wired
+  into classroom). `AnswerRelevancyMetric` = DeepEval's algorithm, local
+  (no deepeval dep): judge (Groq `openai/gpt-oss-120b`, temp 0, or any
+  `llm=` callable) splits the answer into statements, labels each
+  yes/idk/no vs the question; score = (yes+idk)/n, `strict_mode` → 0
+  unless all relevant; empty answer → 0. Reason built locally (2 judge
+  calls/case). Tutor filler ("Good question, Kaustubh!") is forced to
+  "idk" — without that rule the judge scored a perfect answer 0.75.
+  CLI: `python -m evaluation cases.json [--threshold] [--strict]`
+  (JSON list/JSONL of {input, actual_output}; `sample_cases.json` →
+  1.00 / 0.33 / 0.00). Same judge model as the explainer (self-judging
+  bias possible; pass `model=`).
+- **Retriever eval** (2026-09-29, deepeval 4.2.6 installed; it pins
+  click<8.4 → hf-hub's click>=8.4.2 conflict, only affects the `hf` CLI,
+  embeddings verified OK). `golden/dbms_u5.jsonl` = 20 Q + ideal-answer
+  pairs written from the PDF slide images (18 in-doc, 2 out-of-doc;
+  schema/lifecycle in `golden/README.md`, room for LLM drafting + human
+  review). `evaluation/judge.py` = `GroqJudge(DeepEvalBaseLLM)`
+  (gpt-oss-120b — llama-3.3-70b is NOT on this key; key limits 1000
+  req/day, 8000 TPM, **200k tokens/DAY (TPD), shared with the explainer**;
+  ~1300 tokens/judge call incl. reasoning). A baseline run ≈150k tokens;
+  baseline + sweep exhausted the TPD on 2026-09-29 (sweep stopped at
+  5/20, cached) — after a big eval run, lectures fail with 429 until the
+  usage rolls off (~24h). Run evals when no lecture is planned.
+  `evaluation/retrieval_metrics.py` = custom DeepEval metrics
+  `ContextualClaimRecallMetric` (claims of ideal answer found in chunks)
+  + `RankedContextualPrecisionMetric` (DeepEval weighted cumulative
+  precision + P@k), one cached judge call per (question, chunk) in
+  `evaluation/.judge_cache/` (key includes model + PROMPT_VERSION + hashes)
+  → re-scoring other k/window/order is free. `evaluation/retrieval_eval.py`
+  replicates `search_document` (asserts equality with the real tool) and
+  scores precision in sent (document) order AND score order; results in
+  `evaluation/results/`. Judge smoke test 6/6 (it is lenient on a
+  same-condition rule from another protocol). DeepEval writes `.deepeval/`
+  in cwd (git-ignored). Run evals with `GOOGLE_API_KEY=` (empty) so an
+  INCOMPLETE index isn't rebuilt by vision mid-eval (fingerprint check).
+  Results (18 in-doc Qs): current search_document recall 0.91, sufficient
+  78%, P@k 0.65, ranking precision 0.90 best-first but 0.68 in the
+  document order actually sent, ~1175 words. Sweep: knee at pure top-4
+  (recall 0.92, P@k 0.76, 780 words, best F1); window 2 adds nothing;
+  direct-hit min 0.3+ loses recall. Neighbours win continuation/multi-hop
+  Qs (007, 010, 011), top-4 wins 004 (phantom chunk ranks 4th; as a
+  neighbour it inherits 0.9×0.22 < 0.3 and is dropped). k=4 + window 1:
+  recall 0.96 / P@k 0.64 / 1426 words — but the whole gain is 004 alone
+  (an ingestion symptom), so NOT adopted; fix slide-48 columns first.
+  **Applied 2026-09-29 (approved): `tools.search_document` returns its
+  chunks best-first** (one `sorted()` after expand_with_neighbors; same
+  chunks). DBMS: ranking precision 0.68 → 0.90, useful chunk first 17/18
+  (was 5/18); recall/P@k unchanged (0.91/0.65); eval harness updated,
+  search_document match 20/20. Planner/lecture path deliberately still
+  page order (teaching flow, not measured). "Passages best-first" (keep
+  adjacent runs together) scored only 0.77 — the passage starts with the
+  pre-hit neighbour, usually not useful. Effect on spoken answers not yet
+  measured (generation eval).
+  P@k (share of sent chunks judged useful) is capped by the embeddings:
+  neighbour cut-offs on inherited OR own cosine only reach 0.68–0.69
+  (useful vs useless neighbours overlap: median own cosine 0.55 vs 0.44).
+  Cross-encoder reranker `cross-encoder/ms-marco-MiniLM-L-6-v2` (CPU,
+  ~0.6–0.9 s per 10 chunks, ~90 MB in HF cache, no new dep) separates them
+  (useful median +0.54 vs −5.40). DBMS: "rerank top-10, keep ≥ −2.1, max 8"
+  recall 0.96 / P@k 0.76 / 1054 words, BCNF gets no chunks; recall gain is
+  again only 004. Threshold picked on DBMS → both reranker settings are
+  in SWEEP for the held-out TC check. NOT in tools.py until TC confirms it.
+  TC full sweep pool = 12 chunks/Q (43% of the 28-chunk index, ~650 calls
+  ≈ 4 days) → `--sweep --core` skips the "wide" settings (top-6/8/10,
+  window 2, k4 w1; settled on DBMS): 7.2 chunks/Q (~410 calls ≈ 2.5
+  days). 2026-09-30: TC 001–012 judged with the full pool, rest --core.
+  TC complete 2026-10-02 (42 in-doc): current recall 0.99 / sufficient
+  95% / multi-hop 0.97 / P@k 0.50 / 1145 words. Reranker at −2.1 FAILED
+  the held-out check (recall 0.91, multi-hop 0.73) — it drops pieces of
+  spread-out answers. Filter on today's chunks at rr ≥ −8: NO recall loss
+  on either PDF (DBMS 0.91/78%/0.85, TC 0.99/95%/0.97), P@k DBMS 0.65→0.78,
+  TC 0.50→0.75, words −16/−30%, off-doc chunks 10→3 / 37→7. "Always keep
+  top-2/3" variants are worse (keep junk for off-doc Qs). −8 chosen after
+  seeing both sets (no held-out left).
+  **Applied 2026-10-02 (approved): reranker filter in
+  `tools.search_document`** — after k=3 + neighbours, `rag/reranker.py`
+  (`cross-encoder/ms-marco-MiniLM-L-6-v2`, `RERANK_MIN_SCORE = -8.0`)
+  scores the chunks; keeps rr ≥ −8 ordered by rr; none left → "No
+  relevant content found in the document for this query." Reranker
+  unavailable (not downloaded + offline, load/predict error) → today's
+  behaviour, verified identical 20/20. Re-verified from cache: DBMS 0.91 /
+  78% / P@k 0.78 / ranking 0.93; TC 0.99 / 95% / P@k 0.75 / ranking 0.96;
+  tool == harness 20/20 + 50/50. Cost: +~0.23 s per doubt (max 0.45 s),
+  load 6.2 s from disk. `classroom.main()` calls
+  `preload_reranker_in_background()`, which waits for the embedding model
+  first (no CPU contention in the tuned startup). Real lecture startup NOT
+  re-measured yet (needs Groq + audio). Planner/lecture path unchanged.
+  Second golden set `golden/tc_u5.jsonl` (2026-09-29): 50 Qs on
+  TC-U-5 notes (42 in-doc incl. 4 figure Qs on the Maslow pyramid / Freud
+  image, 8 out-of-doc of which 6 near-misses); every content slide 5–57
+  covered. TC index = only 28 chunks (58 slides), so k=3+neighbours sends
+  ~20% of the PDF per question; built with vision → Gemini 503 → 6
+  figure/title pages OCR'd, INCOMPLETE, fingerprint `af70e47cf8fe`.
+  Baseline ≈350 judge calls ≈2 days of TPD — run in batches.
 - Side scripts: `plan_demo.py` (calls `planner.plan_lecture`, which is NOT
   the graph node in classroom.py — its chunk_size/overlap defaults are
   200/40 to match classroom), `rag_demo.py`, `history.py`. The graphs
@@ -257,6 +352,9 @@ python classroom.py <document_path_or_youtube_url> <student_name> ["optional top
   `<file-stem-slug>-<hash>`); the hash alone decides identity. Hash-only
   folders are from before 2026-09-27 (cache v2) and are unused leftovers. `document_index.py` — TF-IDF offline alternative.
 - `retrieval.py` — neighbor expansion / low-quality filtering.
+- `reranker.py` (2026-10-02) — optional cross-encoder relevance scores for
+  the doubt tool only (see "Retriever eval"); lock + local_files_only first,
+  like vector_index; never raises (returns None → caller keeps all chunks).
 - `websearch.py` — ddgs free web search.
 
 ## Known constraints / gotchas

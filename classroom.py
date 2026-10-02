@@ -24,6 +24,7 @@ from explainer import BeatStream, answer_doubt
 from rag import build_index, DocumentIndex
 from rag.ingest import is_pdf_file, missing_pdf_pages
 from rag.vector_index import preload_model_in_background
+from rag.reranker import preload_reranker_in_background
 from tools import set_active_index
 from quiz import generate_quiz, print_quiz, USE_REAL_GEMINI, QuizUnavailable
 import persistence
@@ -278,8 +279,10 @@ def main():
     student_name = args[1]
 
     # Load the embedding model (~10s) in the background while the rest of
-    # startup runs, instead of stalling the first retrieval.
+    # startup runs, instead of stalling the first retrieval. Same for the
+    # doubt tool's reranker, so the first doubt doesn't wait for it.
     preload_model_in_background()
+    preload_reranker_in_background()
 
     topic = args[2] if len(args) > 2 else _derive_topic_from_filename(document_path)
 

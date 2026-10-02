@@ -1,0 +1,14 @@
+[
+  {
+    "input": "What is a deadlock in DBMS?",
+    "actual_output": "Good question, Kaustubh! A deadlock happens when two or more transactions each hold a lock the other one needs, so they wait on each other forever. For example, T1 locks row A and waits for row B, while T2 locks row B and waits for row A. The DBMS usually detects this with a wait-for graph and aborts one of the transactions to break the cycle."
+  },
+  {
+    "input": "What is a deadlock in DBMS?",
+    "actual_output": "A deadlock is when transactions wait on each other's locks forever. By the way, SQL was developed at IBM in the 1970s. Python is also a very popular programming language for data science these days."
+  },
+  {
+    "input": "What does the ACID property 'Isolation' mean?",
+    "actual_output": "Normalization splits tables to remove redundancy, and 3NF removes transitive dependencies. B+ trees keep index lookups fast."
+  }
+]

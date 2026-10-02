@@ -1,0 +1,2197 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20260929-202848",
+  "judge": "groq/openai/gpt-oss-120b",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "sweep": [
+   {
+    "name": "top-1",
+    "group": "k (no expansion)",
+    "k": 1,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-2",
+    "group": "k (no expansion)",
+    "k": 2,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-3",
+    "group": "k (no expansion)",
+    "k": 3,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-4",
+    "group": "k (no expansion)",
+    "k": 4,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-5",
+    "group": "k (no expansion)",
+    "k": 5,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-6",
+    "group": "k (no expansion)",
+    "k": 6,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-8",
+    "group": "k (no expansion)",
+    "k": 8,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "top-10",
+    "group": "k (no expansion)",
+    "k": 10,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0
+   },
+   {
+    "name": "k3 window 0",
+    "group": "neighbour window",
+    "k": 3,
+    "window": 0,
+    "nbr_min": 0.3,
+    "direct_min": 0.0
+   },
+   {
+    "name": "k3 window 1 (current)",
+    "group": "neighbour window",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.0
+   },
+   {
+    "name": "k3 window 2",
+    "group": "neighbour window",
+    "k": 3,
+    "window": 2,
+    "nbr_min": 0.3,
+    "direct_min": 0.0
+   },
+   {
+    "name": "k3 w1 direct-min 0.2",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.2
+   },
+   {
+    "name": "k3 w1 direct-min 0.3",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.3
+   },
+   {
+    "name": "k3 w1 direct-min 0.4",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.4
+   }
+  ],
+  "errors": [
+   {
+    "id": "dbms_u5-014",
+    "error": "Connection error."
+   },
+   {
+    "id": "dbms_u5-015",
+    "error": "Connection error."
+   },
+   {
+    "id": "dbms_u5-016",
+    "error": "Connection error."
+   }
+  ],
+  "n_in_document": 13,
+  "judge_usage": {
+   "calls": 61,
+   "input_tokens": 43548,
+   "output_tokens": 26093,
+   "new_calls": 61,
+   "cache_hits": 6163
+  }
+ },
+ "table": [
+  {
+   "config": "top-1",
+   "group": "k (no expansion)",
+   "recall": 0.72,
+   "sufficient_pct": 46.154,
+   "multi_hop_recall": 0.444,
+   "precision_at_k": 0.923,
+   "f1": 0.809,
+   "precision_score_order": 0.923,
+   "precision_doc_order": 0.923,
+   "chunks": 1,
+   "context_words": 194.615,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-2",
+   "group": "k (no expansion)",
+   "recall": 0.799,
+   "sufficient_pct": 53.846,
+   "multi_hop_recall": 0.69,
+   "precision_at_k": 0.731,
+   "f1": 0.763,
+   "precision_score_order": 0.962,
+   "precision_doc_order": 0.808,
+   "chunks": 2,
+   "context_words": 387.692,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-3",
+   "group": "k (no expansion)",
+   "recall": 0.799,
+   "sufficient_pct": 53.846,
+   "multi_hop_recall": 0.69,
+   "precision_at_k": 0.692,
+   "f1": 0.742,
+   "precision_score_order": 0.955,
+   "precision_doc_order": 0.756,
+   "chunks": 3,
+   "context_words": 582.846,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-4",
+   "group": "k (no expansion)",
+   "recall": 0.884,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.69,
+   "precision_at_k": 0.712,
+   "f1": 0.789,
+   "precision_score_order": 0.88,
+   "precision_doc_order": 0.756,
+   "chunks": 4,
+   "context_words": 778.154,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-5",
+   "group": "k (no expansion)",
+   "recall": 0.922,
+   "sufficient_pct": 76.923,
+   "multi_hop_recall": 0.69,
+   "precision_at_k": 0.646,
+   "f1": 0.76,
+   "precision_score_order": 0.879,
+   "precision_doc_order": 0.678,
+   "chunks": 5,
+   "context_words": 972.923,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-6",
+   "group": "k (no expansion)",
+   "recall": 0.933,
+   "sufficient_pct": 76.923,
+   "multi_hop_recall": 0.738,
+   "precision_at_k": 0.615,
+   "f1": 0.741,
+   "precision_score_order": 0.873,
+   "precision_doc_order": 0.641,
+   "chunks": 6,
+   "context_words": 1169.769,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-8",
+   "group": "k (no expansion)",
+   "recall": 0.958,
+   "sufficient_pct": 76.923,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.577,
+   "f1": 0.72,
+   "precision_score_order": 0.848,
+   "precision_doc_order": 0.555,
+   "chunks": 8,
+   "context_words": 1561.538,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "top-10",
+   "group": "k (no expansion)",
+   "recall": 0.958,
+   "sufficient_pct": 76.923,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.531,
+   "f1": 0.683,
+   "precision_score_order": 0.835,
+   "precision_doc_order": 0.502,
+   "chunks": 10,
+   "context_words": 1945.462,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 window 0",
+   "group": "neighbour window",
+   "recall": 0.799,
+   "sufficient_pct": 53.846,
+   "multi_hop_recall": 0.69,
+   "precision_at_k": 0.692,
+   "f1": 0.742,
+   "precision_score_order": 0.955,
+   "precision_doc_order": 0.756,
+   "chunks": 3,
+   "context_words": 582.846,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 window 1 (current)",
+   "group": "neighbour window",
+   "recall": 0.874,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.611,
+   "f1": 0.719,
+   "precision_score_order": 0.887,
+   "precision_doc_order": 0.629,
+   "chunks": 5.846,
+   "context_words": 1143.308,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 window 2",
+   "group": "neighbour window",
+   "recall": 0.874,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.546,
+   "f1": 0.672,
+   "precision_score_order": 0.841,
+   "precision_doc_order": 0.58,
+   "chunks": 8.385,
+   "context_words": 1639.154,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 w1 direct-min 0.2",
+   "group": "direct-hit min score",
+   "recall": 0.874,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.662,
+   "f1": 0.753,
+   "precision_score_order": 0.887,
+   "precision_doc_order": 0.629,
+   "chunks": 5.692,
+   "context_words": 1113.154,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 w1 direct-min 0.3",
+   "group": "direct-hit min score",
+   "recall": 0.811,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.56,
+   "f1": 0.663,
+   "precision_score_order": 0.733,
+   "precision_doc_order": 0.514,
+   "chunks": 5.385,
+   "context_words": 1053.308,
+   "out_of_doc_useful": "0/0"
+  },
+  {
+   "config": "k3 w1 direct-min 0.4",
+   "group": "direct-hit min score",
+   "recall": 0.811,
+   "sufficient_pct": 69.231,
+   "multi_hop_recall": 0.849,
+   "precision_at_k": 0.571,
+   "f1": 0.67,
+   "precision_score_order": 0.733,
+   "precision_doc_order": 0.514,
+   "chunks": 5.308,
+   "context_words": 1039,
+   "out_of_doc_useful": "0/0"
+  }
+ ],
+ "per_question": {
+  "dbms_u5-001": {
+   "top-1": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 769
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 6,
+    "n_chunks": 6,
+    "context_words": 1165
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 8,
+    "n_chunks": 8,
+    "context_words": 1559
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.9,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 9,
+    "n_chunks": 10,
+    "context_words": 1924
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 978
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 782
+   }
+  },
+  "dbms_u5-002": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 397
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 593
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 787
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1179
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9107142857142857,
+    "precision_doc_order": 0.7345238095238096,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1569
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.7,
+    "precision_score_order": 0.8917233560090703,
+    "precision_doc_order": 0.6091836734693877,
+    "useful_chunks": 7,
+    "n_chunks": 10,
+    "context_words": 1932
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 593
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.7142857142857143,
+    "precision_score_order": 0.9266666666666665,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 7,
+    "context_words": 1383
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9484126984126983,
+    "precision_doc_order": 0.8178571428571427,
+    "useful_chunks": 6,
+    "n_chunks": 9,
+    "context_words": 1778
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.7142857142857143,
+    "precision_score_order": 0.9266666666666665,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 7,
+    "context_words": 1383
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.7142857142857143,
+    "precision_score_order": 0.9266666666666665,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 7,
+    "context_words": 1383
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.7142857142857143,
+    "precision_score_order": 0.9266666666666665,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 7,
+    "context_words": 1383
+   }
+  },
+  "dbms_u5-003": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 198
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 397
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 584
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 775
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 974
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.5249999999999999,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1169
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.4303571428571428,
+    "useful_chunks": 4,
+    "n_chunks": 8,
+    "context_words": 1552
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8444444444444444,
+    "precision_doc_order": 0.4023809523809524,
+    "useful_chunks": 5,
+    "n_chunks": 10,
+    "context_words": 1917
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 584
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 963
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5714285714285714,
+    "precision_score_order": 0.6678571428571429,
+    "precision_doc_order": 0.5011904761904762,
+    "useful_chunks": 4,
+    "n_chunks": 7,
+    "context_words": 1326
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 963
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 963
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 777
+   }
+  },
+  "dbms_u5-004": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 195
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1169
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.6428571428571429,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1568
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3,
+    "precision_score_order": 0.6428571428571429,
+    "precision_doc_order": 0.3833333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 10,
+    "context_words": 1957
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "k3 window 2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 195
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "dbms_u5-005": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 193
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 387
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 784
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 982
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.26666666666666666,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1181
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.19642857142857142,
+    "useful_chunks": 2,
+    "n_chunks": 8,
+    "context_words": 1575
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.1736111111111111,
+    "useful_chunks": 2,
+    "n_chunks": 10,
+    "context_words": 1967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.27579365079365076,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1580
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.23076923076923078,
+    "precision_score_order": 0.6333333333333333,
+    "precision_doc_order": 0.17727272727272728,
+    "useful_chunks": 3,
+    "n_chunks": 13,
+    "context_words": 2557
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.27579365079365076,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1580
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.27579365079365076,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1580
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.27579365079365076,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1580
+   }
+  },
+  "dbms_u5-006": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 188
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 780
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8041666666666667,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 980
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8333333333333334,
+    "precision_score_order": 0.8099999999999999,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 6,
+    "context_words": 1176
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.875,
+    "precision_score_order": 0.8260204081632653,
+    "precision_doc_order": 0.7545918367346939,
+    "useful_chunks": 7,
+    "n_chunks": 8,
+    "context_words": 1570
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.9,
+    "precision_score_order": 0.8412257495590829,
+    "precision_doc_order": 0.7856701940035273,
+    "useful_chunks": 9,
+    "n_chunks": 10,
+    "context_words": 1963
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8041666666666667,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 978
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 782
+   }
+  },
+  "dbms_u5-007": {
+   "top-1": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "top-2": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 589
+   },
+   "top-4": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 787
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 985
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 6,
+    "n_chunks": 6,
+    "context_words": 1177
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.875,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.7545918367346939,
+    "useful_chunks": 7,
+    "n_chunks": 8,
+    "context_words": 1569
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.9861111111111112,
+    "precision_doc_order": 0.7713789682539682,
+    "useful_chunks": 8,
+    "n_chunks": 10,
+    "context_words": 1960
+   },
+   "k3 window 0": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 589
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 985
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1379
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 985
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 985
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 985
+   }
+  },
+  "dbms_u5-008": {
+   "top-1": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 200
+   },
+   "top-2": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 397
+   },
+   "top-3": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "top-4": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "top-5": {
+    "recall": 0.9090909090909091,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.8055555555555555,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 979
+   },
+   "top-6": {
+    "recall": 0.9090909090909091,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.7000000000000001,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1175
+   },
+   "top-8": {
+    "recall": 0.9090909090909091,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.65,
+    "precision_doc_order": 0.5666666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 8,
+    "context_words": 1568
+   },
+   "top-10": {
+    "recall": 0.9090909090909091,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.625925925925926,
+    "precision_doc_order": 0.6357142857142857,
+    "useful_chunks": 6,
+    "n_chunks": 10,
+    "context_words": 1958
+   },
+   "k3 window 0": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "k3 window 2": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.8181818181818182,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "dbms_u5-009": {
+   "top-1": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 198
+   },
+   "top-2": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 590
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 786
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 984
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.26666666666666666,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1180
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 0.6428571428571429,
+    "precision_doc_order": 0.28690476190476194,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1571
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.5932539682539683,
+    "precision_doc_order": 0.2875,
+    "useful_chunks": 4,
+    "n_chunks": 10,
+    "context_words": 1958
+   },
+   "k3 window 0": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 590
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4444444444444444,
+    "precision_score_order": 0.8928571428571428,
+    "precision_doc_order": 0.3179563492063492,
+    "useful_chunks": 4,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.26666666666666666,
+    "precision_score_order": 0.7041666666666666,
+    "precision_doc_order": 0.19856532356532355,
+    "useful_chunks": 4,
+    "n_chunks": 15,
+    "context_words": 2948
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4444444444444444,
+    "precision_score_order": 0.8928571428571428,
+    "precision_doc_order": 0.3179563492063492,
+    "useful_chunks": 4,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4444444444444444,
+    "precision_score_order": 0.8928571428571428,
+    "precision_doc_order": 0.3179563492063492,
+    "useful_chunks": 4,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4444444444444444,
+    "precision_score_order": 0.8928571428571428,
+    "precision_doc_order": 0.3179563492063492,
+    "useful_chunks": 4,
+    "n_chunks": 9,
+    "context_words": 1768
+   }
+  },
+  "dbms_u5-010": {
+   "top-1": {
+    "recall": 0.3333333333333333,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 193
+   },
+   "top-2": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "top-4": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 943
+   },
+   "top-6": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 0.8333333333333334,
+    "precision_score_order": 0.9666666666666666,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 6,
+    "context_words": 1140
+   },
+   "top-8": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9484126984126983,
+    "precision_doc_order": 0.8178571428571427,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1539
+   },
+   "top-10": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9484126984126983,
+    "precision_doc_order": 0.7051587301587302,
+    "useful_chunks": 6,
+    "n_chunks": 10,
+    "context_words": 1926
+   },
+   "k3 window 0": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.7777777777777778,
+    "precision_score_order": 0.9325396825396826,
+    "precision_doc_order": 0.6441043083900226,
+    "useful_chunks": 7,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 window 2": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.6428571428571429,
+    "precision_score_order": 0.8368945868945868,
+    "precision_doc_order": 0.527347960681294,
+    "useful_chunks": 9,
+    "n_chunks": 14,
+    "context_words": 2757
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.7777777777777778,
+    "precision_score_order": 0.9325396825396826,
+    "precision_doc_order": 0.6441043083900226,
+    "useful_chunks": 7,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.7777777777777778,
+    "precision_score_order": 0.9325396825396826,
+    "precision_doc_order": 0.6441043083900226,
+    "useful_chunks": 7,
+    "n_chunks": 9,
+    "context_words": 1768
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.8333333333333334,
+    "sufficient": false,
+    "precision_at_k": 0.7777777777777778,
+    "precision_score_order": 0.9325396825396826,
+    "precision_doc_order": 0.6441043083900226,
+    "useful_chunks": 7,
+    "n_chunks": 9,
+    "context_words": 1768
+   }
+  },
+  "dbms_u5-011": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 0.5714285714285714,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 392
+   },
+   "top-3": {
+    "recall": 0.5714285714285714,
+    "sufficient": false,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.5833333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 592
+   },
+   "top-4": {
+    "recall": 0.5714285714285714,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.6388888888888888,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 784
+   },
+   "top-5": {
+    "recall": 0.5714285714285714,
+    "sufficient": false,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.6791666666666667,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "top-6": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.8333333333333334,
+    "precision_score_order": 0.7100000000000001,
+    "precision_doc_order": 0.7100000000000001,
+    "useful_chunks": 5,
+    "n_chunks": 6,
+    "context_words": 1181
+   },
+   "top-8": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.7345238095238096,
+    "precision_doc_order": 0.594047619047619,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1573
+   },
+   "top-10": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.7345238095238096,
+    "precision_doc_order": 0.43624338624338627,
+    "useful_chunks": 6,
+    "n_chunks": 10,
+    "context_words": 1957
+   },
+   "k3 window 0": {
+    "recall": 0.5714285714285714,
+    "sufficient": false,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.5833333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 592
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.6496031746031746,
+    "precision_doc_order": 0.594047619047619,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1577
+   },
+   "k3 window 2": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.6153846153846154,
+    "precision_score_order": 0.5692279942279942,
+    "precision_doc_order": 0.49006132756132753,
+    "useful_chunks": 8,
+    "n_chunks": 13,
+    "context_words": 2547
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.6496031746031746,
+    "precision_doc_order": 0.594047619047619,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1577
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.6496031746031746,
+    "precision_doc_order": 0.594047619047619,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1577
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.7142857142857143,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.6496031746031746,
+    "precision_doc_order": 0.594047619047619,
+    "useful_chunks": 6,
+    "n_chunks": 8,
+    "context_words": 1577
+   }
+  },
+  "dbms_u5-012": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 392
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.9166666666666666,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 783
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5888888888888889,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.4444444444444444,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1174
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.375,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.30277777777777776,
+    "useful_chunks": 3,
+    "n_chunks": 8,
+    "context_words": 1558
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.23095238095238094,
+    "useful_chunks": 3,
+    "n_chunks": 10,
+    "context_words": 1953
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8166666666666667,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.7678571428571428,
+    "precision_doc_order": 0.47619047619047616,
+    "useful_chunks": 4,
+    "n_chunks": 8,
+    "context_words": 1572
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8166666666666667,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8166666666666667,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8166666666666667,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 6,
+    "context_words": 1173
+   }
+  },
+  "dbms_u5-013": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 186
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 351
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 545
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 743
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 941
+   },
+   "top-6": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.16666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.2,
+    "useful_chunks": 1,
+    "n_chunks": 6,
+    "context_words": 1141
+   },
+   "top-8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.125,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.14285714285714285,
+    "useful_chunks": 1,
+    "n_chunks": 8,
+    "context_words": 1529
+   },
+   "top-10": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.1,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.1111111111111111,
+    "useful_chunks": 1,
+    "n_chunks": 10,
+    "context_words": 1919
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 545
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 932
+   },
+   "k3 window 2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.14285714285714285,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.16666666666666666,
+    "useful_chunks": 1,
+    "n_chunks": 7,
+    "context_words": 1319
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 932
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 932
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 932
+   }
+  }
+ }
+}
