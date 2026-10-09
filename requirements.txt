@@ -40,3 +40,7 @@ edge-tts>=7.0.0
 soundfile>=0.12.1
 rapidocr_onnxruntime>=1.4.0
 wordninja>=2.0.0
+deepeval>=4.2.0
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9

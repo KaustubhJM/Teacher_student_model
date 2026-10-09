@@ -16,6 +16,10 @@ from teacher_voice import (
     split_into_sentences,
     MAX_INTERRUPTIONS_PER_SECTION,
     _listen_briefly,
+    _listen_for_answer,
+)
+from comprehension_check import (
+    find_check_question, check_answer_input, remembered_check_reply, is_skip_reply, SKIP_LINE,
 )
 from voice_io import speak_interruptible, record_until_silence, transcribe
 from neural_tts import prefetch as prefetch_speech
@@ -24,6 +28,7 @@ from explainer import BeatStream, answer_doubt
 from rag import build_index, DocumentIndex
 from rag.ingest import is_pdf_file, missing_pdf_pages
 from rag.vector_index import preload_model_in_background
+from rag.reranker import preload_reranker_in_background
 from tools import set_active_index
 from quiz import generate_quiz, print_quiz, USE_REAL_GEMINI, QuizUnavailable
 import persistence
@@ -68,14 +73,20 @@ def plan_lecture(state: ClassroomState) -> ClassroomState:
 
 
 def _handle_doubt(state: ClassroomState, section: str, student_input: str,
-                   doubt_history: List[Dict[str, str]]) -> Tuple[str, List[Dict[str, str]]]:
-    response = answer_doubt(state, section, student_input, doubt_history=doubt_history)
+                   doubt_history: List[Dict[str, str]],
+                   check_question: Optional[str] = None) -> Tuple[str, List[Dict[str, str]]]:
+    # A reply to the section's comprehension check goes in WITH the question
+    # (comprehension_check.py) so the teacher can judge it and explain the
+    # right answer — before, "I don't know" reached it with no question.
+    llm_input = check_answer_input(check_question, student_input) if check_question else student_input
+    response = answer_doubt(state, section, llm_input, doubt_history=doubt_history)
     print(f"\n[{state['student_name']} said] {student_input}")
     resume_phrase = random.choice(RESUME_PHRASES)
     prefetch_speech([response, resume_phrase])
     plain_speak(response)
     plain_speak(resume_phrase)
-    updated_history = doubt_history + [{"question": student_input, "answer": response}]
+    asked = remembered_check_reply(check_question, student_input) if check_question else student_input
+    updated_history = doubt_history + [{"question": asked, "answer": response}]
     return response, updated_history
 
 
@@ -100,9 +111,11 @@ def teach_and_listen(state: ClassroomState, config: RunnableConfig) -> Classroom
     print(f"\n--- {section} ---")
 
     interruption_count = 0
+    last_beat = None
     for beat_text in beat_stream:
         if interruption_count >= MAX_INTERRUPTIONS_PER_SECTION:
             break
+        last_beat = beat_text
 
         # Neural voice: synthesize this beat's sentences in the background
         # so there's no network pause before each one (no-op if unavailable).
@@ -126,10 +139,29 @@ def teach_and_listen(state: ClassroomState, config: RunnableConfig) -> Classroom
                 response, doubt_history = _handle_doubt(state, section, student_input, doubt_history)
                 exchanges += [f"[STUDENT] {student_input}", f"[TEACHER] {response}"]
 
-    student_input = _listen_briefly()
-    if student_input:
-        response, doubt_history = _handle_doubt(state, section, student_input, doubt_history)
-        exchanges += [f"[STUDENT] {student_input}", f"[TEACHER] {response}"]
+    # The last beat ends with a comprehension check (explainer's "connection"
+    # beat). If it was fully spoken (interruption cap not hit), give the
+    # student a real turn: wait for them to START answering and record the
+    # whole answer (the 4 s window cut answers off), then send it WITH the
+    # question. Otherwise: the original short listening window.
+    check_question = None
+    if last_beat is not None and interruption_count < MAX_INTERRUPTIONS_PER_SECTION:
+        check_question = find_check_question(split_into_sentences(last_beat))
+
+    if check_question:
+        print("(Your turn — answer out loud, say 'skip', or stay quiet to move on.)")
+        student_input = _listen_for_answer()
+    else:
+        student_input = _listen_briefly()
+
+    if student_input and check_question and is_skip_reply(student_input):
+        print(f"\n[{state['student_name']} said] {student_input}")
+        plain_speak(SKIP_LINE)    # no LLM call; nothing to record
+    elif student_input:
+        response, doubt_history = _handle_doubt(state, section, student_input, doubt_history,
+                                                check_question=check_question)
+        said = remembered_check_reply(check_question, student_input) if check_question else student_input
+        exchanges += [f"[STUDENT] {said}", f"[TEACHER] {response}"]
 
     # Same transcript as before: the section's full beats text first, then
     # the doubts in order. all_beats() waits for any beat still generating.
@@ -278,8 +310,10 @@ def main():
     student_name = args[1]
 
     # Load the embedding model (~10s) in the background while the rest of
-    # startup runs, instead of stalling the first retrieval.
+    # startup runs, instead of stalling the first retrieval. Same for the
+    # doubt tool's reranker, so the first doubt doesn't wait for it.
     preload_model_in_background()
+    preload_reranker_in_background()
 
     topic = args[2] if len(args) > 2 else _derive_topic_from_filename(document_path)
 

@@ -1,0 +1,6412 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20261002-065919",
+  "judge": "groq/openai/gpt-oss-120b",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "sweep": [
+   {
+    "name": "top-1",
+    "group": "k (no expansion)",
+    "k": 1,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "top-2",
+    "group": "k (no expansion)",
+    "k": 2,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "top-3",
+    "group": "k (no expansion)",
+    "k": 3,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "top-4",
+    "group": "k (no expansion)",
+    "k": 4,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "top-5",
+    "group": "k (no expansion)",
+    "k": 5,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "k3 window 0",
+    "group": "neighbour window",
+    "k": 3,
+    "window": 0,
+    "nbr_min": 0.3,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "k3 window 1 (current)",
+    "group": "neighbour window",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.0,
+    "wide": false
+   },
+   {
+    "name": "k3 w1 direct-min 0.2",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.2
+   },
+   {
+    "name": "k3 w1 direct-min 0.3",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.3
+   },
+   {
+    "name": "k3 w1 direct-min 0.4",
+    "group": "direct-hit min score",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.4
+   },
+   {
+    "name": "rerank top-10, rr>=-2.1, max 8",
+    "group": "cross-encoder reranker",
+    "k": 10,
+    "window": 0,
+    "nbr_min": null,
+    "direct_min": 0.0,
+    "rerank": {
+     "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+     "min_score": -2.1,
+     "max_chunks": 8
+    }
+   },
+   {
+    "name": "k3 w1 chunks, rr>=-2.1",
+    "group": "cross-encoder reranker",
+    "k": 3,
+    "window": 1,
+    "nbr_min": 0.3,
+    "direct_min": 0.0,
+    "rerank": {
+     "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+     "min_score": -2.1,
+     "max_chunks": null
+    }
+   }
+  ],
+  "core_only": true,
+  "errors": [],
+  "n_in_document": 42,
+  "judge_usage": {
+   "calls": 232,
+   "input_tokens": 136172,
+   "output_tokens": 71506,
+   "new_calls": 232,
+   "cache_hits": 13376
+  }
+ },
+ "table": [
+  {
+   "config": "top-1",
+   "group": "k (no expansion)",
+   "recall": 0.693,
+   "sufficient_pct": 50.0,
+   "multi_hop_recall": 0.51,
+   "precision_at_k": 0.976,
+   "f1": 0.811,
+   "precision_score_order": 0.976,
+   "precision_doc_order": 0.976,
+   "chunks": 1,
+   "context_words": 192.976,
+   "out_of_doc_useful": "0/8"
+  },
+  {
+   "config": "top-2",
+   "group": "k (no expansion)",
+   "recall": 0.852,
+   "sufficient_pct": 71.429,
+   "multi_hop_recall": 0.67,
+   "precision_at_k": 0.869,
+   "f1": 0.86,
+   "precision_score_order": 0.988,
+   "precision_doc_order": 0.905,
+   "chunks": 2,
+   "context_words": 386.333,
+   "out_of_doc_useful": "1/16"
+  },
+  {
+   "config": "top-3",
+   "group": "k (no expansion)",
+   "recall": 0.936,
+   "sufficient_pct": 80.952,
+   "multi_hop_recall": 0.864,
+   "precision_at_k": 0.738,
+   "f1": 0.825,
+   "precision_score_order": 0.976,
+   "precision_doc_order": 0.859,
+   "chunks": 3,
+   "context_words": 576.714,
+   "out_of_doc_useful": "1/24"
+  },
+  {
+   "config": "top-4",
+   "group": "k (no expansion)",
+   "recall": 0.936,
+   "sufficient_pct": 80.952,
+   "multi_hop_recall": 0.864,
+   "precision_at_k": 0.607,
+   "f1": 0.736,
+   "precision_score_order": 0.972,
+   "precision_doc_order": 0.732,
+   "chunks": 4,
+   "context_words": 767.929,
+   "out_of_doc_useful": "1/32"
+  },
+  {
+   "config": "top-5",
+   "group": "k (no expansion)",
+   "recall": 0.961,
+   "sufficient_pct": 85.714,
+   "multi_hop_recall": 0.864,
+   "precision_at_k": 0.524,
+   "f1": 0.678,
+   "precision_score_order": 0.951,
+   "precision_doc_order": 0.649,
+   "chunks": 5,
+   "context_words": 961.881,
+   "out_of_doc_useful": "1/40"
+  },
+  {
+   "config": "k3 window 0",
+   "group": "neighbour window",
+   "recall": 0.936,
+   "sufficient_pct": 80.952,
+   "multi_hop_recall": 0.864,
+   "precision_at_k": 0.738,
+   "f1": 0.825,
+   "precision_score_order": 0.976,
+   "precision_doc_order": 0.859,
+   "chunks": 3,
+   "context_words": 576.714,
+   "out_of_doc_useful": "1/24"
+  },
+  {
+   "config": "k3 window 1 (current)",
+   "group": "neighbour window",
+   "recall": 0.992,
+   "sufficient_pct": 95.238,
+   "multi_hop_recall": 0.966,
+   "precision_at_k": 0.501,
+   "f1": 0.666,
+   "precision_score_order": 0.889,
+   "precision_doc_order": 0.568,
+   "chunks": 5.929,
+   "context_words": 1145.429,
+   "out_of_doc_useful": "1/37"
+  },
+  {
+   "config": "k3 w1 direct-min 0.2",
+   "group": "direct-hit min score",
+   "recall": 0.992,
+   "sufficient_pct": 95.238,
+   "multi_hop_recall": 0.966,
+   "precision_at_k": 0.507,
+   "f1": 0.671,
+   "precision_score_order": 0.889,
+   "precision_doc_order": 0.575,
+   "chunks": 5.881,
+   "context_words": 1136.333,
+   "out_of_doc_useful": "1/29"
+  },
+  {
+   "config": "k3 w1 direct-min 0.3",
+   "group": "direct-hit min score",
+   "recall": 0.992,
+   "sufficient_pct": 95.238,
+   "multi_hop_recall": 0.966,
+   "precision_at_k": 0.514,
+   "f1": 0.677,
+   "precision_score_order": 0.889,
+   "precision_doc_order": 0.579,
+   "chunks": 5.833,
+   "context_words": 1127.69,
+   "out_of_doc_useful": "1/23"
+  },
+  {
+   "config": "k3 w1 direct-min 0.4",
+   "group": "direct-hit min score",
+   "recall": 0.968,
+   "sufficient_pct": 92.857,
+   "multi_hop_recall": 0.966,
+   "precision_at_k": 0.542,
+   "f1": 0.695,
+   "precision_score_order": 0.867,
+   "precision_doc_order": 0.597,
+   "chunks": 5.214,
+   "context_words": 1007.929,
+   "out_of_doc_useful": "0/17"
+  },
+  {
+   "config": "rerank top-10, rr>=-2.1, max 8",
+   "group": "cross-encoder reranker",
+   "recall": 0.912,
+   "sufficient_pct": 85.714,
+   "multi_hop_recall": 0.733,
+   "precision_at_k": 0.847,
+   "f1": 0.878,
+   "precision_score_order": 0.947,
+   "precision_doc_order": 0.864,
+   "chunks": 2.571,
+   "context_words": 497.905,
+   "out_of_doc_useful": "0/1"
+  },
+  {
+   "config": "k3 w1 chunks, rr>=-2.1",
+   "group": "cross-encoder reranker",
+   "recall": 0.912,
+   "sufficient_pct": 85.714,
+   "multi_hop_recall": 0.733,
+   "precision_at_k": 0.917,
+   "f1": 0.914,
+   "precision_score_order": 0.956,
+   "precision_doc_order": 0.93,
+   "chunks": 2.19,
+   "context_words": 423.905,
+   "out_of_doc_useful": "0/1"
+  }
+ ],
+ "per_question": {
+  "tc_u5-001": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 770
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 8,
+    "n_chunks": 8,
+    "context_words": 1561
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 7,
+    "n_chunks": 7,
+    "context_words": 1373
+   }
+  },
+  "tc_u5-002": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 387
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 942
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 387
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 387
+   }
+  },
+  "tc_u5-003": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 188
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 388
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 978
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 580
+   }
+  },
+  "tc_u5-004": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 389
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 577
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 774
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 965
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 577
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1173
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 588
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 389
+   }
+  },
+  "tc_u5-005": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 977
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 778
+   }
+  },
+  "tc_u5-006": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 781
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.45,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 971
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333334,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333334,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333334,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333334,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   }
+  },
+  "tc_u5-007": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.8055555555555555,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 746
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.7000000000000001,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 936
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.3611111111111111,
+    "useful_chunks": 3,
+    "n_chunks": 9,
+    "context_words": 1706
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 590
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   }
+  },
+  "tc_u5-008": {
+   "top-1": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 164
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 363
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 554
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 745
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 944
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 554
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 744
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 363
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 363
+   }
+  },
+  "tc_u5-009": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 190
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 581
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 745
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 936
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 581
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 771
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 771
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 771
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 581
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 389
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 389
+   }
+  },
+  "tc_u5-010": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 764
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 963
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 546
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   }
+  },
+  "tc_u5-011": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 979
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5714285714285714,
+    "precision_score_order": 0.7333333333333333,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 7,
+    "context_words": 1370
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5714285714285714,
+    "precision_score_order": 0.7333333333333333,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 7,
+    "context_words": 1370
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5714285714285714,
+    "precision_score_order": 0.7333333333333333,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 7,
+    "context_words": 1370
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5714285714285714,
+    "precision_score_order": 0.7333333333333333,
+    "precision_doc_order": 0.6083333333333333,
+    "useful_chunks": 4,
+    "n_chunks": 7,
+    "context_words": 1370
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8571428571428571,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8734126984126983,
+    "useful_chunks": 6,
+    "n_chunks": 7,
+    "context_words": 1362
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8875,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 974
+   }
+  },
+  "tc_u5-012": {
+   "top-1": {
+    "recall": 0.4,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 974
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 587
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 5,
+    "n_chunks": 5,
+    "context_words": 981
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 784
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   }
+  },
+  "tc_u5-013": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 398
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 562
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 750
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 942
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 562
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.14285714285714285,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 7,
+    "context_words": 1343
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.14285714285714285,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 7,
+    "context_words": 1343
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.14285714285714285,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 7,
+    "context_words": 1343
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 980
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   }
+  },
+  "tc_u5-014": {
+   "top-1": {
+    "recall": 0.6428571428571429,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   },
+   "top-2": {
+    "recall": 0.6428571428571429,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 584
+   },
+   "top-4": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "top-5": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 969
+   },
+   "k3 window 0": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 584
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 970
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 970
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 970
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.9285714285714286,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 970
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.6428571428571429,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.6428571428571429,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   }
+  },
+  "tc_u5-015": {
+   "top-1": {
+    "recall": 0.125,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 0.125,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.125,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "top-4": {
+    "recall": 0.125,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 776
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.95,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 window 0": {
+    "recall": 0.125,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 789
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 590
+   }
+  },
+  "tc_u5-016": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 381
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 765
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 961
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   }
+  },
+  "tc_u5-017": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 386
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 772
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 971
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   }
+  },
+  "tc_u5-018": {
+   "top-1": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 197
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 977
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8875,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8875,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8875,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 0.8875,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   }
+  },
+  "tc_u5-019": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 386
+   },
+   "top-3": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "top-4": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.25,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 782
+   },
+   "top-5": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.2,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 974
+   },
+   "k3 window 0": {
+    "recall": 0.9,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 983
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 983
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 983
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 983
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 6,
+    "context_words": 1181
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.325,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 983
+   }
+  },
+  "tc_u5-020": {
+   "top-1": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 398
+   },
+   "top-3": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 595
+   },
+   "top-4": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 794
+   },
+   "top-5": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 989
+   },
+   "k3 window 0": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 595
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5555555555555556,
+    "precision_score_order": 0.7226190476190476,
+    "precision_doc_order": 0.5192857142857144,
+    "useful_chunks": 5,
+    "n_chunks": 9,
+    "context_words": 1757
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5555555555555556,
+    "precision_score_order": 0.7226190476190476,
+    "precision_doc_order": 0.5192857142857144,
+    "useful_chunks": 5,
+    "n_chunks": 9,
+    "context_words": 1757
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5555555555555556,
+    "precision_score_order": 0.7226190476190476,
+    "precision_doc_order": 0.5192857142857144,
+    "useful_chunks": 5,
+    "n_chunks": 9,
+    "context_words": 1757
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4666666666666666,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1171
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 387
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 387
+   }
+  },
+  "tc_u5-021": {
+   "top-1": {
+    "recall": 0.3333333333333333,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 200
+   },
+   "top-2": {
+    "recall": 0.3333333333333333,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 388
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.7555555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 974
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 580
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 976
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 779
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   }
+  },
+  "tc_u5-022": {
+   "top-1": {
+    "recall": 0.14285714285714285,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 188
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 778
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 969
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   }
+  },
+  "tc_u5-023": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 776
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3666666666666667,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8333333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 579
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.75,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 975
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 382
+   }
+  },
+  "tc_u5-024": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 775
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 974
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   }
+  },
+  "tc_u5-025": {
+   "top-1": {
+    "recall": 0.14285714285714285,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 770
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1373
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 784
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 390
+   }
+  },
+  "tc_u5-026": {
+   "top-1": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 394
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 776
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 973
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 973
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 973
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 973
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 593
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 394
+   }
+  },
+  "tc_u5-027": {
+   "top-1": {
+    "recall": 0.16666666666666666,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "top-2": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 388
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 768
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   }
+  },
+  "tc_u5-028": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 196
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 388
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 768
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   }
+  },
+  "tc_u5-029": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 764
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 928
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   }
+  },
+  "tc_u5-030": {
+   "top-1": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 398
+   },
+   "top-3": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 597
+   },
+   "top-4": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 761
+   },
+   "top-5": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 960
+   },
+   "k3 window 0": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 597
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.7272727272727273,
+    "sufficient": false,
+    "precision_at_k": 0.2222222222222222,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.1736111111111111,
+    "useful_chunks": 2,
+    "n_chunks": 9,
+    "context_words": 1760
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.7272727272727273,
+    "sufficient": false,
+    "precision_at_k": 0.2222222222222222,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.1736111111111111,
+    "useful_chunks": 2,
+    "n_chunks": 9,
+    "context_words": 1760
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.7272727272727273,
+    "sufficient": false,
+    "precision_at_k": 0.2222222222222222,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.1736111111111111,
+    "useful_chunks": 2,
+    "n_chunks": 9,
+    "context_words": 1760
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.7272727272727273,
+    "sufficient": false,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 583
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.3333333333333333,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 597
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.36363636363636365,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.3333333333333333,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 597
+   }
+  },
+  "tc_u5-031": {
+   "top-1": {
+    "recall": 0.4,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 192
+   },
+   "top-2": {
+    "recall": 0.6,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 383
+   },
+   "top-3": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 571
+   },
+   "top-4": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 766
+   },
+   "top-5": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 965
+   },
+   "k3 window 0": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 571
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.625,
+    "precision_score_order": 0.9028571428571428,
+    "precision_doc_order": 0.5926190476190476,
+    "useful_chunks": 5,
+    "n_chunks": 8,
+    "context_words": 1561
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.625,
+    "precision_score_order": 0.9028571428571428,
+    "precision_doc_order": 0.5926190476190476,
+    "useful_chunks": 5,
+    "n_chunks": 8,
+    "context_words": 1561
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.625,
+    "precision_score_order": 0.9028571428571428,
+    "precision_doc_order": 0.5926190476190476,
+    "useful_chunks": 5,
+    "n_chunks": 8,
+    "context_words": 1561
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.625,
+    "precision_score_order": 0.9028571428571428,
+    "precision_doc_order": 0.5926190476190476,
+    "useful_chunks": 5,
+    "n_chunks": 8,
+    "context_words": 1561
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-032": {
+   "top-1": {
+    "recall": 0.4,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 164
+   },
+   "top-2": {
+    "recall": 0.4,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 356
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 546
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 745
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 936
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 546
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 935
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 935
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 935
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 935
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 553
+   }
+  },
+  "tc_u5-033": {
+   "top-1": {
+    "recall": 0.25,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 391
+   },
+   "top-3": {
+    "recall": 0.75,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "top-4": {
+    "recall": 0.75,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 4,
+    "n_chunks": 4,
+    "context_words": 773
+   },
+   "top-5": {
+    "recall": 0.75,
+    "sufficient": false,
+    "precision_at_k": 0.8,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6791666666666667,
+    "useful_chunks": 4,
+    "n_chunks": 5,
+    "context_words": 972
+   },
+   "k3 window 0": {
+    "recall": 0.75,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 585
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9150793650793649,
+    "precision_doc_order": 0.7166666666666668,
+    "useful_chunks": 6,
+    "n_chunks": 9,
+    "context_words": 1752
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9150793650793649,
+    "precision_doc_order": 0.7166666666666668,
+    "useful_chunks": 6,
+    "n_chunks": 9,
+    "context_words": 1752
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9150793650793649,
+    "precision_doc_order": 0.7166666666666668,
+    "useful_chunks": 6,
+    "n_chunks": 9,
+    "context_words": 1752
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 0.9150793650793649,
+    "precision_doc_order": 0.7166666666666668,
+    "useful_chunks": 6,
+    "n_chunks": 9,
+    "context_words": 1752
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.7555555555555555,
+    "precision_doc_order": 0.4777777777777777,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 977
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.5,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 579
+   }
+  },
+  "tc_u5-034": {
+   "top-1": {
+    "recall": 0.625,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 766
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   }
+  },
+  "tc_u5-035": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 957
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   }
+  },
+  "tc_u5-036": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 381
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 772
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.7,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 963
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1344
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   }
+  },
+  "tc_u5-037": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 767
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   }
+  },
+  "tc_u5-038": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 549
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 740
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.9166666666666666,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 939
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 549
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 740
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 740
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 576
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   }
+  },
+  "tc_u5-039": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 554
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 745
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 944
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 554
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 744
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 553
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 199
+   }
+  },
+  "tc_u5-040": {
+   "top-1": {
+    "recall": 0.8888888888888888,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.75,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.8055555555555555,
+    "useful_chunks": 3,
+    "n_chunks": 4,
+    "context_words": 777
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 972
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 3,
+    "context_words": 578
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1160
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1160
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1160
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.8055555555555555,
+    "precision_doc_order": 0.5333333333333333,
+    "useful_chunks": 3,
+    "n_chunks": 6,
+    "context_words": 1160
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 385
+   }
+  },
+  "tc_u5-041": {
+   "top-1": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 193
+   },
+   "top-2": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 575
+   },
+   "top-4": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 0.25,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 739
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.4,
+    "precision_score_order": 0.7,
+    "precision_doc_order": 0.5833333333333333,
+    "useful_chunks": 2,
+    "n_chunks": 5,
+    "context_words": 938
+   },
+   "k3 window 0": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 575
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1360
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1360
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1360
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.2857142857142857,
+    "precision_score_order": 0.8333333333333333,
+    "precision_doc_order": 0.41666666666666663,
+    "useful_chunks": 2,
+    "n_chunks": 7,
+    "context_words": 1360
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 193
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.8,
+    "sufficient": false,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 193
+   }
+  },
+  "tc_u5-042": {
+   "top-1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 1,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "top-4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.5,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 4,
+    "context_words": 764
+   },
+   "top-5": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6,
+    "precision_score_order": 0.8666666666666667,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 3,
+    "n_chunks": 5,
+    "context_words": 960
+   },
+   "k3 window 0": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.6666666666666666,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "k3 window 1 (current)": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.42857142857142855,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.42857142857142855,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.42857142857142855,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 0.42857142857142855,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 0.6388888888888888,
+    "useful_chunks": 3,
+    "n_chunks": 7,
+    "context_words": 1350
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 1.0,
+    "sufficient": true,
+    "precision_at_k": 1.0,
+    "precision_score_order": 1.0,
+    "precision_doc_order": 1.0,
+    "useful_chunks": 2,
+    "n_chunks": 2,
+    "context_words": 382
+   }
+  },
+  "tc_u5-043": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 190
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 381
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 768
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 9,
+    "context_words": 1737
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 9,
+    "context_words": 1737
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 9,
+    "context_words": 1737
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 9,
+    "context_words": 1737
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 191
+   }
+  },
+  "tc_u5-044": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 390
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 773
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 967
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 582
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-045": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 191
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 381
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 766
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 958
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 572
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 7,
+    "context_words": 1348
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 7,
+    "context_words": 1348
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 7,
+    "context_words": 1348
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 6,
+    "context_words": 1154
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-046": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 385
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 549
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 741
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 940
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 549
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 549
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 194
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-047": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.5,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 2,
+    "context_words": 394
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 593
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.25,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 4,
+    "context_words": 788
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.2,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.3333333333333333,
+    "useful_chunks": 1,
+    "n_chunks": 5,
+    "context_words": 987
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.3333333333333333,
+    "precision_score_order": 0.5,
+    "precision_doc_order": 0.5,
+    "useful_chunks": 1,
+    "n_chunks": 3,
+    "context_words": 593
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.16666666666666666,
+    "precision_score_order": 0.3333333333333333,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 6,
+    "context_words": 1182
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.16666666666666666,
+    "precision_score_order": 0.3333333333333333,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 6,
+    "context_words": 1182
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.16666666666666666,
+    "precision_score_order": 0.3333333333333333,
+    "precision_doc_order": 0.25,
+    "useful_chunks": 1,
+    "n_chunks": 6,
+    "context_words": 1182
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 398
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-048": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 190
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 382
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 768
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 959
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 573
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 190
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-049": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 199
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 398
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 777
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 972
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 586
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  },
+  "tc_u5-050": {
+   "top-1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 1,
+    "context_words": 190
+   },
+   "top-2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 2,
+    "context_words": 384
+   },
+   "top-3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 575
+   },
+   "top-4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 4,
+    "context_words": 766
+   },
+   "top-5": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 5,
+    "context_words": 954
+   },
+   "k3 window 0": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 575
+   },
+   "k3 window 1 (current)": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 3,
+    "context_words": 575
+   },
+   "k3 w1 direct-min 0.2": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.3": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 direct-min 0.4": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "rerank top-10, rr>=-2.1, max 8": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   },
+   "k3 w1 chunks, rr>=-2.1": {
+    "recall": 0.0,
+    "sufficient": false,
+    "precision_at_k": 0.0,
+    "precision_score_order": 0.0,
+    "precision_doc_order": 0.0,
+    "useful_chunks": 0,
+    "n_chunks": 0,
+    "context_words": 0
+   }
+  }
+ }
+}

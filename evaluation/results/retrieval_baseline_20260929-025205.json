@@ -1,0 +1,2805 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20260929-025205",
+  "judge": "groq/openai/gpt-oss-120b",
+  "retriever": "search_document baseline {'k': 3, 'window': 1, 'neighbor_min_score': 0.3}",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "search_document_matches": "20/20",
+  "judge_usage": {
+   "calls": 125,
+   "input_tokens": 79703,
+   "output_tokens": 68540,
+   "new_calls": 125,
+   "cache_hits": 367
+  },
+  "errors": []
+ },
+ "summary": {
+  "in_document": {
+   "n": 18,
+   "recall": 0.909,
+   "sufficient_pct": 77.778,
+   "precision_sent_order": 0.676,
+   "precision_score_order": 0.897,
+   "precision_at_k": 0.653,
+   "first_useful_rank_sent": 2.333,
+   "chunks": 6,
+   "context_words": 1175.278
+  },
+  "by_type": {
+   "comparison": {
+    "n": 2,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.867,
+    "precision_score_order": 0.89,
+    "precision_at_k": 0.873,
+    "first_useful_rank_sent": 1.5,
+    "chunks": 8,
+    "context_words": 1577
+   },
+   "definition": {
+    "n": 5,
+    "recall": 0.8,
+    "sufficient_pct": 80.0,
+    "precision_sent_order": 0.725,
+    "precision_score_order": 0.886,
+    "precision_at_k": 0.605,
+    "first_useful_rank_sent": 2.4,
+    "chunks": 5.4,
+    "context_words": 1059
+   },
+   "explanation": {
+    "n": 4,
+    "recall": 0.955,
+    "sufficient_pct": 75.0,
+    "precision_sent_order": 0.614,
+    "precision_score_order": 0.925,
+    "precision_at_k": 0.632,
+    "first_useful_rank_sent": 2.75,
+    "chunks": 5.25,
+    "context_words": 1029.5
+   },
+   "multi-hop": {
+    "n": 3,
+    "recall": 0.849,
+    "sufficient_pct": 33.333,
+    "precision_sent_order": 0.615,
+    "precision_score_order": 0.8,
+    "precision_at_k": 0.731,
+    "first_useful_rank_sent": 2.333,
+    "chunks": 7.667,
+    "context_words": 1506
+   },
+   "table": {
+    "n": 2,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.417,
+    "precision_score_order": 0.917,
+    "precision_at_k": 0.3,
+    "first_useful_rank_sent": 3,
+    "chunks": 5,
+    "context_words": 958.5
+   },
+   "worked-example": {
+    "n": 2,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.84,
+    "precision_score_order": 1.0,
+    "precision_at_k": 0.833,
+    "first_useful_rank_sent": 1.5,
+    "chunks": 5.5,
+    "context_words": 1076.5
+   }
+  },
+  "out_of_document": [
+   {
+    "id": "dbms_u5-019",
+    "top1_score": 0.18903949856758118,
+    "useful_chunks": 0,
+    "n_chunks": 3
+   },
+   {
+    "id": "dbms_u5-020",
+    "top1_score": 0.5486465096473694,
+    "useful_chunks": 3,
+    "n_chunks": 7
+   }
+  ],
+  "in_document_top1": {
+   "min": 0.22377920150756836,
+   "median": 0.6563400328159332,
+   "max": 0.8330414295196533
+  },
+  "weakest": [
+   "dbms_u5-004",
+   "dbms_u5-011",
+   "dbms_u5-008",
+   "dbms_u5-010",
+   "dbms_u5-013"
+  ]
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-001",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a lock in a DBMS?",
+   "source_pages": [
+    4
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A lock is a variable.",
+    "A lock variable is associated with a data item.",
+    "A lock variable describes the status of the data item.",
+    "The status described by a lock variable is with respect to the operations that can be applied to the data item.",
+    "There is one lock for each data item in the database.",
+    "Locks are used to synchronize access to database items.",
+    "The access synchronized by locks is performed by concurrent transactions."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 782,
+   "top1_score": 0.7072935104370117,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.7073,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines a lock as a variable linked to a data item, describes its status (including operation‑based meaning), and states that each item has one lock, directly addressing the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.6366,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk defines lock variables, their per-item association, status, one-per-item rule, and use for synchronizing concurrent transactions."
+    },
+    {
+     "rank_sent": 3,
+     "position": 2,
+     "score": 0.5823,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk describes lock association, states, and their role in synchronizing concurrent transaction access."
+    },
+    {
+     "rank_sent": 4,
+     "position": 3,
+     "score": 0.5241,
+     "direct_hit": false,
+     "pages": [
+      7,
+      8,
+      9,
+      10
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+     ],
+     "reason": "The chunk describes lock variables, their states, and how they synchronize concurrent transactions."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-002",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is the two-phase locking protocol?",
+   "source_pages": [
+    13
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A transaction follows the two-phase locking protocol if all its locking operations (read_lock, write_lock) precede the first unlock operation in the transaction.",
+    "That transaction has an expanding (growing) phase.",
+    "During the expanding phase, new locks can be acquired.",
+    "During the expanding phase, no locks can be released.",
+    "The transaction then has a shrinking phase.",
+    "During the shrinking phase, existing locks can be released.",
+    "During the shrinking phase, no new locks can be acquired."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.7100000000000001,
+   "precision_score_order": 0.9266666666666665,
+   "precision_at_k": 0.7142857142857143,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1383,
+   "top1_score": 0.7112599611282349,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.6401,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only talks about lock conversion and mentions two-phase locking without defining its phases or ordering of lock/unlock operations."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.7113,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk defines the two-phase locking rules and describes expanding and shrinking phases"
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.6401,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk mentions two-phase locking and shows lock/unlock ordering, but it does not explicitly state any of the listed claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 8,
+     "score": 0.6777,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17,
+      18
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      4,
+      6
+     ],
+     "reason": "The chunk describes that a transaction must keep locks until all required items are locked before any unlock, capturing the core two‑phase locking rule (no unlocks during the growing phase and releases only after acquiring all locks)."
+    },
+    {
+     "rank_sent": 5,
+     "position": 9,
+     "score": 0.6264,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk outlines the growing and shrinking phases and their lock acquisition/release rules, which are central to the two‑phase locking protocol."
+    },
+    {
+     "rank_sent": 6,
+     "position": 10,
+     "score": 0.696,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "Chunk describes the growing (expanding) and shrinking phases of 2PL, matching all listed claims."
+    },
+    {
+     "rank_sent": 7,
+     "position": 11,
+     "score": 0.6264,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes timestamp ordering and only mentions 2PL in contrast, without stating any of the specific 2PL phase claims."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-003",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is data item granularity and why does choosing it matter?",
+   "source_pages": [
+    64
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Data item granularity is the size of the data item that a lock applies to, such as a record, a disk block, a file or the whole database.",
+    "Choosing the right granularity is important because it affects concurrency, i.e. how many transactions can run at the same time.",
+    "Choosing the right granularity also affects overhead, i.e. the system effort needed to manage locks."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.6388888888888888,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.6,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 963,
+   "top1_score": 0.574428915977478,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 32,
+     "score": 0.517,
+     "direct_hit": false,
+     "pages": [
+      61,
+      62,
+      63
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses transaction recovery and locking protocols but does not mention data item granularity or its impact on concurrency or overhead."
+    },
+    {
+     "rank_sent": 2,
+     "position": 33,
+     "score": 0.5744,
+     "direct_hit": true,
+     "pages": [
+      63,
+      64,
+      65
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk defines data item granularity and explains it matters because it affects concurrency and overhead."
+    },
+    {
+     "rank_sent": 3,
+     "position": 34,
+     "score": 0.517,
+     "direct_hit": true,
+     "pages": [
+      64,
+      65,
+      66,
+      67
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk defines granularity with examples and explains its effects on concurrency and overhead"
+    },
+    {
+     "rank_sent": 4,
+     "position": 35,
+     "score": 0.4268,
+     "direct_hit": true,
+     "pages": [
+      66,
+      67,
+      68
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk defines granularity levels (record, page, file, database) and explains how lock size affects transaction concurrency and lock-management overhead."
+    },
+    {
+     "rank_sent": 5,
+     "position": 36,
+     "score": 0.3345,
+     "direct_hit": false,
+     "pages": [
+      69,
+      70
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses intention locks and hierarchy but does not state the definition of granularity or its impact on concurrency or overhead."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-004",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is the phantom phenomenon?",
+   "source_pages": [
+    48
+   ],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "The phantom phenomenon occurs when a transaction retrieves a set of rows satisfying a condition and another transaction inserts or deletes rows that also meet that condition.",
+    "The phantom phenomenon leads to inconsistent query results because the retrieved data changes during the transaction's execution.",
+    "Transaction T1 reads all rows with salary > 5000.",
+    "Transaction T2 inserts a row with salary 6000.",
+    "Transaction T1 sees an extra phantom row when transaction T1 re-runs the query."
+   ],
+   "missing_claims": [
+    "The phantom phenomenon occurs when a transaction retrieves a set of rows satisfying a condition and another transaction inserts or deletes rows that also meet that condition.",
+    "The phantom phenomenon leads to inconsistent query results because the retrieved data changes during the transaction's execution.",
+    "Transaction T1 reads all rows with salary > 5000.",
+    "Transaction T2 inserts a row with salary 6000.",
+    "Transaction T1 sees an extra phantom row when transaction T1 re-runs the query."
+   ],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 587,
+   "top1_score": 0.22377920150756836,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 26,
+     "score": 0.2238,
+     "direct_hit": true,
+     "pages": [
+      49,
+      50,
+      51
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk mentions phantoms and range‑query handling but does not state any of the listed claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 29,
+     "score": 0.1578,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses recovery, logging, and undo/redo, but does not mention the phantom phenomenon or related facts."
+    },
+    {
+     "rank_sent": 3,
+     "position": 30,
+     "score": 0.1752,
+     "direct_hit": true,
+     "pages": [
+      58,
+      59,
+      60
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses recovery protocols and transaction states, not the phantom phenomenon."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-005",
+   "type": "definition",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What is a certify lock in multiversion two-phase locking?",
+   "source_pages": [
+    42,
+    44
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A certify lock is the third type of lock that multiversion two-phase locking (MV2PL) adds to read and write locks.",
+    "Before a transaction T can commit, transaction T must get a certify lock on every item transaction T updated.",
+    "The certify lock ensures that no other transaction is reading the old version while transaction T commits."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.27579365079365076,
+   "precision_score_order": 0.7000000000000001,
+   "precision_at_k": 0.375,
+   "first_useful_rank_sent": 6,
+   "first_useful_rank_score": 1,
+   "n_chunks": 8,
+   "context_words": 1580,
+   "top1_score": 0.6239465475082397,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.5799,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk contains only generic lock information and does not mention certify locks or multiversion two-phase locking."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.5219,
+     "direct_hit": false,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only describes binary locking mechanisms and does not mention certify locks or multiversion two-phase locking."
+    },
+    {
+     "rank_sent": 3,
+     "position": 9,
+     "score": 0.5175,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk contains no mention of certify locks or the specific facts about them, so it does not support any claim nor help answer the question."
+    },
+    {
+     "rank_sent": 4,
+     "position": 10,
+     "score": 0.575,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses generic 2PL variants and does not mention certify locks or multiversion two-phase locking."
+    },
+    {
+     "rank_sent": 5,
+     "position": 11,
+     "score": 0.5175,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses timestamp ordering and related concepts, but does not mention certify locks or multiversion two-phase locking."
+    },
+    {
+     "rank_sent": 6,
+     "position": 21,
+     "score": 0.5616,
+     "direct_hit": false,
+     "pages": [
+      40,
+      41,
+      42,
+      43
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      3
+     ],
+     "reason": "The chunk describes certify lock as the third lock type that prevents other transactions from reading or writing a version after it is committed."
+    },
+    {
+     "rank_sent": 7,
+     "position": 22,
+     "score": 0.6239,
+     "direct_hit": true,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk defines certify lock as the third lock type, says it must be obtained on all updated items before commit, and that it prevents other transactions from reading the old version during commit."
+    },
+    {
+     "rank_sent": 8,
+     "position": 23,
+     "score": 0.5616,
+     "direct_hit": false,
+     "pages": [
+      44,
+      45
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3
+     ],
+     "reason": "The chunk defines certify lock and its role in the commit phase, matching the question."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-006",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "Why is the binary locking scheme too restrictive, and what is used instead?",
+   "source_pages": [
+    6,
+    7
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Binary locking is too restrictive because at most one transaction can hold a lock on a given item.",
+    "Read operations on the same item by different transactions are not conflicting.",
+    "Several transactions should be allowed to read the same item at once.",
+    "A transaction that writes an item still needs exclusive access to the item.",
+    "The requirement for exclusive access for writing is achieved with a multiple-mode lock called shared/exclusive (read/write) locks."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.6388888888888888,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.75,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 782,
+   "top1_score": 0.6619179844856262,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.6531,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only defines binary locks and does not state why they are too restrictive or mention shared/exclusive locks."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.6241,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk explains binary locking permits only a single holder per item and mentions shared/exclusive (read/write) locks as the alternative scheme."
+    },
+    {
+     "rank_sent": 3,
+     "position": 2,
+     "score": 0.6619,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk explains binary locking limits to one transaction per item and introduces shared/exclusive (read/write) locks to allow concurrent reads."
+    },
+    {
+     "rank_sent": 4,
+     "position": 3,
+     "score": 0.5957,
+     "direct_hit": false,
+     "pages": [
+      7,
+      8,
+      9,
+      10
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk describes shared/exclusive locks that permit multiple concurrent reads and require exclusive access for writes, showing why binary locking is too restrictive and what replaces it."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-007",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "Why can two-phase locking limit the amount of concurrency in a schedule?",
+   "source_pages": [
+    17,
+    18
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Under two-phase locking, a transaction T may not be able to release an item X after it is done with it if transaction T must lock another item Y later.",
+    "Alternatively, transaction T must lock item Y before transaction T needs it so that transaction T can release item X.",
+    "Other transactions that want item X are forced to wait even though transaction T is done with item X.",
+    "Other transactions that want item Y are forced to wait even though transaction T is not yet using item Y.",
+    "This is the price for guaranteeing serializability of all schedules without having to check the schedules themselves."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 985,
+   "top1_score": 0.6813806295394897,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.5674,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk discusses lock conversion and waiting behavior in two‑phase locking but does not explicitly state any of the listed claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.6304,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk explains the growing phase (acquire locks, no releases) and shrinking phase (release locks, no new acquisitions), which directly supports claim 1 about not being able to release X if T must lock Y later."
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.6659,
+     "direct_hit": true,
+     "pages": [
+      14,
+      15,
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "Shows a transaction holding a lock on one item while still holding another, forcing others to wait and limiting concurrency."
+    },
+    {
+     "rank_sent": 4,
+     "position": 8,
+     "score": 0.6814,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17,
+      18
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk explains that a transaction may have to keep locks on items until later locks are acquired, causing other transactions to wait, which limits concurrency."
+    },
+    {
+     "rank_sent": 5,
+     "position": 9,
+     "score": 0.6132,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk states other transactions must wait for X even though T is done, must wait for Y even though T hasn't used it, and calls this the price for guaranteeing serializability."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-008",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What is Thomas's write rule?",
+   "source_pages": [
+    32
+   ],
+   "recall": 0.8181818181818182,
+   "sufficient": false,
+   "claims": [
+    "Thomas's write rule is a modification of the basic timestamp ordering algorithm.",
+    "Thomas's write rule rejects fewer write operations.",
+    "Thomas's write rule does not enforce conflict serializability.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), transaction T is aborted.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), transaction T is rolled back.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), the operation is rejected.",
+    "If write_TS(X) > TS(T), the write is not executed.",
+    "If write_TS(X) > TS(T), processing continues.",
+    "If write_TS(X) > TS(T), the write is already outdated and obsolete.",
+    "If neither read_TS(X) > TS(T) nor write_TS(X) > TS(T), the write is executed.",
+    "When the write is executed, write_TS(X) is set to TS(T)."
+   ],
+   "missing_claims": [
+    "If write_TS(X) > TS(T), the write is already outdated and obsolete.",
+    "If neither read_TS(X) > TS(T) nor write_TS(X) > TS(T), the write is executed."
+   ],
+   "precision_sent_order": 0.5,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 583,
+   "top1_score": 0.26786184310913086,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 15,
+     "score": 0.2333,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses basic and strict timestamp ordering but does not mention Thomas's write rule or any of the listed claim facts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 16,
+     "score": 0.2679,
+     "direct_hit": true,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      11
+     ],
+     "reason": "The chunk describes Thomas's write rule, its modification of timestamp ordering, fewer rejections, lack of conflict‑serializability enforcement, and the read/write timestamp conditions."
+    },
+    {
+     "rank_sent": 3,
+     "position": 36,
+     "score": 0.2119,
+     "direct_hit": true,
+     "pages": [
+      69,
+      70
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses intention locks and multiple granularity locking, which are unrelated to Thomas's write rule."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-009",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How does the two-phase commit protocol work?",
+   "source_pages": [
+    59,
+    60,
+    61
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Two-phase commit ensures atomicity in distributed transactions.",
+    "All participating nodes either commit or abort together, even in the presence of failures.",
+    "In the prepare phase, the coordinator sends a PREPARE request to all participants.",
+    "The PREPARE request asks whether the participants can commit.",
+    "If all participants reply Yes, the coordinator sends COMMIT.",
+    "The participants commit after receiving COMMIT.",
+    "If any participant replies No, the coordinator sends ABORT.",
+    "All participants abort after receiving ABORT.",
+    "Each participant logs the commit or abort.",
+    "Each participant releases any locks held for the transaction."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.3179563492063492,
+   "precision_score_order": 0.8928571428571428,
+   "precision_at_k": 0.4444444444444444,
+   "first_useful_rank_sent": 6,
+   "first_useful_rank_score": 1,
+   "n_chunks": 9,
+   "context_words": 1768,
+   "top1_score": 0.6988356113433838,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.5009,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses lock conversion and two‑phase locking, not the two‑phase commit protocol or its claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.5566,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses two-phase locking, not the two-phase commit protocol, and does not state any of the listed claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.5009,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16,
+      17
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses two‑phase locking and transaction schedules, not the two‑phase commit protocol or its steps."
+    },
+    {
+     "rank_sent": 4,
+     "position": 21,
+     "score": 0.5206,
+     "direct_hit": false,
+     "pages": [
+      40,
+      41,
+      42,
+      43
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses multiversion locking and timestamps, not the two-phase commit protocol."
+    },
+    {
+     "rank_sent": 5,
+     "position": 22,
+     "score": 0.5785,
+     "direct_hit": true,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses multiversion 2PL concepts and does not mention any two-phase commit steps or related facts."
+    },
+    {
+     "rank_sent": 6,
+     "position": 23,
+     "score": 0.5206,
+     "direct_hit": false,
+     "pages": [
+      44,
+      45
+     ],
+     "useful": true,
+     "supported_claims": [
+      10
+     ],
+     "reason": "The chunk discusses lock certification and optimistic validation, not the two-phase commit steps."
+    },
+    {
+     "rank_sent": 7,
+     "position": 30,
+     "score": 0.629,
+     "direct_hit": false,
+     "pages": [
+      58,
+      59,
+      60
+     ],
+     "useful": true,
+     "supported_claims": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk describes the coordinator's decision based on participant votes, the COMMIT/ABORT messages, and participant actions such as logging and releasing locks, which are core steps of the two‑phase commit protocol."
+    },
+    {
+     "rank_sent": 8,
+     "position": 31,
+     "score": 0.6988,
+     "direct_hit": true,
+     "pages": [
+      59,
+      60,
+      61
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10
+     ],
+     "reason": "Chunk describes the 2PC phases and actions, covering most of the listed claims."
+    },
+    {
+     "rank_sent": 9,
+     "position": 32,
+     "score": 0.629,
+     "direct_hit": false,
+     "pages": [
+      61,
+      62,
+      63
+     ],
+     "useful": true,
+     "supported_claims": [
+      5,
+      6,
+      7,
+      8,
+      10
+     ],
+     "reason": "The chunk describes the commit/abort decisions and lock release, which are core steps of the two‑phase commit protocol."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-010",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "How do strict 2PL and multiversion 2PL each avoid cascading aborts?",
+   "source_pages": [
+    21,
+    43,
+    44,
+    63
+   ],
+   "recall": 0.8333333333333334,
+   "sufficient": false,
+   "claims": [
+    "Strict 2PL releases all exclusive (write) locks only after the transaction commits or aborts.",
+    "A transaction only reads committed data under Strict 2PL.",
+    "Reading only committed data avoids cascading rollbacks.",
+    "Multiversion 2PL lets other transactions read the old, committed version while a transaction writes a new version.",
+    "Transactions only read committed data under Multiversion 2PL.",
+    "A rollback does not cause a chain of aborts under Multiversion 2PL."
+   ],
+   "missing_claims": [
+    "A transaction only reads committed data under Strict 2PL."
+   ],
+   "precision_sent_order": 0.6441043083900226,
+   "precision_score_order": 0.9325396825396826,
+   "precision_at_k": 0.7777777777777778,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 9,
+   "context_words": 1768,
+   "top1_score": 0.6093451976776123,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 9,
+     "score": 0.4204,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only lists lock protocol names and variants without stating any of the claimed facts about strict 2PL or multiversion 2PL."
+    },
+    {
+     "rank_sent": 2,
+     "position": 10,
+     "score": 0.4672,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk states that exclusive (write) locks are released only after commit or abort, explaining how strict 2PL avoids cascading aborts."
+    },
+    {
+     "rank_sent": 3,
+     "position": 11,
+     "score": 0.4204,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses timestamp ordering, not strict 2PL or multiversion 2PL, so it does not support any claim or help answer the question."
+    },
+    {
+     "rank_sent": 4,
+     "position": 17,
+     "score": 0.3833,
+     "direct_hit": false,
+     "pages": [
+      33,
+      34,
+      35
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk explains that MVCC retains old versions for other transactions to read while a new version is being written, supporting claim 4 and relevant to avoiding cascading aborts."
+    },
+    {
+     "rank_sent": 5,
+     "position": 18,
+     "score": 0.4259,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk describes multiversion concurrency control with multiple versions of data items, supporting the claim that other transactions can read old versions while a new version is written."
+    },
+    {
+     "rank_sent": 6,
+     "position": 19,
+     "score": 0.3833,
+     "direct_hit": false,
+     "pages": [
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5
+     ],
+     "reason": "The chunk describes how multiversion 2PL creates new versions and lets transactions read older committed versions, supporting those claims."
+    },
+    {
+     "rank_sent": 7,
+     "position": 21,
+     "score": 0.5484,
+     "direct_hit": false,
+     "pages": [
+      40,
+      41,
+      42,
+      43
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5
+     ],
+     "reason": "The chunk explains MV2PL’s versioning and lock usage, showing that transactions read committed versions while others write new ones, supporting claims about multiversion 2PL."
+    },
+    {
+     "rank_sent": 8,
+     "position": 22,
+     "score": 0.6093,
+     "direct_hit": true,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5
+     ],
+     "reason": "The chunk explains that MV2PL lets other transactions read the old committed version while a transaction writes a new version, showing how it avoids cascading aborts."
+    },
+    {
+     "rank_sent": 9,
+     "position": 23,
+     "score": 0.5484,
+     "direct_hit": false,
+     "pages": [
+      44,
+      45
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk explains that reading only committed data and allowing reads of old versions prevents cascading aborts, covering the multiversion case."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-011",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "Which concurrency control techniques in this unit avoid deadlocks, and why?",
+   "source_pages": [
+    21,
+    23,
+    26,
+    31
+   ],
+   "recall": 0.7142857142857143,
+   "sufficient": false,
+   "claims": [
+    "Timestamp-ordering techniques do not use locks.",
+    "Deadlocks cannot occur with timestamp-ordering techniques.",
+    "Conservative 2PL acquires all locks before the transaction begins execution.",
+    "Acquiring all locks before execution avoids deadlocks.",
+    "Acquiring all locks before execution can cause delays due to pre-locking.",
+    "Strict timestamp ordering does not cause deadlock.",
+    "A transaction T waits for another transaction T' only if TS(T) > TS(T')."
+   ],
+   "missing_claims": [
+    "Acquiring all locks before execution can cause delays due to pre-locking.",
+    "A transaction T waits for another transaction T' only if TS(T) > TS(T')."
+   ],
+   "precision_sent_order": 0.594047619047619,
+   "precision_score_order": 0.6496031746031746,
+   "precision_at_k": 0.75,
+   "first_useful_rank_sent": 3,
+   "first_useful_rank_score": 2,
+   "n_chunks": 8,
+   "context_words": 1577,
+   "top1_score": 0.6507620811462402,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.6508,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk does not state any of the listed claims and provides no information about deadlock‑avoiding techniques."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.5857,
+     "direct_hit": false,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only describes binary locking and waiting, not any deadlock‑free techniques."
+    },
+    {
+     "rank_sent": 3,
+     "position": 9,
+     "score": 0.5624,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "Chunk only lists Conservative 2PL and timestamp ordering without stating the specific claim facts."
+    },
+    {
+     "rank_sent": 4,
+     "position": 10,
+     "score": 0.6249,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk states that timestamp ordering uses no locks (preventing deadlocks) and that Conservative 2PL acquires all locks up‑front, which avoids deadlocks."
+    },
+    {
+     "rank_sent": 5,
+     "position": 11,
+     "score": 0.5624,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      6
+     ],
+     "reason": "The chunk states timestamp ordering uses no locks and therefore cannot deadlock, directly answering the question."
+    },
+    {
+     "rank_sent": 6,
+     "position": 26,
+     "score": 0.5562,
+     "direct_hit": false,
+     "pages": [
+      49,
+      50,
+      51
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk describes timestamp‑ordering rules that are relevant to deadlock‑free concurrency control, helping answer the question even though it does not directly state any of the listed claims."
+    },
+    {
+     "rank_sent": 7,
+     "position": 27,
+     "score": 0.618,
+     "direct_hit": true,
+     "pages": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk says timestamp‑ordering protocols execute without locking resources, which directly supports that they avoid deadlocks."
+    },
+    {
+     "rank_sent": 8,
+     "position": 28,
+     "score": 0.5562,
+     "direct_hit": false,
+     "pages": [
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk explains optimistic validation runs without locks, offering relevant information about a technique that avoids deadlocks."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-012",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "During recovery, what happens to transactions that were active at the time of failure versus those that had committed, and which log images are used?",
+   "source_pages": [
+    57,
+    62
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Transactions that were active at the time of failure are undone (rolled back) using the before images in the transaction log.",
+    "Undoing active transactions restores the data to the state before the transaction started.",
+    "Transactions that had committed before the failure are redone using the after images from the log.",
+    "Redoing committed transactions applies their updates.",
+    "The before image is the value of a data item before it is updated.",
+    "The after image is the value of a data item after it has been updated."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.6083333333333333,
+   "precision_score_order": 0.8166666666666667,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1173,
+   "top1_score": 0.6791632175445557,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 28,
+     "score": 0.6112,
+     "direct_hit": false,
+     "pages": [
+      54,
+      55,
+      56
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only mentions logs and recovery in general and does not state any of the claims about undoing active transactions, redo of committed ones, or before/after images."
+    },
+    {
+     "rank_sent": 2,
+     "position": 29,
+     "score": 0.6792,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "Chunk defines before/after images and explains undo for active transactions and redo for committed ones, matching the question."
+    },
+    {
+     "rank_sent": 3,
+     "position": 30,
+     "score": 0.6258,
+     "direct_hit": true,
+     "pages": [
+      58,
+      59,
+      60
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "Chunk mentions active and committed transaction states but does not state undo/redo or before/after images."
+    },
+    {
+     "rank_sent": 4,
+     "position": 31,
+     "score": 0.5632,
+     "direct_hit": false,
+     "pages": [
+      59,
+      60,
+      61
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses two‑phase commit and checkpoints but does not mention undo/redo or before/after log images related to recovery."
+    },
+    {
+     "rank_sent": 5,
+     "position": 32,
+     "score": 0.5607,
+     "direct_hit": true,
+     "pages": [
+      61,
+      62,
+      63
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "Chunk describes undo of active transactions using before images and redo of committed transactions using after images."
+    },
+    {
+     "rank_sent": 6,
+     "position": 33,
+     "score": 0.5047,
+     "direct_hit": false,
+     "pages": [
+      63,
+      64,
+      65
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4
+     ],
+     "reason": "The chunk states that only fully committed transactions are included in the redo phase, supporting claims about redoing committed transactions."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-013",
+   "type": "table",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "In multiple granularity locking, is an IX lock compatible with an S lock, and is an IS lock compatible with an SIX lock?",
+   "source_pages": [
+    69
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "IX is not compatible with S.",
+    "IS is compatible with SIX.",
+    "IS is compatible with every lock mode except X."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.25,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.2,
+   "first_useful_rank_sent": 4,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 932,
+   "top1_score": 0.5662804841995239,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.5204,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk contains no information about IX, IS, S, or SIX lock compatibility."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.4684,
+     "direct_hit": false,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes binary locking and does not address IX, IS, S, or SIX compatibility."
+    },
+    {
+     "rank_sent": 3,
+     "position": 35,
+     "score": 0.5097,
+     "direct_hit": false,
+     "pages": [
+      66,
+      67,
+      68
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk does not state any compatibility facts about IX, S, IS, or SIX."
+    },
+    {
+     "rank_sent": 4,
+     "position": 36,
+     "score": 0.5663,
+     "direct_hit": true,
+     "pages": [
+      69,
+      70
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The compatibility table confirms IX is not compatible with S and IS is compatible with SIX (and all modes except X)."
+    },
+    {
+     "rank_sent": 5,
+     "position": 37,
+     "score": 0.5543,
+     "direct_hit": true,
+     "pages": [
+      70,
+      71,
+      72
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk does not state any of the compatibility facts required for the claims."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-014",
+   "type": "table",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "In the example of transactions T1 and T2 that do not obey two-phase locking, with initial values X=20 and Y=30, what are the results of the serial schedules and of the nonserializable schedule S?",
+   "source_pages": [
+    14,
+    15
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The serial schedule T1 followed by T2 gives X=50.",
+    "The serial schedule T1 followed by T2 gives Y=80.",
+    "The serial schedule T2 followed by T1 gives X=70.",
+    "The serial schedule T2 followed by T1 gives Y=50.",
+    "The nonserializable schedule S that uses locks gives X=50.",
+    "The nonserializable schedule S that uses locks gives Y=50."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.5833333333333333,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.4,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 985,
+   "top1_score": 0.8330414295196533,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.6275,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk discusses lock conversion and two‑phase locking but does not state any of the numeric results."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.7497,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists the X and Y results for both serial schedules and schedule S, matching all claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.833,
+     "direct_hit": true,
+     "pages": [
+      14,
+      15,
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists X=70,Y=50 for the T2‑then‑T1 serial schedule and X=50,Y=50 for the nonserializable schedule S, matching claims 3‑6."
+    },
+    {
+     "rank_sent": 4,
+     "position": 8,
+     "score": 0.7579,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17,
+      18
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only discusses two‑phase locking concepts and does not state any of the numeric results claimed."
+    },
+    {
+     "rank_sent": 5,
+     "position": 9,
+     "score": 0.6821,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk contains only generic discussion of locking protocols and no statements about the X/Y values or schedule outcomes."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-015",
+   "type": "worked-example",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "In multiversion timestamp ordering, X has versions X1 (write_TS=5, read_TS=10) and X2 (write_TS=15, read_TS=20). What happens when T3 with TS=18 tries to write X, and when T4 with TS=25 tries to write X?",
+   "source_pages": [
+    39
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "For T3 the latest suitable version is X2.",
+    "write_TS(X2)=15 is less than or equal to 18.",
+    "read_TS(X2)=20 is greater than 18.",
+    "There is a conflict for T3.",
+    "T3 is aborted.",
+    "For T4 the suitable version is X2.",
+    "read_TS(X2)=20 is less than or equal to 25.",
+    "There is no conflict for T4.",
+    "A new version X3 is created.",
+    "write_TS(X3)=25.",
+    "read_TS(X3)=25."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.6791666666666667,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1170,
+   "top1_score": 0.6463555693626404,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 17,
+     "score": 0.5541,
+     "direct_hit": false,
+     "pages": [
+      33,
+      34,
+      35
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only gives generic MVCC information and does not state any of the specific claims about T3, T4, timestamps, or version conflicts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.6156,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk only defines generic MVCC concepts (versions, write_TS, read_TS) and does not state any of the specific claim facts."
+    },
+    {
+     "rank_sent": 3,
+     "position": 19,
+     "score": 0.5817,
+     "direct_hit": false,
+     "pages": [
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk describes the version selection, conflict check, and abort for T3, covering claims 1‑5."
+    },
+    {
+     "rank_sent": 4,
+     "position": 20,
+     "score": 0.6464,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+     ],
+     "reason": "The chunk details the version checks, conflicts, abort of T3 and creation of X3 for T4, covering all listed claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 21,
+     "score": 0.6103,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      6
+     ],
+     "reason": "The chunk identifies X2 as the suitable version for T3 and T4 and shows write_TS(X2)=15≤18 and ≤25, confirming those claims."
+    },
+    {
+     "rank_sent": 6,
+     "position": 22,
+     "score": 0.5493,
+     "direct_hit": false,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses multiversion 2PL concepts but does not mention timestamps, write_TS/read_TS values, or the conflict rules required for the question."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-016",
+   "type": "worked-example",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "Under basic timestamp ordering, transaction T with TS(T)=10 issues read_item(X). What happens if write_TS(X)=12, and what happens if write_TS(X)=8?",
+   "source_pages": [
+    29
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "If write_TS(X)=12 then write_TS(X) > TS(T).",
+    "If write_TS(X)=12 then a younger transaction has already written X before transaction T could read it.",
+    "If write_TS(X)=12 then transaction T is aborted and rolled back.",
+    "If write_TS(X)=12 then the read is rejected.",
+    "If write_TS(X)=8 then write_TS(X) <= TS(T).",
+    "If write_TS(X)=8 then read_item(X) is executed.",
+    "If write_TS(X)=8 then read_TS(X) is set to the larger of TS(T) and the current read_TS(X)."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 983,
+   "top1_score": 0.7133452892303467,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 12,
+     "score": 0.6061,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk explains that when a transaction encounters a later‑timestamp write (write_TS > TS(T)), the operation is aborted or rejected, implying a younger transaction has already written the item and that the read is denied."
+    },
+    {
+     "rank_sent": 2,
+     "position": 13,
+     "score": 0.6735,
+     "direct_hit": true,
+     "pages": [
+      26,
+      27,
+      28
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4
+     ],
+     "reason": "The chunk states that a timestamp order violation causes the transaction to be aborted, rolled back, and the read to be rejected, which directly answers the scenario."
+    },
+    {
+     "rank_sent": 3,
+     "position": 14,
+     "score": 0.6554,
+     "direct_hit": true,
+     "pages": [
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk states the timestamp ordering rules for reads, covering both the abort case when write_TS > TS(T) and the read execution case when write_TS ≤ TS(T)."
+    },
+    {
+     "rank_sent": 4,
+     "position": 15,
+     "score": 0.7133,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk explains that when write_TS > TS(T) the read is rejected and the transaction is aborted (supporting claims 2‑4), and when write_TS ≤ TS(T) the read is executed and read_TS is updated to the larger timestamp (supporting claims 5‑7)."
+    },
+    {
+     "rank_sent": 5,
+     "position": 16,
+     "score": 0.642,
+     "direct_hit": false,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk mentions that if write_TS > TS(T) a later (younger) transaction has already written X and the write is not executed, supporting claims 1 and 2 and providing relevant information for the question."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-017",
+   "type": "comparison",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How does strict timestamp ordering differ from basic timestamp ordering?",
+   "source_pages": [
+    27,
+    28,
+    31
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Basic timestamp ordering aborts a transaction whenever an operation would violate the timestamp order.",
+    "Basic timestamp ordering rolls back a transaction whenever an operation would violate the timestamp order.",
+    "The schedules of basic timestamp ordering are not guaranteed to be recoverable.",
+    "Cascading rollback can occur in basic timestamp ordering.",
+    "In strict timestamp ordering, a read_item(X) by transaction T with TS(T) > write_TS(X) is delayed until the transaction that wrote X has committed or aborted.",
+    "In strict timestamp ordering, a write_item(X) by transaction T with TS(T) > write_TS(X) is delayed until the transaction that wrote X has committed or aborted.",
+    "Strict timestamp ordering makes the schedules strict for easy recoverability.",
+    "Strict timestamp ordering makes the schedules conflict serializable."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.7345238095238096,
+   "precision_score_order": 0.8734126984126983,
+   "precision_at_k": 0.8571428571428571,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1381,
+   "top1_score": 0.6230805516242981,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 10,
+     "score": 0.5608,
+     "direct_hit": false,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk only gives generic timestamp ordering info and 2PL details, without stating any of the specific claims about basic or strict timestamp ordering."
+    },
+    {
+     "rank_sent": 2,
+     "position": 11,
+     "score": 0.6231,
+     "direct_hit": true,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk describes basic timestamp ordering concepts but does not state any of the specific claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 12,
+     "score": 0.5608,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk explains that basic timestamp ordering aborts a transaction when an operation would violate the timestamp order, supporting claims 1 and 2."
+    },
+    {
+     "rank_sent": 4,
+     "position": 13,
+     "score": 0.5512,
+     "direct_hit": true,
+     "pages": [
+      26,
+      27,
+      28
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk describes basic timestamp ordering’s abort/rollback behavior, lack of recoverability, and cascading rollback, which are needed to contrast with strict timestamp ordering."
+    },
+    {
+     "rank_sent": 5,
+     "position": 14,
+     "score": 0.5337,
+     "direct_hit": false,
+     "pages": [
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "Chunk mentions aborting and rolling back a transaction when timestamp order would be violated, supporting claims 1 and 2."
+    },
+    {
+     "rank_sent": 6,
+     "position": 15,
+     "score": 0.593,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      5,
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk describes basic TO aborting on order violations and strict TO delaying reads/writes until the writer commits/aborts, making schedules strict and conflict‑serializable."
+    },
+    {
+     "rank_sent": 7,
+     "position": 16,
+     "score": 0.5337,
+     "direct_hit": false,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      5
+     ],
+     "reason": "Chunk describes delaying access to items written by a transaction until it commits or aborts, which is a property of strict timestamp ordering and distinguishes it from basic timestamp ordering."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-018",
+   "type": "comparison",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How does validation-based (optimistic) concurrency control differ from two-phase locking?",
+   "source_pages": [
+    55
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "In validation (optimistic) concurrency control, transactions execute without locking resources.",
+    "Validation (optimistic) concurrency control assumes conflicts are rare.",
+    "Before committing, a validation phase checks whether the transaction conflicts with other transactions.",
+    "If the validation phase passes, the transaction commits.",
+    "If the validation phase fails, the transaction aborts.",
+    "In two-phase locking (2PL), transactions acquire locks on resources.",
+    "Acquiring locks on resources in 2PL prevents conflicts during execution.",
+    "Two-phase locking (2PL) gives strict consistency.",
+    "Two-phase locking (2PL) may cause delays due to lock contention.",
+    "Validation is suitable for low-contention environments."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.9067956349206348,
+   "precision_at_k": 0.8888888888888888,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 9,
+   "context_words": 1773,
+   "top1_score": 0.7662134170532227,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 9,
+     "score": 0.5872,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      7
+     ],
+     "reason": "The chunk describes 2PL acquiring locks and ensuring conflict‑serializability, supporting claims 6 and 7 and providing relevant 2PL information."
+    },
+    {
+     "rank_sent": 2,
+     "position": 10,
+     "score": 0.6525,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      7,
+      9
+     ],
+     "reason": "The chunk details 2PL lock acquisition, conflict prevention, and possible delays, supporting claims 6,7,9, but contains no validation information."
+    },
+    {
+     "rank_sent": 3,
+     "position": 11,
+     "score": 0.5872,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      6
+     ],
+     "reason": "The chunk notes that the method uses no locks and contrasts it with 2PL, which relies on locking, directly addressing the difference."
+    },
+    {
+     "rank_sent": 4,
+     "position": 22,
+     "score": 0.6223,
+     "direct_hit": false,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      7
+     ],
+     "reason": "The chunk describes two-phase locking (including lock acquisition and conflict prevention), supporting claims about 2PL but does not address validation-based control."
+    },
+    {
+     "rank_sent": 5,
+     "position": 23,
+     "score": 0.6914,
+     "direct_hit": true,
+     "pages": [
+      44,
+      45
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      5
+     ],
+     "reason": "The chunk describes optimistic validation phases, its assumption of rare conflicts, conflict checking before commit, and abort on conflict, directly addressing the differences from locking."
+    },
+    {
+     "rank_sent": 6,
+     "position": 24,
+     "score": 0.6223,
+     "direct_hit": false,
+     "pages": [
+      45,
+      46,
+      47
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      10
+     ],
+     "reason": "It details optimistic validation, no locking, conflict checks, abort/commit outcomes, and low‑conflict suitability."
+    },
+    {
+     "rank_sent": 7,
+     "position": 27,
+     "score": 0.6896,
+     "direct_hit": false,
+     "pages": [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk states that optimistic validation runs without locks and assumes conflicts are rare, directly addressing the difference from 2PL."
+    },
+    {
+     "rank_sent": 8,
+     "position": 28,
+     "score": 0.7662,
+     "direct_hit": true,
+     "pages": [
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk directly outlines the characteristics of validation‑based concurrency control and two‑phase locking, matching the listed claims."
+    },
+    {
+     "rank_sent": 9,
+     "position": 29,
+     "score": 0.6896,
+     "direct_hit": false,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses logging and recovery, not validation or locking."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-019",
+   "type": "out-of-document",
+   "difficulty": "easy",
+   "in_document": false,
+   "question": "What is Boyce-Codd Normal Form (BCNF)?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "A relation is in Boyce-Codd Normal Form if, for every non-trivial functional dependency X -> Y, X is a superkey of the relation.",
+    "BCNF is a stricter version of Third Normal Form."
+   ],
+   "missing_claims": [
+    "A relation is in Boyce-Codd Normal Form if, for every non-trivial functional dependency X -> Y, X is a superkey of the relation.",
+    "BCNF is a stricter version of Third Normal Form."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 3,
+   "context_words": 545,
+   "top1_score": 0.18903949856758118,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.1395,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses concurrency control and locking, not Boyce-Codd Normal Form or its definition."
+    },
+    {
+     "rank_sent": 2,
+     "position": 36,
+     "score": 0.189,
+     "direct_hit": true,
+     "pages": [
+      69,
+      70
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes intention locks and locking protocols, which are unrelated to the definition or properties of Boyce-Codd Normal Form."
+    },
+    {
+     "rank_sent": 3,
+     "position": 37,
+     "score": 0.1619,
+     "direct_hit": true,
+     "pages": [
+      70,
+      71,
+      72
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes multiple granularity locking, which is unrelated to the definition or properties of BCNF."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-020",
+   "type": "out-of-document",
+   "difficulty": "hard",
+   "in_document": false,
+   "question": "How does Oracle implement multiversion read consistency using undo segments?",
+   "source_pages": [],
+   "recall": 0.5,
+   "sufficient": false,
+   "claims": [
+    "Oracle uses undo data to provide multiversion read consistency.",
+    "When a query reads a block that was changed after the query began, Oracle reconstructs the older version of the data from the undo segments.",
+    "Readers see a consistent snapshot as of the query's start.",
+    "Readers do not block writers."
+   ],
+   "missing_claims": [
+    "Oracle uses undo data to provide multiversion read consistency.",
+    "When a query reads a block that was changed after the query began, Oracle reconstructs the older version of the data from the undo segments."
+   ],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.4666666666666666,
+   "precision_at_k": 0.42857142857142855,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 2,
+   "n_chunks": 7,
+   "context_words": 1371,
+   "top1_score": 0.5486465096473694,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 21,
+     "score": 0.4518,
+     "direct_hit": false,
+     "pages": [
+      40,
+      41,
+      42,
+      43
+     ],
+     "useful": true,
+     "supported_claims": [
+      3
+     ],
+     "reason": "The chunk shows selecting an older version of data based on timestamps, illustrating how readers get a consistent snapshot."
+    },
+    {
+     "rank_sent": 2,
+     "position": 22,
+     "score": 0.502,
+     "direct_hit": true,
+     "pages": [
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4
+     ],
+     "reason": "The chunk explains that other transactions can read the old committed version while a write is in progress, supporting the ideas that readers see a consistent snapshot and do not block writers."
+    },
+    {
+     "rank_sent": 3,
+     "position": 23,
+     "score": 0.4518,
+     "direct_hit": true,
+     "pages": [
+      44,
+      45
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4
+     ],
+     "reason": "Chunk mentions reading old versions concurrently, supporting claims 3 and 4, but lacks Oracle/undo specifics."
+    },
+    {
+     "rank_sent": 4,
+     "position": 24,
+     "score": 0.4029,
+     "direct_hit": false,
+     "pages": [
+      45,
+      46,
+      47
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes optimistic concurrency validation, not Oracle's undo‑based multiversion read consistency."
+    },
+    {
+     "rank_sent": 5,
+     "position": 28,
+     "score": 0.4938,
+     "direct_hit": false,
+     "pages": [
+      54,
+      55,
+      56
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk discusses validation and 2PL concurrency control, not Oracle's undo segments or multiversion read consistency."
+    },
+    {
+     "rank_sent": 6,
+     "position": 29,
+     "score": 0.5486,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk only discusses undo/redo recovery concepts, not Oracle's multiversion read consistency mechanism."
+    },
+    {
+     "rank_sent": 7,
+     "position": 30,
+     "score": 0.4938,
+     "direct_hit": false,
+     "pages": [
+      58,
+      59,
+      60
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses recovery protocols and transaction states, not Oracle's undo-based multiversion read consistency."
+    }
+   ]
+  }
+ ]
+}

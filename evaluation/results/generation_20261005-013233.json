@@ -1,0 +1,50 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20261005-013233",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": [
+   {
+    "id": "tc_u5-001",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198959, Requested 2888. Please try again in 13m17.904s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-002",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198924, Requested 1808. Please try again in 5m16.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-003",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 198875, Requested 1972. Please try again in 6m5.904s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   }
+  ]
+ },
+ "summary": {
+  "n": 0,
+  "in_document": {
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": null,
+   "correctness": null,
+   "got_document_context": null
+  },
+  "out_of_document": {
+   "correctness": null,
+   "relevancy": null,
+   "got_document_context": null,
+   "used_web": null
+  },
+  "latency_s_mean": null,
+  "teacher_tokens_per_q": null,
+  "judge_tokens_per_q": null
+ },
+ "rows": []
+}

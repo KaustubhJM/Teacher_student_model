@@ -1,0 +1,661 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20261006-033235",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": [
+   {
+    "id": "dbms_u5-011",
+    "error": "Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1184. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "dbms_u5-020",
+    "error": "Error code: 400 - {'error': {'message': 'Tool choice is none, but model called a tool', 'type': 'invalid_request_error', 'code': 'tool_use_failed', 'failed_generation': '{\"name\": \"search_web\", \"arguments\": {\"query\": \"Oracle multiversion read consistency undo segments how implemented\"}}'}}"
+   }
+  ]
+ },
+ "summary": {
+  "n": 18,
+  "in_document": {
+   "faithfulness": 0.946,
+   "groundedness": 0.766,
+   "relevancy": 0.953,
+   "correctness": 0.915,
+   "got_document_context": 1.0
+  },
+  "out_of_document": {
+   "correctness": 1.0,
+   "relevancy": 1.0,
+   "got_document_context": 0.0,
+   "used_web": 1.0
+  },
+  "latency_s_mean": 3.317,
+  "teacher_tokens_per_q": 2648,
+  "judge_tokens_per_q": 6958.75
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-001",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is a lock in a DBMS?",
+   "answer": "A lock in a DBMS is a variable that is attached to each data item to control how transactions can access that item. When the lock’s value is **1** (or “locked”), the item cannot be accessed by another transaction until the lock is released; when it’s **0** (or “unlocked”), the item is free for use. Locks are the basic mechanism for synchronising concurrent accesses, ensuring that, for example, a transaction that wants to write an item holds an exclusive lock while others may hold shared (read) locks. Think of it as a “traffic signal” for each piece of data, preventing conflicting operations from colliding.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "lock definition DBMS"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 7.13,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 0.8333333333333334,
+   "groundedness": 0.6666666666666666,
+   "answer_claims": 6,
+   "unsupported_claims": [
+    "Locks ensure that a transaction that wants to write an item holds an exclusive lock while others may hold shared (read) locks.",
+    "Locks function as a 'traffic signal' for each piece of data, preventing conflicting operations from colliding."
+   ],
+   "contradicted_claims": [
+    "Locks ensure that a transaction that wants to write an item holds an exclusive lock while others may hold shared (read) locks."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 6 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-002",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the two-phase locking protocol?",
+   "answer": "The two‑phase locking (2PL) protocol says that every transaction must go through **two distinct phases** while it holds locks.  \n\n1. **Growing (or expanding) phase** – the transaction may **acquire new read‑ (shared) or write‑ (exclusive) locks**, but it is not allowed to release any lock it already holds.  \n\n2. **Shrinking phase** – once the transaction releases its first lock, it enters the shrinking phase, during which it may **release locks** but **cannot acquire any new ones**.  \n\nBecause a transaction never “re‑acquires” after it has started releasing, any schedule that follows 2PL is guaranteed to be conflict‑serializable. Variants such as basic, strict, conservative, and rigorous 2PL add extra rules (e.g., holding all locks until commit) to improve recoverability or avoid deadlocks, but the core two‑phase idea remains the same.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "two-phase locking protocol"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 6.14,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 11,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 10 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-003",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is data item granularity and why does choosing it matter?",
+   "answer": "Data‑item granularity is simply the size of the unit that a lock (or any other DBMS operation) is applied to – it can be a whole database, a file, a disk block, a page, a record, or even a single field value. Choosing the granularity is crucial because it directly trades off **concurrency** against **overhead**: fine‑grained items (e.g., record‑level) let many transactions run simultaneously with fewer conflicts, but they require many more locks and larger lock tables; coarse‑grained items (e.g., block‑ or file‑level) reduce the number of locks and management cost, but they increase contention since a transaction that needs just one record may block others that need a different record in the same block. So the “right” granularity depends on the workload—if transactions touch few, specific items, go fine; if they often access many items together, a coarser level is more efficient.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "data item granularity"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 3.55,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 10,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 15 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-004",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the phantom phenomenon?",
+   "answer": "The phantom phenomenon is a concurrency anomaly that shows up when a transaction repeats a range query (for example, “SELECT … WHERE salary > 5000”) and, because another transaction has inserted or deleted rows that satisfy the same condition in the meantime, the result set changes – the transaction sees “phantom” rows that weren’t there before. In other words, the data appears to “grow” or “shrink” out of thin air, breaking the illusion of a stable snapshot. To prevent phantoms, many protocols lock the whole range or use timestamp checks so that no new rows can appear (or disappear) in the queried interval while the transaction is active. This keeps the schedule serialisable and the database consistent.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "phantom phenomenon"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.8,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 0.0,
+   "answer_claims": 12,
+   "unsupported_claims": [
+    "The phantom phenomenon is a concurrency anomaly.",
+    "The phantom phenomenon occurs when a transaction repeats a range query.",
+    "The phantom phenomenon occurs because another transaction has inserted or deleted rows that satisfy the same condition in the meantime.",
+    "The phantom phenomenon results in the result set changing.",
+    "The phantom phenomenon causes the transaction to see 'phantom' rows that weren't there before.",
+    "The phantom phenomenon makes data appear to 'grow' or 'shrink' out of thin air.",
+    "The phantom phenomenon breaks the illusion of a stable snapshot.",
+    "Many protocols prevent phantoms by locking the whole range.",
+    "Many protocols prevent phantoms by using timestamp checks.",
+    "Locking the whole range or using timestamp checks ensures that no new rows can appear or disappear in the queried interval while the transaction is active.",
+    "Preventing phantoms keeps the schedule serialisable.",
+    "Preventing phantoms keeps the database consistent."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 0.5714285714285714,
+   "relevancy_reason": "0.57 — 8/14 statements address the question. Irrelevant: \"Many protocols lock the whole range to prevent phantoms.\" (This statement describes prevention methods rather than defining or explaining the phenomenon itself.); \"Many protocols use timestamp checks to prevent phantoms.\" (This statement describes prevention methods rather than defining or explaining the phenomenon itself.); \"Locking the whole range or using timestamp checks ensures that no new rows can appear in the queried interval while the transaction is active.\" (This statement explains the effect of a prevention strategy, not the phenomenon itself.); \"Locking the whole range or using timestamp checks ensures that no rows can disappear in the queried interval while the transaction is active.\" (This statement explains the effect of a prevention strategy, not the phenomenon itself.); \"Locking the whole range or using timestamp checks keeps the schedule serialisable.\" (This statement discusses the outcome of a prevention strategy (serializability), not the definition of the phenomenon.); \"Locking the whole range or using timestamp checks keeps the database consistent.\" (This statement discusses the outcome of a prevention strategy (consistency), not the definition of the phenomenon.)",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-005",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is a certify lock in multiversion two-phase locking?",
+   "answer": "A **certify lock (CL)** is the third kind of lock used in Multiversion Two‑Phase Locking (MV2PL).  \n\nAfter a transaction T has finished its **growing phase** (it has taken read‑locks for the versions it read and write‑locks for the items it is updating), it enters the **commit (or certify) phase**. Before T can actually commit, it must acquire a **certify lock on every data item it has written**.  \n\nThe purpose of the certify lock is to guarantee that **no other transaction is still reading the old, committed version of those items**. By “certifying” the write, the lock blocks any new read‑locks on the old version and prevents any other transaction from writing the same item until T’s commit is finished. When the certify locks are obtained, T can safely replace its new versions with the committed ones, release all its locks, and the schedule remains serializable.  \n\nIn short, a certify lock is a commit‑time lock that ensures exclusive access to the items a transaction has updated, so that the old versions are no longer being read while the new versions become the official committed state.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "certify lock multiversion two-phase locking"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.61,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 0.75,
+   "groundedness": 0.5,
+   "answer_claims": 12,
+   "unsupported_claims": [
+    "After a transaction T has finished its growing phase, it enters the commit (or certify) phase.",
+    "The certify lock blocks any new read-locks on the old version of the items.",
+    "The certify lock prevents any other transaction from writing the same item until T’s commit is finished.",
+    "When certify locks are obtained, transaction T can release all its locks.",
+    "When certify locks are obtained, the schedule remains serializable.",
+    "A certify lock is a commit-time lock that ensures exclusive access to the items a transaction has updated."
+   ],
+   "contradicted_claims": [
+    "After a transaction T has finished its growing phase, it enters the commit (or certify) phase.",
+    "The certify lock prevents any other transaction from writing the same item until T’s commit is finished.",
+    "When certify locks are obtained, transaction T can release all its locks."
+   ],
+   "relevancy": 0.8333333333333334,
+   "relevancy_reason": "0.83 — 10/12 statements address the question. Irrelevant: \"The certify lock prevents any other transaction from writing the same item until transaction T’s commit is finished.\" (The statement incorrectly claims the lock prevents other writes, whereas certify locks primarily manage the transition of read access from old to new versions.); \"When the certify locks are obtained, transaction T can release all its locks.\" (The statement incorrectly claims all locks are released upon obtaining certify locks, which is not the defining characteristic or immediate effect of the certify lock itself.)",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-006",
+   "type": "explanation",
+   "in_document": true,
+   "question": "Why is the binary locking scheme too restrictive, and what is used instead?",
+   "answer": "The binary‑locking scheme is too restrictive because it lets **only one transaction hold a lock on a data item at a time** – so even pure read‑only transactions have to wait for each other. That blocks a lot of harmless concurrency, since many transactions could safely read the same item together. To fix this we replace the single binary lock with **shared/exclusive (read/write) locks**, often called a multiple‑mode lock: any number of transactions may acquire a *shared* (read) lock simultaneously, while a *exclusive* (write) lock is granted only when no other transaction holds a lock on that item.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "binary locking scheme too restrictive"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.84,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 0.8333333333333334,
+   "answer_claims": 6,
+   "unsupported_claims": [
+    "The single binary lock is replaced with shared/exclusive (read/write) locks, often called a multiple-mode lock."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-007",
+   "type": "explanation",
+   "in_document": true,
+   "question": "Why can two-phase locking limit the amount of concurrency in a schedule?",
+   "answer": "Great question, Kaustubh! Two‑phase locking (2PL) forces every transaction to go through a **growing phase**—where it can only acquire new locks—and then a **shrinking phase**—where it can only release locks. Because a lock cannot be released until the transaction has finished its growing phase, a transaction may keep holding locks on items it has already finished using, and any other transaction that needs those items must wait even though the first transaction is “done” with them. That “hold‑till‑the‑end” rule guarantees serializability, but it also means fewer transactions can run side‑by‑side, so the overall concurrency of the schedule is reduced.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "two-phase locking limit concurrency schedule"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.93,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 0.75,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "The hold-till-the-end rule in two-phase locking means fewer transactions can run side-by-side.",
+    "The hold-till-the-end rule in two-phase locking reduces the overall concurrency of the schedule."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 11 statements address the question.",
+   "correctness": 0.6,
+   "missed_ideal_claims": [
+    "Alternatively, transaction T must lock item Y before transaction T needs it so that transaction T can release item X.",
+    "Other transactions that want item Y are forced to wait even though transaction T is not yet using item Y."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-008",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What is Thomas's write rule?",
+   "answer": "Thomas’s Write Rule is a refinement to the basic timestamp‑ordering protocol for MVCC. When a transaction T tries to write an item X, you look at the current write‑timestamp write_TS(X). If write_TS(X) is **greater** than TS(T) (i.e., a later‑timestamped transaction has already written X), then T’s write is simply **ignored**—you don’t abort T, you just skip that write because it would be obsolete. Otherwise you perform the write as usual and set write_TS(X)=TS(T). This lets the system reject fewer writes while still preserving serializability.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "Thomas's write rule"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.65,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 0.8888888888888888,
+   "groundedness": 0.6666666666666666,
+   "answer_claims": 9,
+   "unsupported_claims": [
+    "Thomas’s Write Rule is a refinement to the basic timestamp-ordering protocol for MVCC.",
+    "If write_TS(X) is not greater than TS(T), the write is performed as usual.",
+    "If write_TS(X) is not greater than TS(T), write_TS(X) is set to TS(T)."
+   ],
+   "contradicted_claims": [
+    "Thomas’s Write Rule is a refinement to the basic timestamp-ordering protocol for MVCC."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 0.6363636363636364,
+   "missed_ideal_claims": [
+    "Thomas's write rule does not enforce conflict serializability.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), transaction T is aborted.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), transaction T is rolled back.",
+    "When transaction T issues write_item(X) and read_TS(X) > TS(T), the operation is rejected."
+   ],
+   "contradicted_ideal_claims": [
+    "Thomas's write rule does not enforce conflict serializability."
+   ]
+  },
+  {
+   "id": "dbms_u5-009",
+   "type": "explanation",
+   "in_document": true,
+   "question": "How does the two-phase commit protocol work?",
+   "answer": "The Two‑Phase Commit (2PC) protocol guarantees that a distributed transaction either **commits everywhere or aborts everywhere** by coordinating the participants in two distinct rounds.\n\n**Phase 1 – Prepare (or voting) phase:** the coordinator sends a **PREPARE** request to every participant. Each participant does a local check (e.g., resource availability, no conflicts), writes a “prepared” record to its log, and replies **YES** if it can commit or **NO** if it cannot.\n\n**Phase 2 – Commit/Abort phase:** after collecting all replies, the coordinator decides. If **all** participants answered YES, it broadcasts a **COMMIT** message; otherwise it sends an **ABORT**. Each participant logs the final decision, releases any locks it held, and either makes the changes permanent (commit) or rolls them back (abort).\n\nBecause every node logs its vote and the final decision, the protocol can recover from crashes: a restarted node can consult its log to discover whether it must finish committing or aborting, preserving atomicity across the whole system.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "two-phase commit protocol"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.4,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 0.625,
+   "answer_claims": 16,
+   "unsupported_claims": [
+    "The Two-Phase Commit (2PC) protocol coordinates participants in two distinct rounds.",
+    "In Phase 1, each participant writes a “prepared” record to its log.",
+    "In Phase 2, a participant makes changes permanent if the decision is commit, or rolls them back if the decision is abort.",
+    "Every node in the Two-Phase Commit protocol logs its vote and the final decision.",
+    "The Two-Phase Commit protocol can recover from crashes because every node logs its vote and the final decision.",
+    "A restarted node in the Two-Phase Commit protocol can consult its log to determine whether it must finish committing or aborting."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 20 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-010",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "How do strict 2PL and multiversion 2PL each avoid cascading aborts?",
+   "answer": "**Strict 2PL** – In strict two‑phase locking a transaction keeps its **exclusive (write) locks until it either commits or aborts**. Because no other transaction can read a data item while a write lock is held, every read that does happen is guaranteed to be of a **committed value**. If the writer later aborts, no other transaction has been using its uncommitted update, so there’s nothing to “pull back” and no cascading aborts can occur.\n\n**Multiversion 2PL (MV‑2PL)** – MV‑2PL creates a **new version** of a data item for the writer while **preserving the old, committed version** for readers. Other transactions always read the **old committed version**, never the tentative one. When the writer finally commits it replaces the old version with its new one (often after acquiring a certify lock). Since readers never depend on the uncommitted version, a writer’s abort does not force any dependent transaction to abort, eliminating cascading aborts.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "strict 2PL avoid cascading aborts multiversion 2PL avoid cascading aborts"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.07,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "truths_capped": 25,
+   "faithfulness": 1.0,
+   "groundedness": 0.5,
+   "answer_claims": 10,
+   "unsupported_claims": [
+    "In strict two-phase locking, a transaction keeps its exclusive (write) locks until it either commits or aborts.",
+    "In strict two-phase locking, no other transaction can read a data item while a write lock is held.",
+    "In strict two-phase locking, every read that does happen is guaranteed to be of a committed value.",
+    "In strict two-phase locking, if the writer later aborts, no other transaction has been using its uncommitted update.",
+    "In strict two-phase locking, if the writer aborts, there is nothing to 'pull back' and no cascading aborts can occur."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 15 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-012",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "During recovery, what happens to transactions that were active at the time of failure versus those that had committed, and which log images are used?",
+   "answer": "Great question, Kaustubh! When the system crashes and we start the recovery phase, we treat the two groups of transactions differently:\n\n* **Active (un‑committed) transactions** – these were still in progress when the failure occurred. Their effects must be **undone** (rolled back). The recovery manager reads the **before‑image** (the old value) of each update from the log and restores the database to the state it had before those transactions began.\n\n* **Committed transactions** – these had already written a commit record before the crash. If any of their updates didn’t make it to the database on disk, we **redo** them. For this we use the **after‑image** (the new value) stored in the log and re‑apply those changes.\n\nSo, undo uses **before‑images**, and redo uses **after‑images**. This ensures that only the effects of committed work survive, while any partial work is rolled back.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "recovery active transactions committed log images used"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.55,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 10,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 14 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-013",
+   "type": "table",
+   "in_document": true,
+   "question": "In multiple granularity locking, is an IX lock compatible with an S lock, and is an IS lock compatible with an SIX lock?",
+   "answer": "Great question, Kaustubh! According to the compatibility matrix in our notes, an **IX (Intention‑Exclusive) lock is *not* compatible with an S (Shared) lock**—they would block each other. On the other hand, an **IS (Intention‑Shared) lock *is* compatible with a SIX (Shared‑Intention‑Exclusive) lock**, so they can coexist on the same node. That’s why you can hold an IS on a parent while a child transaction holds a SIX on a descendant.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "multiple granularity locking IX lock compatible with S lock IS lock compatible with SIX lock"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.91,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 0.8,
+   "groundedness": 0.8,
+   "answer_claims": 5,
+   "unsupported_claims": [
+    "It is possible to hold an IS lock on a parent while a child transaction holds a SIX lock on a descendant."
+   ],
+   "contradicted_claims": [
+    "It is possible to hold an IS lock on a parent while a child transaction holds a SIX lock on a descendant."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 6 statements address the question.",
+   "correctness": 0.6666666666666666,
+   "missed_ideal_claims": [
+    "IS is compatible with every lock mode except X."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-014",
+   "type": "table",
+   "in_document": true,
+   "question": "In the example of transactions T1 and T2 that do not obey two-phase locking, with initial values X=20 and Y=30, what are the results of the serial schedules and of the nonserializable schedule S?",
+   "answer": "Great question, Kaustubh! When we start with X = 20 and Y = 30:\n\n* **Serial schedule T₁ → T₂** (run T₁ completely first, then T₂) ends with **X = 50, Y = 80**.  \n* **Serial schedule T₂ → T₁** (run T₂ first, then T₁) ends with **X = 70, Y = 50**.  \n\nThe **non‑serializable schedule S** (the one that violates two‑phase locking) produces **X = 50, Y = 50** – a result that cannot be obtained by any serial ordering of the two transactions.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "transactions T1 T2 do not obey two-phase locking initial values X=20 Y=30 serial schedules nonserializable schedule S results"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.79,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 0.875,
+   "groundedness": 0.875,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "The non-serializable schedule S violates two-phase locking."
+   ],
+   "contradicted_claims": [
+    "The non-serializable schedule S violates two-phase locking."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 9 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-015",
+   "type": "worked-example",
+   "in_document": true,
+   "question": "In multiversion timestamp ordering, X has versions X1 (write_TS=5, read_TS=10) and X2 (write_TS=15, read_TS=20). What happens when T3 with TS=18 tries to write X, and when T4 with TS=25 tries to write X?",
+   "answer": "Great question, Kaustubh! When T₃ (TS = 18) wants to write X, it looks for the latest version whose write‑TS is ≤ 18 – that’s X₂ (write‑TS = 15). But X₂’s read‑TS is 20, which is **greater** than 18, so the protocol detects a conflict and **aborts T₃** (its write would break the timestamp order).  \n\nNow T₄ (TS = 25) also picks X₂ as the latest suitable version (15 ≤ 25). Since X₂’s read‑TS = 20 is **≤ 25**, there’s no conflict; the system creates a **new version X₃** with write‑TS = 25 and read‑TS = 25, and T₄’s write succeeds.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "multiversion timestamp ordering X versions write_TS read_TS T3 TS=18 T4 TS=25"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.61,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 10,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 16 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-016",
+   "type": "worked-example",
+   "in_document": true,
+   "question": "Under basic timestamp ordering, transaction T with TS(T)=10 issues read_item(X). What happens if write_TS(X)=12, and what happens if write_TS(X)=8?",
+   "answer": "Great question, Kaustubh! In basic timestamp ordering the read can only go ahead if the item’s last‑write timestamp isn’t newer than the transaction’s own timestamp.  \n\n- Since **write_TS(X)=12 > TS(T)=10**, the read *read_item(X)* is **rejected** and T is aborted (the system rolls back T because a younger transaction has already written X).  \n- If **write_TS(X)=8 ≤ TS(T)=10**, the read is **allowed** – T reads the current value of X and we update read_TS(X) to the larger of its old value and TS(T) (i.e., to 10).  \n\nSo the outcome hinges on whether the last write was “later” than T’s timestamp.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "basic timestamp ordering read_item write_TS"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.37,
+   "teacher_tokens": 0,
+   "judge_tokens": 7246,
+   "faithfulness": 1.0,
+   "groundedness": 0.875,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "In the specific case where write_TS(X)=8 and TS(T)=10, read_TS(X) is updated to 10."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 0.8,
+   "relevancy_reason": "0.80 — 8/10 statements address the question. Irrelevant: \"T is aborted because write_TS(X)=12 > TS(T)=10.\" (In basic timestamp ordering, a conflicting read is simply rejected, not aborted.); \"The system rolls back T because a younger transaction has already written X.\" (The transaction is not rolled back in basic timestamp ordering for a read conflict.)",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-017",
+   "type": "comparison",
+   "in_document": true,
+   "question": "How does strict timestamp ordering differ from basic timestamp ordering?",
+   "answer": "Great question, Kaustubh!  \n\nIn **basic timestamp ordering (TO)**, whenever a transaction T tries to read or write an item X and it discovers a conflict with a later‑timestamped operation (for example, write‑TS(X) > TS(T) for a read), the algorithm simply aborts T (or rejects the offending operation). This guarantees a serial order that follows the timestamps, but it can produce **cascading aborts** because a younger transaction may have already read a value that later gets rolled back.  \n\n**Strict timestamp ordering** adds one more rule to make the schedule *strict* (i.e., recoverable and cascadeless). If a transaction T wants to read X or write X and it sees that the item was written by a younger transaction U (so TS(T) > write‑TS(X)), it does **not** abort T immediately. Instead, it **delays** T’s operation until U either **commits or aborts**. In effect, the algorithm “simulates” locking the item until the writer finishes, so no transaction can read an uncommitted value.  \n\nSo the key difference is:\n\n| Feature | Basic TO | Strict TO |\n|---------|----------|------------|\n| Conflict handling | Abort the later transaction immediately | Delay the later operation until the earlier writer finishes (commit/abort) |\n| Guarantees | Serializability only | Serializability **plus** strictness (recoverability, no cascading aborts) |\n| Need for “locking” simulation | No | Yes (to hold the item until the writer ends) |\n\nThat’s why strict TO is used when you need a recoverable schedule, while basic TO is simpler but can lead to more roll‑backs.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "strict timestamp ordering basic timestamp ordering difference"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.66,
+   "teacher_tokens": 0,
+   "judge_tokens": 8949,
+   "faithfulness": 0.9333333333333333,
+   "groundedness": 0.9333333333333333,
+   "answer_claims": 15,
+   "unsupported_claims": [
+    "Basic timestamp ordering handles conflicts by aborting the later transaction immediately."
+   ],
+   "contradicted_claims": [
+    "Basic timestamp ordering handles conflicts by aborting the later transaction immediately."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 17 statements address the question.",
+   "correctness": 0.75,
+   "missed_ideal_claims": [
+    "Basic timestamp ordering rolls back a transaction whenever an operation would violate the timestamp order.",
+    "Strict timestamp ordering makes the schedules conflict serializable."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-018",
+   "type": "comparison",
+   "in_document": true,
+   "question": "How does validation-based (optimistic) concurrency control differ from two-phase locking?",
+   "answer": "Great question, Kaustubh! In validation‑based (optimistic) concurrency control a transaction runs **without any locks**, reading the last committed version of data and keeping its own private copy of updates. When it finishes, a **validation phase** checks whether its read‑set and write‑set conflict with any concurrent committed transactions; if they do, the transaction is aborted and restarted, otherwise it writes its changes. By contrast, **two‑phase locking (2PL)** forces a transaction to **acquire locks on every data item it accesses** during a growing phase and hold them until a shrinking phase, guaranteeing serializability but potentially causing blocking, deadlocks, and lower concurrency. So the key difference is that optimistic control bets on low contention and checks for conflicts only at commit, while 2PL prevents conflicts up front by locking throughout the transaction.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "validation-based optimistic concurrency control two-phase locking difference"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.46,
+   "teacher_tokens": 0,
+   "judge_tokens": 7757,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 12,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 13 statements address the question.",
+   "correctness": 0.9,
+   "missed_ideal_claims": [
+    "Two-phase locking (2PL) gives strict consistency."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-019",
+   "type": "out-of-document",
+   "in_document": false,
+   "question": "What is Boyce-Codd Normal Form (BCNF)?",
+   "answer": "Boyce‑Codd Normal Form (BCNF) is a stricter version of the Third Normal Form. A relation is in BCNF when **for every non‑trivial functional dependency X → Y, the left‑hand side X is a superkey** (i.e., a candidate key or a superset of one). This eliminates any redundancy that can arise when a non‑key attribute determines another attribute, ensuring that all determinants are keys. In practice, you’ll often see BCNF applied after 3NF to catch those remaining “almost‑key” dependencies—think of a table where a department code determines a manager’s name, but the department code isn’t a key; BCNF would require you to split that out so the determinant becomes a key.",
+   "tools": [
+    "search_document",
+    "search_web"
+   ],
+   "queries": [
+    "Boyce-Codd Normal Form",
+    "Boyce-Codd Normal Form definition"
+   ],
+   "searched_document": true,
+   "used_web": true,
+   "got_document_context": false,
+   "latency_s": 13.24,
+   "teacher_tokens": 2648,
+   "judge_tokens": 3883,
+   "faithfulness": 1.0,
+   "groundedness": 0.42857142857142855,
+   "answer_claims": 7,
+   "unsupported_claims": [
+    "A superkey is defined as a candidate key or a superset of one.",
+    "BCNF eliminates redundancy that can arise when a non-key attribute determines another attribute.",
+    "BCNF is often applied after 3NF to catch remaining 'almost-key' dependencies.",
+    "In a scenario where a department code determines a manager’s name but the department code is not a key, BCNF would require splitting that out so the determinant becomes a key."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

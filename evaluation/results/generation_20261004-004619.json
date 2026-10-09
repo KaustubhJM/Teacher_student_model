@@ -1,0 +1,895 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20261004-004619",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": [
+   {
+    "id": "tc_u5-016",
+    "error": "Error code: 429 - {'error': {'message': \"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1064. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing\", 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-028",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197822, Requested 2528. Please try again in 2m31.2s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-029",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199136, Requested 1022. Please try again in 1m8.256s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-030",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199129, Requested 2739. Please try again in 13m26.976s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   }
+  ]
+ },
+ "summary": {
+  "n": 26,
+  "in_document": {
+   "faithfulness": 0.984,
+   "groundedness": 0.563,
+   "relevancy": 1.0,
+   "correctness": 0.793,
+   "got_document_context": 0.615
+  },
+  "out_of_document": {
+   "correctness": null,
+   "relevancy": null,
+   "got_document_context": null,
+   "used_web": null
+  },
+  "latency_s_mean": 2.714,
+  "teacher_tokens_per_q": 2041.12,
+  "judge_tokens_per_q": 4075.84
+ },
+ "rows": [
+  {
+   "id": "tc_u5-001",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is content creation?",
+   "answer": "Content creation is the process of planning, designing, producing and sharing different forms of media—like blogs, videos, podcasts, emails, images or GIFs—to engage a specific audience. You start by picking a fresh topic, decide which format will work best, map out a strategy, then actually create the piece and distribute it on the appropriate platforms. The goal isn’t just to fill space; good content informs, entertains, persuades or inspires, builds brand awareness, and ultimately supports your marketing or communication objectives.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.02,
+   "teacher_tokens": 3030,
+   "judge_tokens": 6303,
+   "faithfulness": 1.0,
+   "groundedness": 0.8181818181818182,
+   "answer_claims": 11,
+   "unsupported_claims": [
+    "The process of content creation starts by picking a fresh topic.",
+    "The goal of good content is not just to fill space."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 12 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-002",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is a webinar?",
+   "answer": "A webinar is an online seminar or workshop that’s delivered live over the internet, usually with a presenter sharing slides, video, or screen‑share while participants watch and can ask questions via chat, polls, or audio. Think of it as a virtual classroom: you log in from anywhere, the host guides the session, and you can interact in real‑time without needing to be in the same physical room.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.81,
+   "teacher_tokens": 730,
+   "judge_tokens": 1167,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 10 statements address the question.",
+   "correctness": 0.8,
+   "missed_ideal_claims": [
+    "The word \"webinar\" is a blend of \"web\" and \"seminar\"."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-003",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is a podcast?",
+   "answer": "A podcast is an audio (or sometimes video) series that’s released in episodes, which you can stream or download over the internet and listen to whenever you like—much like a radio show you can play on‑demand. Each episode is usually focused on a particular topic or theme, and you can subscribe through apps so new episodes automatically appear in your library.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.73,
+   "teacher_tokens": 717,
+   "judge_tokens": 1021,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 7 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-004",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is a blog?",
+   "answer": "A blog is an online journal or website where an author—or a group of authors—regularly posts short articles, called “posts,” about topics they’re interested in. Each post is usually displayed in reverse‑chronological order (newest first) and often allows readers to leave comments, creating a conversation around the content. Think of it as a digital scrapbook that can be personal, professional, or thematic, and it’s a great way to share ideas, updates, or expertise with a wider audience.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.91,
+   "teacher_tokens": 764,
+   "judge_tokens": 1439,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 11 statements address the question.",
+   "correctness": 0.7,
+   "missed_ideal_claims": [
+    "A blog is short for web-blog.",
+    "A blog is run by a corporation.",
+    "A blog is written in an informal style."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-005",
+   "type": "definition",
+   "in_document": true,
+   "question": "What are social media ethics?",
+   "answer": "Social media ethics are the set of moral principles that guide how we behave on platforms like Instagram, Twitter or TikTok. In practice they mean being transparent about who you are and why you’re posting, respecting others’ privacy, speaking politely and avoiding harassment, and making sure your content is authentic, clear and concise. You also need to be accountable for what you share, protect personal data, stay unbiased, and understand your audience so you can communicate responsibly. Keeping these habits in mind helps you build trust and use social media in a way that’s both effective and respectful.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "social media ethics definition"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 3.39,
+   "teacher_tokens": 2524,
+   "judge_tokens": 5252,
+   "faithfulness": 1.0,
+   "groundedness": 0.7272727272727273,
+   "answer_claims": 11,
+   "unsupported_claims": [
+    "Social media ethics are defined as the set of moral principles that guide behavior on platforms like Instagram, Twitter, or TikTok.",
+    "Keeping social media ethics habits in mind helps build trust.",
+    "Keeping social media ethics habits in mind helps use social media in a way that is both effective and respectful."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 11 statements address the question.",
+   "correctness": 0.8333333333333334,
+   "missed_ideal_claims": [
+    "Social media ethics govern the behaviour of organizations while using social media platforms."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-006",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is personality analysis and what is its purpose?",
+   "answer": "Great question, Kaustubh! Personality analysis is the process of examining and evaluating the core qualities of an individual—things like reliability, confidence, determination, gentleness, and other traits that make up who they are. Its main purpose is two‑fold: first, to uncover a person’s strengths and weaknesses so you can understand where they excel and where they might need growth; and second, to track any changes in those traits over time and see how different theories or therapeutic approaches might affect each personality type. This insight is useful in everything from personal development to career planning and even team‑building.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "personality analysis purpose"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.78,
+   "teacher_tokens": 3304,
+   "judge_tokens": 6656,
+   "faithfulness": 1.0,
+   "groundedness": 0.8333333333333334,
+   "answer_claims": 6,
+   "unsupported_claims": [
+    "Insights from personality analysis are useful for personal development, career planning, and team-building."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 7 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-007",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is personality assessment and where is it used?",
+   "answer": "Personality assessment is the process of evaluating and measuring an individual’s personality traits, characteristics, skills, potential and behavioural tendencies – essentially how a person thinks, feels, reacts and behaves in different situations. It’s used in a range of settings such as psychology and counselling (for clinical diagnosis or personal development), education (career planning and student support), and recruitment or organisational contexts (team‑building, hiring decisions and leadership development). In short, wherever we need a deeper understanding of how someone is likely to act or respond, a personality assessment can provide that insight.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "personality assessment"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.07,
+   "teacher_tokens": 3277,
+   "judge_tokens": 7072,
+   "faithfulness": 1.0,
+   "groundedness": 0.3333333333333333,
+   "answer_claims": 6,
+   "unsupported_claims": [
+    "Personality assessment essentially measures how a person thinks, feels, reacts, and behaves in different situations.",
+    "Personality assessment is used in education for career planning and student support.",
+    "Personality assessment is used in recruitment or organisational contexts for team-building, hiring decisions, and leadership development.",
+    "Personality assessment can provide insight into how someone is likely to act or respond."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 9 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-008",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the MBTI?",
+   "answer": "The MBTI, or Myers‑Briggs Type Indicator, is a personality‑assessment tool that groups people into 16 distinct types based on four dichotomies:  \n\n1. **Extraversion (E) vs. Introversion (I)** – where you get your energy.  \n2. **Sensing (S) vs. Intuition (N)** – how you take in information.  \n3. **Thinking (T) vs. Feeling (F)** – how you make decisions.  \n4. **Judging (J) vs. Perceiving (P)** – how you prefer to organize your life.  \n\nEach person’s type is expressed as a four‑letter code (e.g., INFJ, ESTP), which the MBTI claims reflects their natural preferences and can be useful for self‑awareness, teamwork, and career planning.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 2.17,
+   "teacher_tokens": 825,
+   "judge_tokens": 1885,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 17 statements address the question.",
+   "correctness": 0.2,
+   "missed_ideal_claims": [
+    "The Myers-Briggs Type Indicator (MBTI) is also called the Myers-Briggs test.",
+    "The Myers-Briggs Type Indicator (MBTI) is a self-reported questionnaire.",
+    "The Myers-Briggs Type Indicator (MBTI) was first developed in the 1940s by Isabel Briggs Myers and Katharine Cook Briggs.",
+    "The Myers-Briggs Type Indicator (MBTI) is rooted in Carl Jung's theory of psychological types."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-009",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the shadow archetype in Jung's theory?",
+   "answer": "The Shadow is the part of the psyche that holds all the traits, impulses, and memories we’ve pushed out of conscious awareness because they don’t fit the self‑image we like to present. In Jung’s view it isn’t “evil” per se—it’s simply the collection of our denied or under‑developed qualities (both dark and potentially creative). When we recognize and integrate the Shadow, we reclaim those hidden energies and move toward a more whole, balanced self.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.62,
+   "teacher_tokens": 740,
+   "judge_tokens": 1096,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 4 statements address the question.",
+   "correctness": 0.8,
+   "missed_ideal_claims": [
+    "Jung believed that all people have two sides, a light side and a dark side."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-010",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the id in Freud's theory of personality?",
+   "answer": "The id is the most primitive part of Freud’s structural model of the mind. It’s entirely unconscious and operates on the **pleasure principle**, seeking immediate gratification of basic drives—like hunger, sex, and aggression—without regard for reality, logic, or social rules. Think of it as the “instinctual engine” that pushes for instant satisfaction; the ego and superego later try to mediate its impulses so we can function in the real world.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.82,
+   "teacher_tokens": 742,
+   "judge_tokens": 1247,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 9 statements address the question.",
+   "correctness": 0.7142857142857143,
+   "missed_ideal_claims": [
+    "When the id's demands are denied, people experience \"un-pleasure\" or tension.",
+    "The id is not affected by the everyday world."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-011",
+   "type": "list",
+   "in_document": true,
+   "question": "What are the goals of content creation?",
+   "answer": "Great question, Kaustubh! The main goals of content creation are to **engage and connect** with your audience, **inform, update and upgrade** them, and **instruct** them on what they need to know. Beyond that, you aim to **convince and persuade**, **motivate, influence and inspire**, and even **entertain** them. When you hit these targets, good content also builds brand awareness, loyalty and helps you meet broader marketing objectives. Think of each piece of content as a bridge that both delivers value and moves your audience closer to the actions you want them to take.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "goals of content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.58,
+   "teacher_tokens": 3123,
+   "judge_tokens": 6683,
+   "faithfulness": 1.0,
+   "groundedness": 0.6363636363636364,
+   "answer_claims": 11,
+   "unsupported_claims": [
+    "The main goals of content creation are to inform, update, and upgrade the audience.",
+    "Content creation aims to entertain the audience.",
+    "Each piece of content is described as a bridge that delivers value.",
+    "Each piece of content is described as a bridge that moves the audience closer to the desired actions."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 11 statements address the question.",
+   "correctness": 0.9375,
+   "missed_ideal_claims": [
+    "Good content builds engagement."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-012",
+   "type": "list",
+   "in_document": true,
+   "question": "What forms can content creation take?",
+   "answer": "Great question, Kaustubh! Content creation can take many different shapes – from **text‑based pieces** like articles, blogs, e‑books and newsletters, to **visual media** such as images, GIFs, animated series and videos. You also have **audio formats** like podcasts and **interactive formats** such as webinars or live streams, plus **email‑based content** (newsletters, promotional mails) that reach audiences directly. In short, the main forms are text, images, video, audio (podcast), email, GIFs/animations, e‑newsletters, e‑books and blogs – each chosen to suit the platform and the audience you want to engage.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "forms of content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.46,
+   "teacher_tokens": 3089,
+   "judge_tokens": 6644,
+   "faithfulness": 0.8888888888888888,
+   "groundedness": 0.6666666666666666,
+   "answer_claims": 9,
+   "unsupported_claims": [
+    "Interactive formats of content include webinars and live streams.",
+    "Email-based content reaches audiences directly.",
+    "Content forms are chosen to suit the platform and the audience one wants to engage."
+   ],
+   "contradicted_claims": [
+    "Interactive formats of content include webinars and live streams."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 15 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-013",
+   "type": "list",
+   "in_document": true,
+   "question": "What are the four types of webinars?",
+   "answer": "Great question, Kaustubh! The four main types of webinars are:\n\n1. **Live webinars** – scheduled, real‑time sessions where the presenter interacts with the audience live.  \n2. **Automated webinars** – pre‑recorded presentations that play on a set schedule, giving the feel of a live event without the presenter being present.  \n3. **Hybrid webinars** – a mix of live and pre‑recorded content, often with live Q&A after a recorded segment.  \n4. **On‑demand webinars** – recordings that viewers can access anytime, without any scheduled time.  \n\nEach type serves different goals, from real‑time engagement to flexible, self‑paced learning.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "four types of webinars"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.64,
+   "teacher_tokens": 2878,
+   "judge_tokens": 5640,
+   "faithfulness": 1.0,
+   "groundedness": 0.125,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "Live webinars are scheduled, real-time sessions where the presenter interacts with the audience live.",
+    "Automated webinars are pre-recorded presentations that play on a set schedule.",
+    "Automated webinars give the feel of a live event without the presenter being present.",
+    "Hybrid webinars are a mix of live and pre-recorded content.",
+    "Hybrid webinars often include live Q&A after a recorded segment.",
+    "On-demand webinars are recordings that viewers can access anytime without any scheduled time.",
+    "The different types of webinars serve different goals, ranging from real-time engagement to flexible, self-paced learning."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 7 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-014",
+   "type": "list",
+   "in_document": true,
+   "question": "What are the characteristics of a perfectionist personality?",
+   "answer": "A perfectionist personality tends to set extremely high standards for themselves (and sometimes for others) and feels a strong drive to meet those standards without error. They’re often very detail‑oriented, self‑critical, and experience intense dissatisfaction when outcomes fall short of their ideal. Because they fear failure or criticism, they may procrastinate, over‑prepare, or avoid tasks where they can’t guarantee a flawless result. At the same time, they can be highly organized, diligent, and motivated to achieve excellence—though the stress of constant self‑pressure can affect their wellbeing if not managed.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.97,
+   "teacher_tokens": 786,
+   "judge_tokens": 1554,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 13 statements address the question.",
+   "correctness": 0.2857142857142857,
+   "missed_ideal_claims": [
+    "Perfectionists are driven by a desire to be systematic.",
+    "Perfectionists' self-worth is contingent upon success.",
+    "Perfectionists' self-worth is attached to Perfectionists' performance and achievements.",
+    "Perfectionists believe Perfectionists either win or lose with no middle ground.",
+    "Perfectionists find it hard to say no.",
+    "Perfectionists do not easily ask for help.",
+    "Perfectionists do not easily show vulnerability.",
+    "Perfectionists do not tolerate mistakes of others.",
+    "Perfectionists do not tolerate Perfectionists' own mistakes.",
+    "Perfectionists stay in their own comfort zone."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-015",
+   "type": "list",
+   "in_document": true,
+   "question": "What other tacts are suggested for effective ethical use of social media by text and technique?",
+   "answer": "Great question, Kaustubh! Beyond the basics of transparency, privacy and respect, the notes list several practical “tacts” you can apply when you write or design social‑media posts:\n\n1. **Tone‑control** – use humor sparingly and avoid sarcasm; keep the language neither overly formal nor too casual.  \n2. **Formatting** – steer clear of all‑caps, excessive signatures, watermarks or taglines, and never use misleading thumbnails or click‑bait titles.  \n3. **Clarity & Brevity** – make your message clear, concise and free of hidden meanings.  \n4. **Authenticity & Accountability** – be honest about affiliations, avoid fake follower counts or reviews, and own up to any mistakes.  \n5. **Data & Bias** – never exploit personal data, stay unbiased, and tailor content to your audience’s genuine needs.  \n\nApplying these tactics helps you stay ethical while still engaging effectively on social media.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "ethical use of social media tactics text technique"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.36,
+   "teacher_tokens": 2746,
+   "judge_tokens": 5758,
+   "faithfulness": 1.0,
+   "groundedness": 0.8461538461538461,
+   "answer_claims": 13,
+   "unsupported_claims": [
+    "Authenticity and Accountability guidelines require owning up to any mistakes.",
+    "Applying these tactics helps one stay ethical while still engaging effectively on social media."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 14 statements address the question.",
+   "correctness": 0.875,
+   "missed_ideal_claims": [
+    "One should maintain a moderate approach."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-017",
+   "type": "list",
+   "in_document": true,
+   "question": "What are Swami Vivekananda's three golden rules?",
+   "answer": "Great question, Kaustubh! Swami Vivekananda distilled his moral guidance into three simple “golden rules” for everyday life:  \n\n1. **Never forget the person who helps you** – show gratitude and remember their support.  \n2. **Never hate the person who loves you** – cherish love and respond with kindness.  \n3. **Never cheat the person who trusts you** – honor trust with honesty and integrity.  \n\nThese three principles—gratitude, love, and honesty—are meant to keep our relationships healthy and our character strong.",
+   "tools": [
+    "search_web",
+    "search_web"
+   ],
+   "queries": [
+    "Swami Vivekananda three golden rules",
+    "\"three golden rules\" Swami Vivekananda"
+   ],
+   "searched_document": false,
+   "used_web": true,
+   "got_document_context": false,
+   "latency_s": 20.98,
+   "teacher_tokens": 3014,
+   "judge_tokens": 3828,
+   "faithfulness": 1.0,
+   "groundedness": 0.6,
+   "answer_claims": 5,
+   "unsupported_claims": [
+    "Swami Vivekananda distilled his moral guidance into three simple “golden rules” for everyday life.",
+    "The three principles of gratitude, love, and honesty are meant to keep relationships healthy and character strong."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 10 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-018",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What do privacy, respect and authenticity require in social media ethics?",
+   "answer": "Great question, Kaustubh! In social‑media ethics ‑ **privacy** means you must always get a person’s consent before you share any of their personal information and protect their dignity by never exposing or misusing their data. **Respect** calls for polite, courteous communication – no harsh, abusive or overly critical language, and treating every user with courtesy. And **authenticity** requires you to be honest and transparent: don’t inflate follower counts, fabricate reviews, or hide risks; instead give accurate information and be clear about who you are and what you’re promoting.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "privacy respect authenticity require social media ethics"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.37,
+   "teacher_tokens": 2576,
+   "judge_tokens": 5345,
+   "faithfulness": 1.0,
+   "groundedness": 0.75,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "In social-media ethics, respect calls for polite and courteous communication.",
+    "In social-media ethics, respect requires treating every user with courtesy."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 12 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-019",
+   "type": "explanation",
+   "in_document": true,
+   "question": "How should content for emails be created?",
+   "answer": "Great question, Kaustubh! When you’re crafting an email, start by clearly defining its purpose and your target audience—this shapes the tone and level of detail you’ll use. Write a short, attention‑grabbing subject line, then keep the body concise: use brief paragraphs, bullet points, and a single, highlighted call‑to‑action so the reader knows exactly what to do next. Maintain a polite, professional tone, avoid unnecessary emojis or overly casual language, and sprinkle in relevant visuals only if they truly support the message. Finally, give it a quick proofread for spelling, grammar, and clarity before hitting send.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "email content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.48,
+   "teacher_tokens": 2891,
+   "judge_tokens": 6119,
+   "faithfulness": 1.0,
+   "groundedness": 0.3,
+   "answer_claims": 10,
+   "unsupported_claims": [
+    "When crafting an email, one should start by clearly defining its purpose and target audience.",
+    "Defining the purpose and target audience of an email shapes the tone and level of detail used.",
+    "Using a single, highlighted call-to-action ensures the reader knows exactly what to do next.",
+    "A polite, professional tone should be maintained in the email.",
+    "Unnecessary emojis or overly casual language should be avoided in the email.",
+    "Relevant visuals should only be included if they truly support the message.",
+    "The email should be proofread for spelling, grammar, and clarity before sending."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 13 statements address the question.",
+   "correctness": 0.6,
+   "missed_ideal_claims": [
+    "The email content should be clear and transparent.",
+    "The communication should be collegial.",
+    "The tone should sound sweet, mannered and sophisticated.",
+    "Quotes that could be offensive to others should not be used."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-020",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What tips are given for designing content for a webinar?",
+   "answer": "Sure, Kaustubh! When you’re designing a webinar, the notes suggest you start by **clearly defining the objective and the outcomes you want** – that way every slide and activity serves a purpose. Next, **research your audience** (age, background, knowledge level, interests) so you can pick topics that are both informative and engaging, and then **craft a compelling narrative** using storytelling, a solid intro, well‑structured main points with examples, and a memorable conclusion. Don’t forget to **mix in multimedia** – relevant images, short videos, or polls – and rehearse several times so you’re confident and can keep the energy up throughout the live session.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "designing content for a webinar tips"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.48,
+   "teacher_tokens": 2565,
+   "judge_tokens": 5275,
+   "faithfulness": 1.0,
+   "groundedness": 0.0,
+   "answer_claims": 7,
+   "unsupported_claims": [
+    "When designing a webinar, one should start by clearly defining the objective and the outcomes desired.",
+    "Defining the objective and outcomes ensures that every slide and activity serves a purpose.",
+    "Webinar designers should research their audience, including age, background, knowledge level, and interests.",
+    "Researching the audience allows for the selection of topics that are both informative and engaging.",
+    "A compelling narrative should be crafted using storytelling, a solid intro, well-structured main points with examples, and a memorable conclusion.",
+    "Multimedia elements such as relevant images, short videos, or polls should be mixed into the webinar.",
+    "The presenter should rehearse several times to be confident and keep the energy up throughout the live session."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 0.8125,
+   "missed_ideal_claims": [
+    "Get to know the audience's priorities.",
+    "Create well-researched topics.",
+    "Create easy topics."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-021",
+   "type": "explanation",
+   "in_document": true,
+   "question": "Why do audio quality and voice delivery matter for a podcast?",
+   "answer": "Great question, Kaustubh! Because a podcast is an *audio‑only* medium, the listener’s entire experience hinges on what they hear. Clear, crisp audio lets the content come through without distraction, while good voice delivery—tone, pacing, and enthusiasm—keeps the audience engaged, conveys emotion, and builds credibility. Poor sound or a monotone delivery can make listeners tune out or doubt the presenter’s expertise, even if the material itself is solid. So mastering both the technical side and the performance side is essential for a podcast to hook and retain its audience.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.53,
+   "teacher_tokens": 771,
+   "judge_tokens": 1610,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 13 statements address the question.",
+   "correctness": 0.5,
+   "missed_ideal_claims": [
+    "Podcasters should invest in good quality audio equipment to ensure clear and professional sound.",
+    "Podcasters should invest in editing software to ensure clear and professional sound.",
+    "Podcasters should speak clearly.",
+    "Podcasters should use voice modulation with proper pitch.",
+    "Podcasters should use voice modulation with proper rhythm.",
+    "Podcasters should use voice modulation with proper intonation."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-022",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What do the notes say about buying and using user data for social media marketing?",
+   "answer": "The notes warn that buying and using people’s data to power a social‑media campaign sits in an ethical gray zone – it’s not outright illegal, but it’s strongly discouraged. You should never harvest, sell or exploit personal data, and you certainly shouldn’t reveal anyone’s private details in your posts. Instead, focus on building your audience organically, respect privacy, and keep your marketing honest and transparent.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "buying and using user data for social media marketing"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.68,
+   "teacher_tokens": 2190,
+   "judge_tokens": 4449,
+   "faithfulness": 1.0,
+   "groundedness": 0.625,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "Buying and using people’s data to power a social-media campaign is not outright illegal.",
+    "Buying and using people’s data to power a social-media campaign is strongly discouraged.",
+    "One should never harvest, sell, or exploit personal data."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 10 statements address the question.",
+   "correctness": 0.5714285714285714,
+   "missed_ideal_claims": [
+    "Revealing personal data through social media is very bad business ethics.",
+    "Exploiting personal data through social media is very bad business ethics.",
+    "Building audience and followers organically builds up a strong market for the business."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-023",
+   "type": "explanation",
+   "in_document": true,
+   "question": "Why should one be unbiased on social media?",
+   "answer": "Great question, Kaustubh! Being unbiased on social media helps you keep a balanced, trustworthy presence—if you constantly push a political, cultural or religious agenda, you risk alienating large parts of your audience and even losing followers or customers. An even‑handed approach also protects your brand’s reputation, shows respect for diverse viewpoints, and encourages open, inclusive conversations where people feel safe to engage. In short, staying neutral lets you build credibility and long‑term relationships rather than short‑term spikes that can backfire.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "bias social media why unbiased"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.96,
+   "teacher_tokens": 2384,
+   "judge_tokens": 4711,
+   "faithfulness": 1.0,
+   "groundedness": 0.125,
+   "answer_claims": 8,
+   "unsupported_claims": [
+    "Being unbiased on social media helps maintain a balanced and trustworthy presence.",
+    "Constantly pushing a political, cultural, or religious agenda risks alienating large parts of an audience.",
+    "An even-handed approach protects a brand’s reputation.",
+    "An even-handed approach shows respect for diverse viewpoints.",
+    "An even-handed approach encourages open and inclusive conversations where people feel safe to engage.",
+    "Staying neutral allows for the building of credibility and long-term relationships.",
+    "Staying neutral avoids short-term spikes that can backfire."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 0.3,
+   "missed_ideal_claims": [
+    "Being unbiased means eliminating a biased, inclined approach.",
+    "Being unbiased means steering away from sharing political preferences.",
+    "Being unbiased means steering away from sharing cultural preferences.",
+    "Being unbiased means steering away from sharing religious preferences.",
+    "Being unbiased means steering away from sharing political opinions.",
+    "Being unbiased means steering away from sharing cultural opinions.",
+    "Being unbiased means steering away from sharing religious opinions."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-024",
+   "type": "explanation",
+   "in_document": true,
+   "question": "When did Abraham Maslow introduce the hierarchy of needs, and how is it displayed?",
+   "answer": "Maslow first presented his hierarchy of needs in his 1943 paper *“A Theory of Human Motivation,”* and he later expanded the idea in the 1954 book *Motivation and Personality*.  The model is most commonly shown as a pyramid — the basic physiological needs form the broad base, then safety, love/belonging and esteem stack above it, with self‑actualisation at the narrow tip.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 0.9,
+   "teacher_tokens": 769,
+   "judge_tokens": 1231,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-025",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What statistics show the utility of content creation?",
+   "answer": "Sure, Kaustubh — the data in our notes give a few concrete numbers that illustrate just how useful content creation is for businesses:\n\n* **Around 40 % of marketers** say that content marketing is an essential part of their overall marketing strategy.  \n* **About 81 %** say their company treats content as a core business strategy, not just a side‑project.  \n* For B2B marketers, the impact breaks down further: **60 %** say content helps nurture leads, **51 %** say it drives revenue, and **47 %** say it builds a solid audience of subscribers.  \n* And among those who blog, **10 %** claim blogging delivers the biggest return on investment of any tactic they use.\n\nThese figures show that a large majority of marketers view content creation as a strategic driver of lead generation, sales, and brand growth.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "statistics utility of content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 8.09,
+   "teacher_tokens": 0,
+   "judge_tokens": 0,
+   "faithfulness": 1.0,
+   "groundedness": 0.8571428571428571,
+   "answer_claims": 7,
+   "unsupported_claims": [
+    "A large majority of marketers view content creation as a strategic driver of lead generation, sales, and brand growth."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 10 statements address the question.",
+   "correctness": 0.8571428571428571,
+   "missed_ideal_claims": [
+    "Content creation is the ultimate inbound marketing practice."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-026",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "How does speech influence personality?",
+   "answer": "Speech is one of the most visible windows into who we are, so the way we speak can actually shape how others see—and even how we see—our own personality. Your first words set an instant impression; a clear, measured tone tells people you’re organized and reliable, while confident, open expression lets your personality “shine” and leaves a lasting mark. When you keep your language unbiased, constructive, and tuned to your listener’s background, you project fairness and empathy, which in turn reinforces those traits in yourself. Finally, speaking with a clear purpose—knowing what you want to convey and why—helps you appear purposeful and self‑assured, further solidifying those aspects of your character.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "speech influence personality"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.05,
+   "teacher_tokens": 2328,
+   "judge_tokens": 5140,
+   "faithfulness": 1.0,
+   "groundedness": 0.5,
+   "answer_claims": 10,
+   "unsupported_claims": [
+    "The way we speak can shape how we see our own personality.",
+    "A clear, measured tone tells people that the speaker is organized and reliable.",
+    "Projecting fairness and empathy reinforces those traits in the speaker.",
+    "Speaking with a clear purpose, knowing what to convey and why, helps the speaker appear purposeful and self-assured.",
+    "Appearing purposeful and self-assured solidifies those aspects of the speaker's character."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 12 statements address the question.",
+   "correctness": 0.8333333333333334,
+   "missed_ideal_claims": [
+    "Speech is the ability to communicate with other people effectively."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-027",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "What are the five dimensions of personality described by Swami Vivekananda?",
+   "answer": "Great question, Kaustubh! Swami Vivekananda breaks personality down into five “selves” or dimensions:\n\n1. **Physical Self** – a healthy body supporting a healthy mind.  \n2. **Energy Self** – regulated breathing and vitality that calm the mind.  \n3. **Intellectual Self** – cultivating high thoughts and intellect through study.  \n4. **Mental Self** – training the mind to stay focused, calm and patient.  \n5. **Blissful (Anand) Self** – the ultimate state of inner joy and equanimity, where you can face any circumstance with a smile.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "Swami Vivekananda five dimensions of personality"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 1.72,
+   "teacher_tokens": 2265,
+   "judge_tokens": 4771,
+   "faithfulness": 0.8333333333333334,
+   "groundedness": 0.8333333333333334,
+   "answer_claims": 6,
+   "unsupported_claims": [
+    "The Physical Self is described as a healthy body supporting a healthy mind."
+   ],
+   "contradicted_claims": [
+    "The Physical Self is described as a healthy body supporting a healthy mind."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 7 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

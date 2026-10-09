@@ -1,0 +1,2259 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "source": "DBMS_U_5_ONE_SHOT.pdf",
+  "topic": "Dbms U 5 One Shot",
+  "timestamp": "20261007-001930",
+  "student_name": "Kaustubh",
+  "index": {
+   "chunks": 38,
+   "fingerprint": "f2c51b079de7",
+   "incomplete": true,
+   "cache_version": "v8-code"
+  },
+  "pipeline_hash": "5acfb9459acc",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "judge_usage": {
+   "calls": 0,
+   "input_tokens": 0,
+   "output_tokens": 0
+  },
+  "judge_stats": {
+   "new_calls": 0,
+   "cache_hits": 54
+  },
+  "scored_at": "20261007-195329",
+  "sections_limit": null
+ },
+ "lecture": {
+  "outline": [
+   "Fundamentals of Locking Mechanisms",
+   "Two-Phase Locking (2PL) and its Variants",
+   "Timestamp Ordering Protocols",
+   "Multiversion Concurrency Control (MVCC)",
+   "Phantom Phenomenon and Prevention Techniques",
+   "Recovery, Checkpoints, and Distributed Commit Protocols"
+  ],
+  "sections": [
+   {
+    "title": "Fundamentals of Locking Mechanisms",
+    "chunks": [
+     "[Diagram] A K T U\nB.Tech III-Year 5th\nCS IT & CS Allied\nDBMS:\nDatabase Management\nSemester\nSystem\nONE SHOT Revision\nUnit-5\nConcurrency Control Techniques\nAK TU\nB.TechIlI-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT-5\nConcurrency control technique\nLecture-1\niatew\nToday's Target\nBy PRAG YA RAJVAN SHI\nLock\nB.Tech, M .Tech（ C.S.E.)\nTwo phase locking protocol\nAKTUPYQS\n(BCS-501- Database Management System)\nUnit-V :Concurrency Control Techniques\nAKTU :Syllabus\nConcurrency Control Techniques: Control, Locking Techniques for\nConcurrency\nConcurrency Control, Time Stamping Protocols for Concurrency Control, Validation\nProtocol, Multiple Granularity, with\nBased Multi VersionS Schemes, Recovery\nConcurrent Transaction,Case Study of Oracle.\nLOCK TYPE OF LOCKS\nA lock is a variable associated 1.Binary lock\nwith a data item 1 that describes A binary lock can have two states or values:locked and\nitem with unlocked (or 1,and 0, for simplicity).\nstatus\nto possible A distinct lock is associated with each database item\nrespect operations\nX\nthat can be applied to it. If the value of the lockon X is 1,item X cannot be\nThere is one lock for each data accessed by a database operation that requests\nitem in the database. Locks are item.",
+     "that can be applied to it. If the value of the lockon X is 1,item X cannot be\nThere is one lock for each data accessed by a database operation that requests\nitem in the database. Locks are item.\nused as a means of synchronizing If the value of the lock on X is O, the item can be\nby accessed when requested,and the lock value is changed\naccess concurrent\ndatabase to 1.\nto\nitems.\nTwo operations, lock_item and unlock_item, are used with binary locking\nOATEW.AY C LA SEES\n//lock opeart ion on binary lock\nlock_item(x):\nB: if LocK（x) = 0 （* item is unlocked\nthen LocK（x) 1 （* 1ock the item *)\nelse\nbegin\nwait （until LocK(x)\n=\nand the lock manager wakes up the transaction);\ngoto B\nend\n//unlock opeart ion on binary lock\nunlock_item(x):\nLock（x) 0; （* unlock the item *）\nif any transactions are waiting\nthen wakeup one of the waiting transactions;\nsimple binary locking scheme\nDATE W.AYC LA SEES\ndescribed here is used, every transaction must\nobey the following rules:\noperation unlessit already holds the lockon item\nX.\n1. A transaction T must issue the operation 2.Shared/Exclusive (or Read/Write) Locks\nlock_item(x) before read_item(x)\nany or",
+     "described here is used, every transaction must\nobey the following rules:\noperation unlessit already holds the lockon item\nX.\n1. A transaction T must issue the operation 2.Shared/Exclusive (or Read/Write) Locks\nlock_item(x) before read_item(x)\nany or\nwrite_ item (x) operations are performed in T.\n2. A transaction T must issue the operation\nunlock_item(x) after all read_item(X) and\nwrite_item (X) operations are completed in T\n3.A transaction T will not issue a lock_item (X)\noperation if it already holds the lockon item X\nThe preceding binary locking scheme is too\nrestrictive for database items because at\nmost, one transaction can hold a lock on a\ngiven item.\nWe should allow several transactions to\naccess the same item X if they all access X\nfor reading purposes only.\nThis is because read operations on the A lock associated with an item X,Lock(x)\nsame item by different transactions are not now has three possible states: read-locked, write-\nconflicting\nlocked,or unlocked.\nHowever,if a transaction is to write an item read-locked item is also called share-locked\nA\nX,it must have exclusive access to X.For this because other transactions are allowed to read the",
+     "conflicting\nlocked,or unlocked.\nHowever,if a transaction is to write an item read-locked item is also called share-locked\nA\nX,it must have exclusive access to X.For this because other transactions are allowed to read the\npurpose, a different type of lock called a item, write-locked item is called\nwhereas\ne\nmultiple-mode lock is used.In this scheme- exclusive-locked because single\na\ncalled shared/exclusive or read/write locks. exclusively holds the lockon the item.\nlocking\noperations:\nare\nread_lock(x), write_lock(X), and\nunlock(x).\nread_lock(x):\nB: if LoCK(X) = “unlocked\"\nthenbegin Lock(x) “read-locked\";\nno_of_reads(x) ← 1\nend\nelse if LocK(x) = \"read-locked\"\nno_of_reads(x) ← no_of_reads(x) + 1\nelse begin\n(until LocK(x) = “unlocked\"\nwait\nand the lock manager wakes up the transaction);\ngoto\nB\nend;|\nwrite_lock(x):\nB: if LoCK（x) = “ unlocked”\nthen LocK(x) “write-locked\"\nelse begin\nwait （until LocK(x) = “ unlocked\"\nand the lock manager wakes up the transaction);\ngoto B\nend;\nunlock (x):\nOATEW.AY C LA SEES\nif Lock（x) = “write-locked\"\nthenbegin LocK(x) “unlocked\";\ng transactions, if any\nwakeup one of the waiting\nend\nelse if Lock（x) = “read-locked”\nthen begin\nno_of_reads(x) ← no_of_reads(x) -1;\nif no_of_reads(x)\n0\nthen begin LocK(x) = “unlocked”;\np one of the waiting transactions, if any\nwakeup\nend\nend",
+     "then begin\nno_of_reads(x) ← no_of_reads(x) -1;\nif no_of_reads(x)\n0\nthen begin LocK(x) = “unlocked”;\np one of the waiting transactions, if any\nwakeup\nend\nend\nCATE W.AYC LA SEES\nWhen we use the shared/exclusive locking\nscheme, the system must enforce the following\nrules:\n> 1. A transaction T must issue the operation\nread_lock(x) write _lock(x) before any\nor\nread_item(x) operation is performed in T.\n> 2. A transaction T must issue the operation\nwrite_lock(x) before any write _item(x) operation\nis performed in T.\n3.A transaction T must issue the operation unlock(x)\nafter all read_item (x) and write_item(X) operations\nare completed in T.\n4. A transaction T will not issue a read_lock(X) operation\nif it already holds a read (shared) ) lock or a write\n(exclusive) lockon item X.\n5. . A transaction T will not issue a write_lock(X)\noperation if it already holds a read (shared) lock or write\n(exclusive) lockon item X.\n6.A transaction Twill not issue an unlock(X) operation\nunless it already holds a read (shared) lock or a write\n(exclusive) lockon item X\nConversion of Lock\nSometimes it is desirable to relax conditions\n4 and 5in the preceding list in order to allow",
+     "unless it already holds a read (shared) lock or a write\n(exclusive) lockon item X\nConversion of Lock\nSometimes it is desirable to relax conditions\n4 and 5in the preceding list in order to allow\nlock conversion; that is,a transaction that\nalready holds a lock on item X is allowed\nunder certain conditions to convert the lock\nfrom one locked state to another.\nFor example,it is possible for a transaction T\nissue a read_lock(x) and then later to\nto\nupgrade the lock by issuing a write _lock(x)\noperation\nIf Tis the only transaction holding a read lockon\nX at the time it issues the write_lock(X) operation,the\nlock can be upgraded;otherwise,the transaction must\nwait.\nIt is also possible for a transaction T to issue\nwrite_lock(x) and then later to downgrade the lock by\nissuing a read _lock(x) operation. When upgrading and\ndowngrading of locks is used, the lock table must\ninclude transaction identifiers in the record structure\nfor each lock (in the locking_transaction(s) field) to\nstore the information on which transactions hold locks\non the item\nTwo-Phase Locking protocol If lock conversion is allowed,\nA transaction is said to follow the two-phase then upgrading of locks\n(from read-locked to",
+     "store the information on which transactions hold locks\non the item\nTwo-Phase Locking protocol If lock conversion is allowed,\nA transaction is said to follow the two-phase then upgrading of locks\n(from read-locked to\nlocking protocol if all locking\noperations write-locked) must\nbe done during\n(read_lock, write_lock) precede the first unlock\nexpanding phase, and downgrading of locks\noperation in the transaction.\n(from write-locked to read-locked)\nmust be\nSuch a transaction can be divided into two\ndone in the shrinking phase.\nphases: an expanding or growing (first) phase,\nduring which locks on i items\nnew can be\nacquired but none can be released;\nand\na\nshrinking (second) phase, during which existing\nlocks can be released but no new locks can be\nacquired\ndo not follow the two-phase locking protocol\nT1\nbecause the write_lock(x) operation follows the\nunlock(Y) operation in T1, and similarly\noperation follows unlock(x)\nwrite_lock(Y)\noperation in T2\nInitial values: X= 20, Y= 30\nResult serial schedule T,\nfollowed by T2:X=50,Y=80\nResult of serial schedule T2\nfollowed by T,:x=70, Y=50\nT2\nread_lock(Y); read_lock(x);\nread_item(Y); read_item(X);\nunlock(Y); unlock(X);\nwrite_lock(x); write_lock(Y);\nread_item(X); read_item(Y);\nX:= X + Y; Y:= X+ Y;\nwrite_item(X); write_item(Y);\nunlock(x);, unlock(Y);\nResult of scheduleS X=50, Y=50 （non serializable)",
+     "wait, even though T is done with X; schedule that is permitted is serializable),\nconversely, if Y is locked earlier than it it does not permit all possible serializable\nis needed, another transaction seeking\nschedules (that is, serializable\nsome\nis forced to wait schedules will be prohibited by\nto access even\nthough T is not using Y yet. protocol)\nThis is the price for\nguaranteeing\nserializ ability of all schedules without\nhaving to check C schedules\nthemselves.\nAKTUPYQS\nQ.1 What is lock? Explain different types of locks AKTU 2016-17\nAKTU 2022-23\nQ.2 Whatis two phase locking protcol AKTU2015-16\nAKTU 2018-19\nAKTU 2022-23\nQ.3 Discuss the immediate update recovery technique in both\nAKTU2022-23\nsingle-user and multiuser environments. What are the\nadvantages and disadvantages of immediate update.\nAK TU\nB.Tech Ill-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-2\nToday's Target\nTwo phase locking protocol variation\nTimestamp ordering protocol\nBy PRAGYA RAJVANSHI\nB.Tech, M .Tech( C.S.E.)\nMVcC protocol\nAKTU PY QS\nTwo-Phase Locking (2PL) Variants 3.Strict 2PL:\n1.Basic 2PL:\nTransactions follow two phases:growing\nphase (locks acquired but\nare\nreleased) and shrinking phase (locks\nreleased but not acquired).\nEnsures conflict-serializability.\n.Conservative 2PL:",
+     "B.Tech, M .Tech( C.S.E.)\nMVcC protocol\nAKTU PY QS\nTwo-Phase Locking (2PL) Variants 3.Strict 2PL:\n1.Basic 2PL:\nTransactions follow two phases:growing\nphase (locks acquired but\nare\nreleased) and shrinking phase (locks\nreleased but not acquired).\nEnsures conflict-serializability.\n.Conservative 2PL:\nAII locks acquired before\nare\ntransaction begins execution.\n) locks are released only\nexclusive (write)\nafter the transaction commits or aborts.\nnot\nEnsures recoverability by avoiding cascading\nare\nrollbacks.\n4.Rigorous 2PL:\nAll locks (shared and exclusive) are held until\nthe transaction commits or aborts.\nProvides stronger recoverability and simplifies\nbut can cause delays implementation.\nAvoids deadlocks\ndue to pre-locking.\nT1 | T2\nLock(A) | Lock(C)\n--- | ---\nLock(B) | Lock(D)\n--- | -> (A)\n-> (C)\nBasic 2PL\nDeadlock\nConservative 2PL\n-> No Deadlock\nLock(A) Lock(B) Lock(A) Lock\n1 A\n2 B\n3 D\nConcurrency control based on timestamp ordering Timestamp of transaction T as\nA different approach that guarantees TS(T). Concurrency control\nserializability involves using techniques based on timestamp\ntimestamps to order transaction execution for an ordering do not use locks;\nequivalent serial schedule. hence, deadlocks cannot occur.\nTimestamps\nT mestamp is a unique identifier created by the D BMS\nto identify a transaction. Typically, timestamp values",
+     "timestamps to order transaction execution for an ordering do not use locks;\nequivalent serial schedule. hence, deadlocks cannot occur.\nTimestamps\nT mestamp is a unique identifier created by the D BMS\nto identify a transaction. Typically, timestamp values\nassigned in the order in which the transactions\nare\nare submitted to the system,so a timestamp can be\nthought of as the transaction start time\nThe Timestamp Ordering\nAlgorithm\nOrdering (TO)\nTimestamp\nalgorithm serializ ability\nby\nensures\nordering according\nto\ntimestamps (TS), which\nare\nassigned when\nbegin.\nA schedule is valid if it is equivalent\nto the serial execution of transactions\nin the order of their timestamps.\nKey Features:\nOrdering Guarantee:Ensures that the execution\norder follows the timestamp order.\n2\nDifference from 2PL:\n2PL allows schedules equivalent to any serial\norder based on locking.\nTO enforces a specific serial order\ndetermined by the transaction timestamps.\nTimestamps Associated with Each Item\nX:\nread_TS(X):\nRecords the largest timestamp of any\ntransaction that successfully read\nIndicates the timestamp of the\nyoungest transaction that read x\nFormula:\nread TS(X)=TS(T), where T is the\nyoungest transaction to read X\nwrite_TS(X):\nRecords largest timestamp of any\ntransaction that successfully wrote to X.\nIndicates the timestamp of the youngest"
+    ],
+    "positions": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     9,
+     10,
+     11
+    ],
+    "neighbour": [
+     false,
+     false,
+     false,
+     true,
+     true,
+     false,
+     true,
+     true,
+     false,
+     true
+    ],
+    "pages": [
+     [
+      1,
+      2,
+      3,
+      4
+     ],
+     [
+      4,
+      5,
+      6
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      7,
+      8,
+      9,
+      10
+     ],
+     [
+      10,
+      11,
+      12
+     ],
+     [
+      11,
+      12,
+      13
+     ],
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      18,
+      19,
+      20,
+      21
+     ],
+     [
+      20,
+      21,
+      22,
+      23
+     ],
+     [
+      23,
+      24,
+      25
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, let’s pause a moment and think about why databases can handle so many users at once without stepping on each other’s toes. The trick is that every piece of data gets a little “guard” – a lock – that tells a transaction whether it can read or write that item right now. By coordinating those locks correctly we prevent nasty anomalies like lost updates or inconsistent reads, and we keep the whole system behaving as if the transactions were running one after another. So, understanding how these locks work is the foundation for any solid concurrency‑control strategy.",
+     "Alright, Kaustubh, picture the lock as a little sign that hangs on each row or page of the table – it can be “free”, “shared” or “exclusive”. When a transaction just wants to look at the data it asks for a shared lock; the lock manager bumps the counter up and lets any number of other readers join in, but as soon as someone needs to change the value it must first grab an exclusive lock, which forces everyone else to wait until the lock is released. The lock manager does this with three primitive calls – `read_lock(x)`, `write_lock(x)` and `unlock(x)` – and it keeps a small table that records which transaction holds which lock and how many readers are currently attached. Now, the trick that makes everything safe is the two‑phase rule: during the “growing” phase a transaction can keep asking for more locks, but once it releases its first lock it enters the “shrinking” phase and is no longer allowed to acquire any new ones. If a transaction that started with a shared lock later decides it needs to write, it can try to upgrade to an exclusive lock; the upgrade succeeds only if it’s the sole reader at that moment, otherwise it has to wait – that’s the lock‑conversion nuance. Let’s walk through a concrete scenario: suppose T1 does `read_lock(A)`, reads the balance, then `read_lock(B)` and reads a second account; meanwhile T2 asks for `write_lock(A)` to transfer money out of that same account. Because T1 still holds a shared lock on A, T2 must wait; once T1 finishes its reads it calls `unlock(A)`, the lock manager notices there are no more readers, flips A to “unlocked”, and immediately grants the pending exclusive lock to T2, which can now safely update the balance. Only after T2 writes and calls `unlock(A)` does the lock become free again, allowing any other transaction to proceed – and because each transaction obeyed the grow‑then‑shrink pattern, we’ve avoided lost updates, dirty reads, and even deadlocks.",
+     "So, when you see those lock‑states and the two‑phase rule, think of them as the scaffolding that lets higher‑level techniques—like strict 2PL, conservative 2PL, or even lock‑free timestamp ordering—stand up without collapsing into anomalies or deadlocks. That’s why we spend time mastering the basics now: every advanced concurrency protocol builds on the same lock‑acquire, lock‑release discipline, and the way we enforce the grow‑then‑shrink pattern determines whether a schedule will be serializable, recoverable, or safe from cascading rollbacks. In the next part we’ll layer those variations on top, so you’ll see how a small tweak—say, holding all exclusive locks until commit—gives us strict 2PL and eliminates many of the pitfalls we just avoided. Got it, Kaustubh—can you tell me why a transaction must finish its growing phase before it starts releasing locks?"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 12239
+    },
+    "generation_s": 35.9
+   },
+   {
+    "title": "Two-Phase Locking (2PL) and its Variants",
+    "chunks": [
+     "store the information on which transactions hold locks\non the item\nTwo-Phase Locking protocol If lock conversion is allowed,\nA transaction is said to follow the two-phase then upgrading of locks\n(from read-locked to\nlocking protocol if all locking\noperations write-locked) must\nbe done during\n(read_lock, write_lock) precede the first unlock\nexpanding phase, and downgrading of locks\noperation in the transaction.\n(from write-locked to read-locked)\nmust be\nSuch a transaction can be divided into two\ndone in the shrinking phase.\nphases: an expanding or growing (first) phase,\nduring which locks on i items\nnew can be\nacquired but none can be released;\nand\na\nshrinking (second) phase, during which existing\nlocks can be released but no new locks can be\nacquired\ndo not follow the two-phase locking protocol\nT1\nbecause the write_lock(x) operation follows the\nunlock(Y) operation in T1, and similarly\noperation follows unlock(x)\nwrite_lock(Y)\noperation in T2\nInitial values: X= 20, Y= 30\nResult serial schedule T,\nfollowed by T2:X=50,Y=80\nResult of serial schedule T2\nfollowed by T,:x=70, Y=50\nT2\nread_lock(Y); read_lock(x);\nread_item(Y); read_item(X);\nunlock(Y); unlock(X);\nwrite_lock(x); write_lock(Y);\nread_item(X); read_item(Y);\nX:= X + Y; Y:= X+ Y;\nwrite_item(X); write_item(Y);\nunlock(x);, unlock(Y);\nResult of scheduleS X=50, Y=50 （non serializable)",
+     "Result of serial schedule T2\nfollowed by T,:x=70, Y=50\nT2\nread_lock(Y); read_lock(x);\nread_item(Y); read_item(X);\nunlock(Y); unlock(X);\nwrite_lock(x); write_lock(Y);\nread_item(X); read_item(Y);\nX:= X + Y; Y:= X+ Y;\nwrite_item(X); write_item(Y);\nunlock(x);, unlock(Y);\nResult of scheduleS X=50, Y=50 （non serializable)\nTransactions that do not obey two-phase locking.\n(a) Two transactions T1 and T2.\n(b) Results of possible serial schedules of T1 and T2.\n(c) A non serializable schedule S that uses locks.\nFigure 22.3(c) X=26\nT\nread_lock(Y);\nread_item(Y);-30\nunlock(Y);\nread_lock(x);\nread _item( X); - 20\nunlock(x);\nwrite_lock(Y);\nread_item(Y); - 3)\nwrite_item(Y);\nunlock(Y);\nwrite_lock(x);\nread_item(x);: 20\nX = X + Y;\nwrite_item(X);\nunlock(x);\nT2\nT\nread_lock(Y); read_lock(X);\nread_item(Y); read_item(X);\nwrite_lock(X); write_lock(Y);\nunlock(Y) unlock( X)\nread_item(X); read_item(Y);\nX:= X+ Y; Y := X + Y;\nwrite_item (X); write_item( Y);\nunlock(X); unlock(Y);\nThe schedule shown in Figure 22.3(c) is\npermitted forT1 and T2 (with\nnot\nmodified order of locking and unlocking\noperations) under the rules of locking.\nT1 wilD its write_lock(x) before\nissue it\nunlocks item Y;consequently, when T2 issues\nits read _lock(x), it is forced to wait until T1\nreleases the lock by issuing an unlock (x) in\nthe schedule.\nlocking\nin a Two-phase limit\nevery may amount",
+     "unlocks item Y;consequently, when T2 issues\nits read _lock(x), it is forced to wait until T1\nreleases the lock by issuing an unlock (x) in\nthe schedule.\nlocking\nin a Two-phase limit\nevery may amount\nschedule follows the two-phase concurrency that can occur in a schedule because a\nlocking protocol, the schedule is transaction T may not be able to release an item X\nguaranteed to be serializ able, after rit is through it if T lock\nusing must\nan\nobviating the need to test for additional item Y later; or conversely, T must lock\nserializ ability of schedules. the additional item Y before it needs it so that it can\nlocking by release x.\nprotocol,\nenforcing locking\ntwo-phase Hence, X must remain locked by T until allitems that\nrules, the transaction needs to read or write have been\nalso enforces\nserializability.\nlocked;only then can X be released by T\nMeanwhile, locking\nanother two-phase protocol\nserializability (that is, every\nseeking to access X maybe forced to guarantees\nwait, even though T is done with X; schedule that is permitted is serializable),\nconversely, if Y is locked earlier than it it does not permit all possible serializable",
+     "wait, even though T is done with X; schedule that is permitted is serializable),\nconversely, if Y is locked earlier than it it does not permit all possible serializable\nis needed, another transaction seeking\nschedules (that is, serializable\nsome\nis forced to wait schedules will be prohibited by\nto access even\nthough T is not using Y yet. protocol)\nThis is the price for\nguaranteeing\nserializ ability of all schedules without\nhaving to check C schedules\nthemselves.\nAKTUPYQS\nQ.1 What is lock? Explain different types of locks AKTU 2016-17\nAKTU 2022-23\nQ.2 Whatis two phase locking protcol AKTU2015-16\nAKTU 2018-19\nAKTU 2022-23\nQ.3 Discuss the immediate update recovery technique in both\nAKTU2022-23\nsingle-user and multiuser environments. What are the\nadvantages and disadvantages of immediate update.\nAK TU\nB.Tech Ill-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-2\nToday's Target\nTwo phase locking protocol variation\nTimestamp ordering protocol\nBy PRAGYA RAJVANSHI\nB.Tech, M .Tech( C.S.E.)\nMVcC protocol\nAKTU PY QS\nTwo-Phase Locking (2PL) Variants 3.Strict 2PL:\n1.Basic 2PL:\nTransactions follow two phases:growing\nphase (locks acquired but\nare\nreleased) and shrinking phase (locks\nreleased but not acquired).\nEnsures conflict-serializability.\n.Conservative 2PL:",
+     "(say Xi) specifically for T: X1: write_TS=5,read_TS=10.\nwrite_ TS(Xj)= TS(T) X2: write_TS=15,read_TS=20\n(the timestamp of Transaction T3 with （T3)=18 wants to write:\nT ). Latest suitable version:X2(write_Ts(x2)= 15 ≤18).\nread_TS(Xj)=TS(T) Conflict check:read Ts(x2)=20>18.\n(initially, Conflict! Abort T3\nno one\nelse has read it yet T4 with TS(T4)=25.wants to write:\nLatest suitable version: X2 (write _TS(x2)=15 ≤25).\nConflict check:read_Ts(x2)=20≤25. No conflict!Create a new version X3\nwrite_TS(x3)=25,read_TS(x3)=25.\nRead Operation (read_item(x)):\nWhen a transaction T wants to read a data\nitem X:\n1.Find the Latest Suitable Version:\nLook for the version of X (say Xi) that\nwas last written by a transaction before\nT's timestamp.\nThis means finding the version with the\nhighest write _TS(Xi) ≤ TS(T))\n2.Read the Value and Update read_TS:\nReturn the value of Xi to T.\nUpdate the read _Ts (xi) to reflect that T has read\nthis version:\nread_TS(Xi) = max(read_TS(Xi),TS(T))\n3.Guaranteed Success:\nA read operation is always successful because there\nwill always be a version of X suitable forT's\ntimestamp.\nGWExample\nTransaction T4 with TS（T4)=25 wants to read X:\nInitial Versions of X: Suitable version:X2 (since write_TS(x2)=15≤25)\nX1: write_TS=5,read_TS=10. Return the value of X2 to T4.\nX2: write_TS=15,read_TS=20 Update read_TS(X2):\n2.Transaction T3 with read_TS(x2)=max(20,25)=25.",
+     "timestamp.\nGWExample\nTransaction T4 with TS（T4)=25 wants to read X:\nInitial Versions of X: Suitable version:X2 (since write_TS(x2)=15≤25)\nX1: write_TS=5,read_TS=10. Return the value of X2 to T4.\nX2: write_TS=15,read_TS=20 Update read_TS(X2):\n2.Transaction T3 with read_TS(x2)=max(20,25)=25.\nTS(T3)=18 wants to read X: This ensures that transactions can safely read the most relevant\nSuitable version: X2 (since version while keeping track of when it was last accessed.\nwrite_TS(X2)=15≤18)\n十imestam\nReturn the value of X2to T3.\nUpdate read_TS(x2) :\nread_TS(x2)= max(20,18)=\n20\n2. Multiversion Two-Phase Key Components:\nLocking(MV2PL)Using Certify Locks Used:\nLocks: Read Lock(RL): Acquired when a transaction reads a version\nThis concurrency control of a data item.\nmechanism combines Write Lock( W L): Acquired when a transaction creates a\nmultiversioning with a two- new version of a data item.\nphase locking protocol, adding\nCertify Lock(CL):Ensures no other transaction can read or\na third type of lock called the write to a version after it has been committed by the\ncertify lock. It current transaction.\nensures\nserializability while allowing\nhigher concurrency.\nVersion Management:\nMultiple versions of a data\nitem X are maintained.\nPhases of MV2PL:\n1.Growing Phase: Transactions\nacquire read, write, and certify\nIn a standard locking scheme,ifa transaction writes to a",
+     "serializability while allowing\nhigher concurrency.\nVersion Management:\nMultiple versions of a data\nitem X are maintained.\nPhases of MV2PL:\n1.Growing Phase: Transactions\nacquire read, write, and certify\nIn a standard locking scheme,ifa transaction writes to a\ndata item,no other transaction can read or write thatitem\nuntil the first transaction is finished.\nMultiversion 2PL improves this by allowing other\ntransactions to read the old, committed version of the data\nwhile the current transaction writes to a new version.\nlocks. Two Versions of Each Item:\n2.Shrinking Phase: No\nnew\nlocks existing\nacquired;\nare\nlocks are released after the\nCommitted Version: Written by a completed transaction.\nUncommitted Version: Created by the current transaction\nholding the write lock.\nWhile one transaction writes,other transactions can still read\nthe committed version./\nSteps in Multiversion 2PL:\n..Write Lock:\nATE WAY CI\nWhen a transaction T starts writing\nitem X,it creates a new version of x\nOther transactions continue to read the\nold,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\nA certify lock ensures no other transaction\nis reading the old version while T commits.\n3.Replace the Old Version:",
+     "old,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\nA certify lock ensures no other transaction\nis reading the old version while T commits.\n3.Replace the Old Version:\nAfter getting the certify locks, T makes its\nto an\nupdated version the new committed version.\nThe old version is discarded\nRelease Locks:\nOnce done, T releases all locks\nAdvantages:\n1. Concurrent Reads: Other transactions can\ncertify\nread old version while write is\na\nhappening.\n2. Avoids Cascading Aborts: Transactions only\nread committed data, so rollbacks don't\ncause a chain of aborts\nValidation(optimistic) How It Works:(phases)\n1.Read Phase:\nconcurrency control technique\nreads committed data from the\nThis method assumes that conflicts\ndatabase.\nare rare and doesn't check for them\nUpdates are made to a local copy of the data (not the\nwhile transactions are running.\ndatabase).\nInstead, all the checking\nhappens\n2.Validation Phase.\nafter the finishes but\nAfter the transaction finishes,a check is performed to\nbefore it updates the database.\nensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a conflict, the transaction is aborted and\nwithout interference of\nmost",
+     "To solve this, intention locks were introduced to indicate the type of locks needed for child nodes in a hierarchy (e.g., database -> file -> page -> record).\nTypes of Intention Locks:\nIS (Intention-Shared): Shows the intention to request shared locks on child nodes.\nIX (Intention-Exclusive): Shows the intention to request exclusive locks on child nodes.\nSIX (Shared-Intention-Exclusive): Locks the current node in shared mode but allows exclusive locks on child nodes.\nThe compatibility table of the three intention locks, and the shared and exclusive locks\nRowLabel — IS; IX; S; SIX; X\nIS — IS: Yes; IX: Yes; S: Yes; SIX: Yes; X: No\nIX — IS: Yes; IX: Yes; S: No; SIX: No; X: No\nS — IS: Yes; IX: No; S: Yes; SIX: No; X: No\nSIX — IS: Yes; IX: No; S: No; SIX: No; X: No\nX — IS: No; IX: No; S: No; SIX: No; X: No\nThe multiple granularity locking (M GL) protocol consists of the following rules W\nThe lock compatibility must be adhered to.\n2. The root of the tree must be locked first, in any mode.",
+     "The multiple granularity locking (M GL) protocol consists of the following rules W\nThe lock compatibility must be adhered to.\n2. The root of the tree must be locked first, in any mode.\n3. A node N can be locked by a transaction T in S or IS mode only if the parent node N is\nalready locked by transaction T in either orI8 mode.\n4. A node N can be locked by a transaction T inl x, IX, or SiX mode only if the parent of node\nN is already locked by transaction Tin either IX or SiX mode.\n5. A transaction T can lock a node only if it has not unlocked any node (to enforce the 2PL\nprotocol).\n6.A transaction T can unlock a node,N, only if none of the children of node N are currently\nlocked by T\nAKT UP YQS\nQ.1 Explain the concurrent control mechanism AKTU 2022-23\nQ.2 Explain the multiple granularity lock\nAKTU 2018-19\nAKTU 2021-22\natewa\nJhank"
+    ],
+    "positions": [
+     6,
+     7,
+     8,
+     9,
+     20,
+     21,
+     22,
+     23,
+     36,
+     37
+    ],
+    "neighbour": [
+     true,
+     false,
+     false,
+     true,
+     true,
+     false,
+     false,
+     true,
+     true,
+     false
+    ],
+    "pages": [
+     [
+      12,
+      13,
+      14,
+      15
+     ],
+     [
+      14,
+      15,
+      16,
+      17
+     ],
+     [
+      16,
+      17,
+      18
+     ],
+     [
+      18,
+      19,
+      20,
+      21
+     ],
+     [
+      39,
+      40,
+      41
+     ],
+     [
+      40,
+      41,
+      42,
+      43
+     ],
+     [
+      42,
+      43,
+      44
+     ],
+     [
+      44,
+      45
+     ],
+     [
+      69,
+      70
+     ],
+     [
+      70,
+      71,
+      72
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, now we’re stepping into the heart of concurrency control with Two‑Phase Locking, or 2PL for short. Think of it as a disciplined dance where a transaction first gathers all the locks it needs—its “growing” phase—before it ever lets any of them go, and then, once it starts releasing, it can’t pick up any new ones in the “shrinking” phase. This strict ordering is what guarantees that the interleaving of transactions will behave just like some serial order, so we don’t end up with weird, non‑serializable results. Later we’ll see a few twists on the basic idea—strict 2PL, conservative 2PL, and even multiversion variants—that each try to balance safety with more concurrency. Let’s dive in and see why getting this right is essential for a reliable database.",
+     "Alright, Kaustubh, let’s dig into how 2PL actually works under the hood. When a transaction starts, it keeps a table—think of it as a little ledger—that records every lock it holds on each data item, whether it’s a shared (read) lock or an exclusive (write) lock. During the **growing phase** the transaction may ask for new locks any time it needs to read or write, and the lock manager will either grant them immediately if they don’t conflict, or make the transaction wait until the conflicting lock is released. The moment the transaction decides to release its first lock, it enters the **shrinking phase**, and from that point on it’s forbidden to request any additional locks; it can only give up the ones it already has. If a transaction needs to upgrade a lock—say it first took a shared lock on X because it only read it, but later decides to write X—it can request an upgrade, but the upgrade must happen while still in the growing phase; otherwise the protocol would be broken. Conversely, a downgrade—from exclusive back to shared—is allowed only in the shrinking phase, after all the new lock requests have stopped. To see why this matters, picture two transactions T1 and T2: T1 reads X, then upgrades to a write lock on X, reads Y, and finally releases Y before releasing X; T2 meanwhile wants a read lock on Y, then a write lock on X. Because T1 releases Y first, T2 can acquire its read lock on Y, but when it later asks for the write lock on X it has to wait until T1 finally unlocks X—so the schedule respects the two‑phase rule and ends up equivalent to the serial order T1 → T2. If either transaction tried to grab a new lock after it had already started unlocking, the protocol would be violated and you could get a non‑serializable outcome like the one where X and Y both end up at 50. That’s the core idea: by enforcing a clean “grow‑then‑shrink” pattern, 2PL guarantees conflict‑serializability without having to examine the whole schedule afterward.",
+     "So, Kaustubh, think of what we just walked through as the bridge between the basic lock concepts you already know and the more sophisticated schemes we’ll meet later—strict 2PL, conservative 2PL, and the multiversion versions.  By forcing every transaction to finish gathering all the locks it needs before it ever gives any up, 2PL gives us a clean, provable guarantee of conflict‑serializability without having to inspect the whole schedule after the fact.  That guarantee is the foundation that lets us safely add extra features—like holding locks until commit or pre‑declaring the locks up front—while still keeping the database correct and deadlock‑aware.  In short, mastering the grow‑then‑shrink discipline now will make those later variants feel like natural extensions rather than brand‑new puzzles.\n\nQuick check: if a transaction releases a lock on X and then later asks for a lock on Y, does it still satisfy the two‑phase rule? (Yes or no, and why.)"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 12652
+    },
+    "generation_s": 38.6
+   },
+   {
+    "title": "Timestamp Ordering Protocols",
+    "chunks": [
+     "Indicates the timestamp of the\nyoungest transaction that read x\nFormula:\nread TS(X)=TS(T), where T is the\nyoungest transaction to read X\nwrite_TS(X):\nRecords largest timestamp of any\ntransaction that successfully wrote to X.\nIndicates the timestamp of the youngest\ntransaction that wrote X.\nFormula: write_TS(X)=TS(T), , where T is the\nyoungest transaction to write x\nHow TO Ensures Serializability:\nAY CLASERS\nAdvantages:\nSATIWATCLL\nFor conflicting operations on an item X (read vs No locks are used, so there is no chance\nwrite,or write vs write), the algorithm ensures of deadlocks.\nthat the order of execution does not violate the\ntimestamp order:\nIf a transaction T tries to perform an operation\nthat conflicts with already\noperation\nan\nperformed by a with later\na\ntimestamp, T is aborted or its operation\nis\nrejected.\nThis guarantees that the final schedule respects\nthe serial order of transaction timestamps.\nDirectly enforces a. specific serial order\nbased on time stamps.\nDisadvantages:\nFrequent restarts if\ntimestamp violations occur,especially in\nhigh-contention scenarios.\ncompared\nLower throughput to\nprotocols like 2PL in certain cases.\nrolled back,\nIf Tis aborted and\nBasic Timestamp Ordering(TO)\ntransaction T1 that may have used a value\nWhenever some transaction T tries to issue",
+     "timestamp violations occur,especially in\nhigh-contention scenarios.\ncompared\nLower throughput to\nprotocols like 2PL in certain cases.\nrolled back,\nIf Tis aborted and\nBasic Timestamp Ordering(TO)\ntransaction T1 that may have used a value\nWhenever some transaction T tries to issue\nwritten by T must also be rolled back.\nread_item(X) or a write_item(x) operation, the\nbasic To algorithm compares the timestamp of transaction T2 that may\nSimilarly,\nany\nwith read_TS(X) and write_TS(X)\nto ensure\nhave used a value written by T1 must also\nthat timestamp order\nbe rolled back, and so on.\nexecution is not violated.\nThis effect is known as cascading rollback\nIf this order is violated, then transaction T is\nand is one of the problems associated\naborted and resubmitted to the system as a\nwith basic TO, since schedules\nnew transaction with a new timestamp.\nproduced guaranteed to be\nare not\nrecoverable\nwith basic TO, since the schedules Whenever\nT issues\na\nproduced guaranteed to be write_item(x) operation, the following\nare not\nrecoverable. checked:\nAn additional protocol must beenforced a. If f read_TS(X) > TS(T) or if write_TS(X)\nthat the schedules TS(T), then abort and roll back T and reject\nto are\nensure",
+     "recoverable. checked:\nAn additional protocol must beenforced a. If f read_TS(X) > TS(T) or if write_TS(X)\nthat the schedules TS(T), then abort and roll back T and reject\nto are\nensure\nrecoverable, cascadeless,or strict. the operation. This should be done because\nWe first describe the basic TO algorithm some younger transaction with a timestamp\ngreater than TS(T)— and hence after T in the\nhere. The concurrency control algorithm\ncheck whether conflicting timestamp ordering- has already read or\nmust\noperations _ violate timestamp written the value of item X before T had a\nordering in the following two cases: chance write X, thus t violating\nto\ntimestamp ordering\nb. If the 2. Whenever a transaction T issues a read_item(X) operation,\ncondition in part following is checked:\n(a) does a. If write_ TS(X) > TS(T), then abort and roll back T and reject the\nnot\noperation. . This should be done because\noccur, some younger\nexecute\nwrite_item(X) in the timestamp ordering- has already written the value of item\noperation of T X before T had a chance to read X.\nand b. If write_ TS(x) ≤ TS(T), then execute the read_item(X) operation of\nset",
+     "execute\nwrite_item(X) in the timestamp ordering- has already written the value of item\noperation of T X before T had a chance to read X.\nand b. If write_ TS(x) ≤ TS(T), then execute the read_item(X) operation of\nset\nwrite_ TS(X) set read_TS(X) larger of TS(T) and the\nto IT and current\nTS(T)\nread_TS(X).\nWhenever the basic TO\nalgorithm detects\ntwo\nconflicting\noperations\nclass\nthat occur in the incorrect\norder, it rejects the later\nof the two operations\nby\natewa\naborting\nthat issued it.\nStrict Timestamp Ordering (TO).\nA variation of basic TO called strict TO ensures\nthat the schedules are both strict (for easy\nrecover ability) and (conflict) serializ able.\nIn this variation, a transaction T that issues a\nread_item(x) or write_item(x) such that\nTS(T) > write_ TS(X) has its read\nor write\noperation delayed until the transaction T that\nwrote .the value of x (hence TS(T)\nwrite_TS(x)) has committed or aborted.\nTo implement this algorithm,\nit is necessary to simulate the locking of\nitem that has been written\nan by\ntransaction T until T is either committed\nor aborted.\nThis algorithm does\nnot cause\ndeadlock, since T waits for T only if\nTS(T) > TS(T)",
+     "it is necessary to simulate the locking of\nitem that has been written\nan by\ntransaction T until T is either committed\nor aborted.\nThis algorithm does\nnot cause\ndeadlock, since T waits for T only if\nTS(T) > TS(T)\nwritten the value of x.\nThomas's Write Rule.\nThus,\nwe must ignore\nmodification of the basic To algorithm, known as\nwrite_item (X) operation of T\nThomas's write rule, does enforce conflict\nnot\nbecause it is already outdated and\nserializ ability, but it rejects fewer write operations by\nobsolete. Notice that any conflict\nmodifying the checks for the write_item (X) ) operation as\narising from this situation would be\nfollows:\ndetected by case (1).\nIf read _TS(X) > TS(T), then abort and roll back T and\n1.\n3. If neither the condition in part (1)\nreject the operation.\nnor the condition in part\n(2) occurs,\n2. If write_ TS(X) > Ts(T), then do not execute the write\nwrite_item(X)\nexecute\noperation but continue processing. This is because some\noperation of T and set write_TS(x)\nto\ntransaction with timestamp greater than Ts(T)- and hence\n(TS(T).\nafter T in the timestamp ordering - has alread\nMulti-version\nconcurrency control technique\nMuitiversion Concurrency\nControl (MVCC) maintains",
+     "Multi-version\nconcurrency control technique\nMuitiversion Concurrency\nControl (MVCC) maintains\nmultiple versions of data items\nto allow concurrent transactions\nto access the database without\nconflicts, improving performance\nand flexibility\nin concurrency\nmanagement\nKey Features:\n1.Multiple Versions:\nWhen a transaction writes to a data item,a new version is\ncreated, and the older version is retained.\nRead operations can access an appropriate version to\nmaintain serializability.\nAdvantages:\n1.ln creased Concurrency:Some read operations that would\nbe rejected in traditional methods (like 2PL) are allowed by\nreading older versions,\n2.Historical Data: Useful for applications like temporal\ndatabases, where past states of data are needed.\n3.Reduced Blocking:\nare less\nlikely to block each other,as reads and writes\ns different versions.\naccess\nDrawbacks:\n1.Storage Overhead: Multiple versions\nrequire additional storage.\n2.Version Management: Keeping track of\nand deciding which to keep\nversions or\ndiscard adds complexity.\nCommon Mv cC Schemes:\nMV cC Based on Timestamp Ordering.\nMV cC Based on 2PL.\n2.\n3. Validation-Based MvcC.\nAKTUPYQS\nQ.1 What is time stamp ordering protocol\nA KIT U 2022-22\nQ.2 Explain the different variation of2PL protocol AKTU 2012-13\nAKTU 2021-22\nQ.3 Explain the Thomson's write rule, strict AKTKU 2018-19\ntimestamp ordering protocol, Basic time stamp AKTU 2017-18",
+     "AKTUPYQS\nQ.1 What is time stamp ordering protocol\nA KIT U 2022-22\nQ.2 Explain the different variation of2PL protocol AKTU 2012-13\nAKTU 2021-22\nQ.3 Explain the Thomson's write rule, strict AKTKU 2018-19\ntimestamp ordering protocol, Basic time stamp AKTU 2017-18\nordering protocol AKTU Y2022-23\nQ.4 Explain mvcc protocol AKITU 2022-23\nAK TU\nB.TechIlI-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-3\natew\nToday's Target\nMVcC techniques\nBy PRAGYA RAJVANSHI\nPhantom phenomena\nB.Tech, M .Tech( C.S.E.)\nAKTUPYQS\nMulti-version technique based\n.on.timestamp odering\nThis description\noutlines\na\nMultiversion Concurrency Control\n(MV CC) that maintains\nscheme\nmultiple versions of a data item X to\nhandle read and write operations.\nEach version has associated\ntimestamps to track when it\nwas\ncreated and read. The rules ensure\nserializability while allowing multiple\ntransactions to execute concurrently.\nKey Concepts:\nVersions of X:\nMultiple versions (X1,X2, ..,X k) are stored for each\ndata item X\nW\nEach version Xihas:\nValue of Xi:The data stored in that version.\nwrite_TS(X_i): The timestamp of the\ntransaction that created xi\nread _TS(X i): The highest timestamp of all-\ntransactions that read xi",
+     "data item X\nW\nEach version Xihas:\nValue of Xi:The data stored in that version.\nwrite_TS(X_i): The timestamp of the\ntransaction that created xi\nread _TS(X i): The highest timestamp of all-\ntransactions that read xi\nNew Version Rules for Serializability:\nO ATE AY CLASSES\nCreation:\nWrite Operation (write_item(X)):\nA new version is\n1 When a transaction T tries to write to a data item X:\ncreated when a\nFind the Latest Version to Work With:\nLook for the version of X (say Xi) that was written most recently before\nX, with:\nor at the time of T.\nwrite_TS(Xk+1)\nIn other words,find the version Xi with the highest write_ TS(Xi) ≤ TS(T))\n=TS(T) 2.Check for Conflicts:\nread_TS(Xk+1 See if any newer transaction (with a timestamp higher than T) has already\nread xi.\n)=TS(T).\nread_TS(Xi)>TS(T):\nf\nAbort T because T's write would mess up the order required for\nserializ ability.\nV if No Conflict: Example:\nCreate a new version of Initial Versions of X:\n(say Xi) specifically for T: X1: write_TS=5,read_TS=10.\nwrite_ TS(Xj)= TS(T) X2: write_TS=15,read_TS=20\n(the timestamp of Transaction T3 with （T3)=18 wants to write:\nT ). Latest suitable version:X2(write_Ts(x2)= 15 ≤18).\nread_TS(Xj)=TS(T) Conflict check:read Ts(x2)=20>18.",
+     "(transaction's timestamp) is greater than or equal\nphantom phenomenon by ensuring that\nto the write timestamp (write _Ts) of X.\ntransactions are serialized according to their\nIf TS(T)< write TS(X), it means Tis trying to read an\ntimestamps.\nHere'show it works: item modified by a newer transaction,so it is\nAssign Timestamps: aborted.\nEach\nIS\nassigned a unique timestamp Ts(T) when\nit\nbegins. This determines its order relative\nto\n2. Write Operation ( write_item X):\nA transaction T can write to X only if\nTS(T) is greater than or equal to the read\ntimestamp (read_Ts) and write\ntimestamp (write_Ts) of X.\nIf TS(T)<read TS(X)or TS(T)< write TS(X),\nT conflicts with a previously completed\ntransaction, so it is aborted.\nRange Queries to Avoid Phantoms:\nTo handle range queries\n(e.g.,\" SELECT WHERE salary > 5000\"), the\nprotocol applies the following:\nLock on ranges of data rather than individual\nrows.\nThe transaction T checks the timestamps of all\nrows that currently exist in the range and also\nprevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protocol ensures that transactions\nserialized in the order of their\nare\nclass\ntimestamps, which avoids inconsistencies",
+     "prevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protocol ensures that transactions\nserialized in the order of their\nare\nclass\ntimestamps, which avoids inconsistencies\ncaused by the insertion or deletion\nof\nrows that match a query condition.\natewa\nAKTUPYQS\nQ.1 Discuss the timestamp ordering protocol for concurrency control. AKTU\nHow does strict timestamp ordering differ from basic timestamp 2023-24\nordering?\nQ.2 How do optimistic concurrency control techniques differ from other AKTU\nconcurrency control techniques? Why they are also called validation 2023-24\nor certification techniques? Discuss the typical phases of an\noptimistic concurrency control method.\nQ.3 Explain TimeStamp Based Concurrency Control technique AKTU\n2021-22\nAKTU PYQS\nQ.4 Explain the Validation Based protocolfor concurrency control AKTU2021-\n22\nQ.5 Whatis phantom phenomena Discuss the timestamp protocol that\nAKTU 2021-\navoid phantom phenomena 22\natew\nAK TU\nB.Tech Ill-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-4\nToday's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.",
+     "Today's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.\nPhase: Before committing,\nValidation\nsystem checks if the transaction conflicts with\nothers. lf it validation, it commits;\npasses\notherwise,it aborts.\nPerformance: Suitable for low-contention\nenvironments.\n2PL Protocol (Two-Phase Locking)\nApproach:Transactions acquire locks on resources to\nensure no conflicts occur during execution.\nPhases:\nGrowing Phase: Locks are acquired.\nShrinking Phase:Locks are released,and no new locks\ncan be acquired,\nPerformance:Provides strict consistency but may cause\ndelays due to locking contention.\nKey Difference: Validation allows optimistic execution with\na check at the end, while 2PL ensures safety by locking\nthroughoutthe transaction.\nGW Recovery from concurrenttransaction\nThere are various strategies and techniques\nfor handling from\nrecovery concurrent\nRecovery from Concurrent\nrefers to the ensuring\nprocess of\nKEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties"
+    ],
+    "positions": [
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     26,
+     27,
+     28
+    ],
+    "neighbour": [
+     true,
+     false,
+     false,
+     false,
+     true,
+     true,
+     false,
+     true,
+     true,
+     false,
+     true
+    ],
+    "pages": [
+     [
+      25,
+      26,
+      27
+     ],
+     [
+      26,
+      27,
+      28
+     ],
+     [
+      28,
+      29
+     ],
+     [
+      29,
+      30,
+      31
+     ],
+     [
+      31,
+      32,
+      33
+     ],
+     [
+      33,
+      34,
+      35
+     ],
+     [
+      35,
+      36,
+      37
+     ],
+     [
+      37,
+      38,
+      39
+     ],
+     [
+      49,
+      50,
+      51
+     ],
+     [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+     ],
+     [
+      54,
+      55,
+      56
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, now that we’ve got a solid grip on locks and two‑phase locking, let’s shift gears to a completely lock‑free way of keeping transactions in order—Timestamp Ordering. The idea is simple: every transaction gets a unique timestamp when it starts, and we use those timestamps to decide which reads and writes are allowed to proceed. By enforcing that operations happen in timestamp order, we can guarantee a serializable schedule without ever having to wait for a lock, which means we avoid deadlocks altogether. It matters because in high‑throughput systems the overhead of locking can become a bottleneck, and timestamp ordering gives us a clean, deterministic way to resolve conflicts. So think of timestamps as the invisible “time‑cards” that tell each transaction when it’s allowed to touch a data item.",
+     "Alright, Kaustubh, let’s dig into how the protocol actually works on a per‑item basis. Each data item X carries two timestamps: read_TS(X), the highest timestamp of any transaction that has successfully read X, and write_TS(X), the highest timestamp of any transaction that has successfully written X. When a transaction T with timestamp TS(T) wants to read X, the system first checks whether write_TS(X) is greater than TS(T); if it is, that means a younger transaction has already overwritten X, so T must be aborted because it would be reading a stale value. If the check passes, the read proceeds and we bump read_TS(X) up to the larger of its current value and TS(T). For a write, T must satisfy two conditions: TS(T) must be at least as large as both read_TS(X) and write_TS(X); otherwise we either abort T (basic TO) or, in Thomas’s write rule, we simply ignore the write if only read_TS(X) is larger, because the value would be overwritten by a later transaction anyway. When a transaction is aborted, any other transaction that has already read a value written by the aborted one must also be rolled back – that’s the dreaded cascading rollback. Now, let’s walk through a concrete scenario: suppose T1 gets timestamp 5 and executes write_item(X) — since read_TS(X)=0 and write_TS(X)=0, the write succeeds and we set write_TS(X)=5. Next, T2 starts with timestamp 10 and issues read_item(X); the check sees write_TS(X)=5 ≤ 10, so the read is allowed and we update read_TS(X) to 10. Finally, T3 with timestamp 8 tries to write_item(X). Because read_TS(X)=10 > 8, the basic protocol would abort T3, since a younger transaction (T2) has already read the old version of X; under Thomas’s rule we could simply discard T3’s write, avoiding the abort. If we were using strict timestamp ordering, T3’s write would be delayed until T2 commits or aborts, effectively simulating a lock on X until the later transaction finishes, which eliminates cascading rollbacks but can introduce waiting. That’s the core mechanics – timestamps guide every read and write, aborting or delaying operations that would violate the global time order, thereby guaranteeing a serializable schedule without ever acquiring traditional locks.",
+     "So, tying this back to what we covered earlier, locks gave us a way to serialize access by physically holding resources, whereas timestamp ordering achieves the same serializability by ordering operations in “virtual time” and never actually blocking anyone—think of it as the lock‑free sibling of 2PL. That’s why, when we later look at multi‑version concurrency control or optimistic validation, the same timestamp ideas reappear as the backbone for deciding which version a transaction may read or whether its write can be accepted. In short, timestamps let the system enforce a global order without the overhead of lock management, which becomes crucial in high‑throughput or distributed environments. \n\nGot it, Kaustubh—can you tell me what the system does when a transaction tries to write an item whose read_TS is already larger than its own timestamp?"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 13295
+    },
+    "generation_s": 102.2
+   },
+   {
+    "title": "Multiversion Concurrency Control (MVCC)",
+    "chunks": [
+     "old,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\nA certify lock ensures no other transaction\nis reading the old version while T commits.\n3.Replace the Old Version:\nAfter getting the certify locks, T makes its\nto an\nupdated version the new committed version.\nThe old version is discarded\nRelease Locks:\nOnce done, T releases all locks\nAdvantages:\n1. Concurrent Reads: Other transactions can\ncertify\nread old version while write is\na\nhappening.\n2. Avoids Cascading Aborts: Transactions only\nread committed data, so rollbacks don't\ncause a chain of aborts\nValidation(optimistic) How It Works:(phases)\n1.Read Phase:\nconcurrency control technique\nreads committed data from the\nThis method assumes that conflicts\ndatabase.\nare rare and doesn't check for them\nUpdates are made to a local copy of the data (not the\nwhile transactions are running.\ndatabase).\nInstead, all the checking\nhappens\n2.Validation Phase.\nafter the finishes but\nAfter the transaction finishes,a check is performed to\nbefore it updates the database.\nensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a conflict, the transaction is aborted and\nwithout interference of\nmost",
+     "ensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a conflict, the transaction is aborted and\nwithout interference of\nmost\nrestarted.\ntime.\nGW 3.Write Phase:\nCondition 1:\nIf validation is successful, the updates\nTj's write phase ends before Ti starts its read\nfrom the local copy are written to the\nphase.\ndatabase.\nMeans Ti read data after Tj completed. No\nValidation Rules:\noverlap.\nWhen validating a transaction Ti, the\nCondition 2:\nsystem ensures it doesn't interfere\nTi's write phase starts after Tj's write phase ends,\nwith\nanother Tj\nvalidating). and Ti's read set and Tj's write set don't overlap.\n(committed\nor\nTo avoid conflicts, one of these three Tj and Ti didn't modify or read the same data\nconditions must hold:\nduring their active phases.\nGw Condition 3:\nTj' s read phase ends before Ti's\nends, and Ti's\nread phase\nread/ write sets don't overlap with\nTj's write set.\nEnsures no shared data between\nand Tj.\nIf Validation Fails:\nThe transaction Ti is aborted\nand\nrestarted because conflicts occurred.\nAdvantages:\nMinimal overhead during transaction execution (no\nlocking or checks)\nWorks well when transaction conflicts are rare.\nDisadvantages:",
+     "Ensures no shared data between\nand Tj.\nIf Validation Fails:\nThe transaction Ti is aborted\nand\nrestarted because conflicts occurred.\nAdvantages:\nMinimal overhead during transaction execution (no\nlocking or checks)\nWorks well when transaction conflicts are rare.\nDisadvantages:\nIf conflicts are frequent, many transactions maybe\naborted and restarted, wasting resources.\nPhantom Phenomenon: Example:\nW WAYC LASEES\nTransaction T1:Reads allrowsin a table where\nPhantom phenomenon\noccurs\nsalary > 5000.\nconcurrent database systems when a\nTransaction T2: Inserts a new row with salary =\ntransaction retrieves a set of rows\n6000 while T1 is still executing.\nsatisfying a certain condition, and\nWhen T1re-executes the query,itseesan\nanother inserts\nor\nextra row (\"phantom row\") that was not\ndeletes rows that also meet that\npresent earlier.\ncondition.\nThis leads to inconsistent\nquery\nresults because the retrieved data\nchanges during\nexecution.\nTimestamp protocolthat avoid Handle operations:\n1.Read Operation (read_item X):\nphantom phenomena\nA transaction T can read a data item X only if TS(T)\nThe timestamp ordering protocol can avoid the\n(transaction's timestamp) is greater than or equal\nphantom phenomenon by ensuring that\nto the write timestamp (write _Ts) of X.\ntransactions are serialized according to their",
+     "Today's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.\nPhase: Before committing,\nValidation\nsystem checks if the transaction conflicts with\nothers. lf it validation, it commits;\npasses\notherwise,it aborts.\nPerformance: Suitable for low-contention\nenvironments.\n2PL Protocol (Two-Phase Locking)\nApproach:Transactions acquire locks on resources to\nensure no conflicts occur during execution.\nPhases:\nGrowing Phase: Locks are acquired.\nShrinking Phase:Locks are released,and no new locks\ncan be acquired,\nPerformance:Provides strict consistency but may cause\ndelays due to locking contention.\nKey Difference: Validation allows optimistic execution with\na check at the end, while 2PL ensures safety by locking\nthroughoutthe transaction.\nGW Recovery from concurrenttransaction\nThere are various strategies and techniques\nfor handling from\nrecovery concurrent\nRecovery from Concurrent\nrefers to the ensuring\nprocess of\nKEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties",
+     "KEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties\nThe log is essential for theredo and undo\nConsistency, Isolation, Durability)\noperations during recovery,\nsystem crashes or failures that\ndespite\nduring the execution of concurrent\noccur\n2. Undo/Redo Recovery Process from Concurrent Transactions\nBefore and After lmages:\nMechanisms:\nA database keeps track of before and after images of a\nUndo: Reverts any\nincomplete changes made by\nBefore image: The Value of a data item before it is updated.\na transaction before it failed\nAfter image:The value of a data item after it has been\nor was aborted.\nupdated.\nRedo:Re-applies changes\nThese images help determine which actions need to be\nmade by transactions that\nundone orredone.\nwere committed but whose\nchanges were not written to\nthe database due to a failure.\nDuring recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been",
+     "During recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been\nterminated due to a failure.\nRecovery Protocols:\nin\nThe recovery protocols are designed to handle\nin\nscenarios where multiple transactions execute\nconcurrently,such as:\n1. Write-Ahead Logging (WAL):Ensures that\nits\nchanges to the database are first recorded in the\nlog before they are applied to the actual data. This\nhelps in preventing partial updates when a failure\noccurs before a transaction commits/\nSaves the transaction log locally to\nIf any participant replies No,the coordinator\nprepare for possible recovery.\nsends an ABORT request, and all participants abort\nParticipants respond to the coordinator:\nYes (Prepared): If they can commit.\nEach participant: Logs the commit or abort.\nNo (Abort):If they cannot commit.\nReleases any locks held for the transaction.\nPhase 2:Commit/Abort Phase\nBased on the responses:\n> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.",
+     "> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.\nsnapshot of the database's\nIt is a\ncurrent state,taken at a specific point\ntime, which includes information\nin\nabout active transactions and the data\nmodified by them. Checkpoints help in\nlimiting the amount of redo and undo\noperations required during recovery\nTwo phase commit protocol\nThe Two-Phase Commit (2PC) protocol ensures atomicity\nin distributed transactions, ensuring that all participating\nnodes in a transaction either commit or abort together,\neven in the presence of failures.\nPhases of the 2PC Protocol:\nPhase 1:Prepare Phase\nThe coordinatorsends a PREPARE request to all\nparticipating nodes, asking them if they can commit.\nEach participant checks:\nIfit can commit the transaction(e.g.,no resource\nconflicts,all changes can be applied)\nGW Phase 2:Commit/Abort Phase\nEach participant:\nBased on the responses:\nLogs the commit or abort.\nIf all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all participants, and\nrequest\na\nthey commit the transaction.\nIf any participant replies No, the",
+     "If all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all participants, and\nrequest\na\nthey commit the transaction.\nIf any participant replies No, the\ncoordinator sends ABORT\nan\nrequest,and all participants abort\nRecovery Procedure:\nLTEW.ATCLA\nIdentify Transactions to Undo or Redo:\nFirst, identify\nneed to be undone or redone using\nTransactions that were active at the\ntime of failure must be undone\n(rollback).\nTransactions that were committed\nbefore the failure should have their\nchanges redone.\nUndo Phase: Active transactions are rolled back\nbefore images in the transaction log to restore\ndata to its state before the transaction started.\nRedo Phase: For transactions that were committed\nbut did not complete successfully before the crash,\ntheir changes are redone/using the after images from\nthe log to ensure their updates are applied.\nHandling Cascading Aborts:\nCascading aborts occur when one transaction failure leads to the need to abort other transactions\nthat depend on it.\nTo avoid this,protocols like Strict Two-Phase Locking(2PL) ensure that a transaction only reads\ncommitted data,thus preventing such scenarios.\nRecovery mechanisms, like Write-Ahead Logging, also help in ensuring that partial updates are not",
+     "that depend on it.\nTo avoid this,protocols like Strict Two-Phase Locking(2PL) ensure that a transaction only reads\ncommitted data,thus preventing such scenarios.\nRecovery mechanisms, like Write-Ahead Logging, also help in ensuring that partial updates are not\npropagated, and only fully committed transactions are included in the redo phase.\nGranularity on data items and\nmultiple granularity locks\nAll concurrency control techniques\nassume that the database is formed of a\nnumber ofnamed data items.\nA database item could be chosen to be\none of the following:\nA database record ,A field value of a\ndatabase record ,A disk block,A whole\nfile,The whole database\nThe size of data items is often called the data\nitem granularity.\nThe granularity level refers to the size of the data\nitem that a lock applies to, such as a record,\nblock, or file.\nChoosing the right size is important because it\naffects concurrency (how many transactions can\nrun at the same time) and overhead (system\neffort to manage locks).\nTradeoffs in Granularity\nFine Granularity (Small Items\n1.\nlike Records)\nMore Concurrency:Smalleritems\nmean fewer conflicts between\nFor example:If Transaction A locks\nRecord 1,and Transaction B wants\nRecord 2,(in the same block), both\ncan proceed\nHigher Overhead:",
+     "effort to manage locks).\nTradeoffs in Granularity\nFine Granularity (Small Items\n1.\nlike Records)\nMore Concurrency:Smalleritems\nmean fewer conflicts between\nFor example:If Transaction A locks\nRecord 1,and Transaction B wants\nRecord 2,(in the same block), both\ncan proceed\nHigher Overhead:\nMore items mean:\nMore locks to manage.\nMore operations (lock/unlock).\nLarger lock tables, which need more storage.\n2.Coarse Granularity (Large Items like Blocks or Files):Less\nConcurrency:\nLarger items mean more conflicts.\nFor example: If Transaction A locks a block to access\nRecord 1,and Transaction B wants Record 2 （in the same\nblock), Transaction B must wait.\nChoosing the Right Granularity\nLower Overhead:\nIf transactions access a few specific records,fine granularity (record-level) is\nFeweritems mean:\nbetter for higher concurrency.\nFewer locks to\nIf transactions access many records in the same block or file, coarse\nhandle.\ngranularity (block/file-level) is better to reduce overhead.\nSmallerlock\nExample:\ntables and fewer\nFine granularity works well for banking transactions that update specific\noperations.\naccounts\nCoarse granularity is betterfor batch processing, where large amounts of\ndata in a file are read or μp dated.\nMultiple Granularity Level Locking\nProblem with Basic Locking\nfile\nIf a large locks a\n(exclusive lock), small\ntrying individual records\nto access",
+     "data in a file are read or μp dated.\nMultiple Granularity Level Locking\nProblem with Basic Locking\nfile\nIf a large locks a\n(exclusive lock), small\ntrying individual records\nto access\nthat file must wait.\nIf a small transaction locks a record\n(shared lock), it's inefficient for\nto check all individual locks\nsystem\nwhen a large transaction wants to lock\nthe file.\nmultiple granularity level2PL protocol,\nwhere a lock can be requested at any level.\nHowever, additional types of locks will be\nneeded to support such a protocol efficient.\nA granularity hierarchy for illustrating multiple granularity level locking.\n[Diagram] A tree hierarchy showing multiple granularity levels for database locking. Root node is labeled 'db' (database). It branches into file nodes 'f1' and 'f2'. Node 'f1' branches into page nodes 'p11', 'p12', ..., 'p1n'. Node 'f2' branches into page nodes 'p21', 'p22', ..., 'p2m'. Below the page nodes are record nodes: 'p11' connects to 'r111' ... 'r11j'; 'p12' connects to 'r121' ... 'r12j'; 'p1n' connects to 'r1n1' ... 'r1nj'; 'p21' connects to 'r211' ... 'r21k'; 'p22' connects to 'r221' ... 'r22k'; and 'p2m' connects to 'r2m1' ... 'r2mk'.",
+     "To solve this, intention locks were introduced to indicate the type of locks needed for child nodes in a hierarchy (e.g., database -> file -> page -> record).\nTypes of Intention Locks:\nIS (Intention-Shared): Shows the intention to request shared locks on child nodes.\nIX (Intention-Exclusive): Shows the intention to request exclusive locks on child nodes.\nSIX (Shared-Intention-Exclusive): Locks the current node in shared mode but allows exclusive locks on child nodes.\nThe compatibility table of the three intention locks, and the shared and exclusive locks\nRowLabel — IS; IX; S; SIX; X\nIS — IS: Yes; IX: Yes; S: Yes; SIX: Yes; X: No\nIX — IS: Yes; IX: Yes; S: No; SIX: No; X: No\nS — IS: Yes; IX: No; S: Yes; SIX: No; X: No\nSIX — IS: Yes; IX: No; S: No; SIX: No; X: No\nX — IS: No; IX: No; S: No; SIX: No; X: No\nThe multiple granularity locking (M GL) protocol consists of the following rules W\nThe lock compatibility must be adhered to.\n2. The root of the tree must be locked first, in any mode."
+    ],
+    "positions": [
+     23,
+     24,
+     25,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36
+    ],
+    "neighbour": [
+     true,
+     false,
+     true,
+     true,
+     false,
+     true,
+     false,
+     false,
+     true,
+     true,
+     false,
+     true
+    ],
+    "pages": [
+     [
+      44,
+      45
+     ],
+     [
+      45,
+      46,
+      47
+     ],
+     [
+      47,
+      48,
+      49
+     ],
+     [
+      54,
+      55,
+      56
+     ],
+     [
+      56,
+      57,
+      58
+     ],
+     [
+      58,
+      59,
+      60
+     ],
+     [
+      59,
+      60,
+      61
+     ],
+     [
+      61,
+      62,
+      63
+     ],
+     [
+      63,
+      64,
+      65
+     ],
+     [
+      64,
+      65,
+      66,
+      67
+     ],
+     [
+      66,
+      67,
+      68
+     ],
+     [
+      69,
+      70
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, imagine you could let readers keep seeing the “old” version of a row while a writer is busy updating it, and still guarantee that everyone ends up with a consistent view of the database. That’s what Multiversion Concurrency Control does – it keeps multiple snapshots of data around so reads never have to wait for writes, and writes never have to block reads. The magic is that each transaction works with a committed version that’s safe for it, and only when it’s ready to commit does it replace the old version with a new one. This approach not only boosts parallelism, but also eliminates those nasty cascading aborts you saw with strict locking. In short, MVCC lets us have high‑throughput concurrent access while preserving the ACID guarantees we need.",
+     "Alright, Kaustubh, let me walk you through how MVCC actually works under the hood. When a transaction starts, it gets a snapshot timestamp and it only ever sees rows whose *commit* timestamp is older than that snapshot – those are the “old, committed versions.” If the transaction wants to update a row, it doesn’t overwrite the existing tuple; instead it writes a new version with its own commit‑time placeholder and marks the old one as superseded but still readable by anyone whose snapshot is earlier. When the transaction reaches the commit point it first grabs a *certify lock* on every row it has written – this lock guarantees that no other transaction is still reading the old version while we’re about to make the new version official. Once those certify locks are in place, the system flips the new version’s timestamp to the real commit time, discards the old version, and releases all the locks, so readers can now see the fresh data without ever having been blocked. Because readers never have to wait for writers, you get high parallelism, and because writers only ever read committed data, you avoid cascading aborts. Let’s see a concrete scenario: imagine T₁ starts at time 100 and reads a row R with commit‑time 80; meanwhile T₂ starts at time 110, updates R, and creates a new version with a provisional timestamp 110. T₁ continues its work oblivious to T₂’s change, because its snapshot is still at 100. When T₂ finally tries to commit, it acquires the certify lock on R, confirms that no transaction with a snapshot between 80 and 110 is still using the old version (T₁’s snapshot is 100, so it is), and then promotes its new version to commit‑time 120, discarding the old one. Now any transaction that starts after 120 will see the updated R, while T₁ already finished with the consistent view it saw at 100. That’s the essence of MVCC: versioned rows, snapshot timestamps, certify‑lock certification, and a clean hand‑off that keeps reads lock‑free and writes safe.",
+     "So, when you look at what we covered earlier—strict two‑phase locking that forces readers to wait, and timestamp ordering that can abort a transaction the moment it sees a newer write—you’ll see why MVCC is such a game‑changer: it keeps the snapshot timestamps to give each transaction a stable view, yet it only grabs a short‑lived certify lock at commit time, so reads never get blocked and writes only have to coordinate at the very end. That little certify lock is the safety net that makes sure nobody is still hanging on to the old version when we finally promote the new one, which is why MVCC can give us the high throughput we need for modern workloads. Keep that in mind because later we’ll talk about how those version chains interact with recovery and with phantom‑prevention techniques. \n\nQuick check, Kaustubh: what’s the purpose of the certify lock in the MVCC commit phase?"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 13550
+    },
+    "generation_s": 97.1
+   },
+   {
+    "title": "Phantom Phenomenon and Prevention Techniques",
+    "chunks": [
+     "Ensures no shared data between\nand Tj.\nIf Validation Fails:\nThe transaction Ti is aborted\nand\nrestarted because conflicts occurred.\nAdvantages:\nMinimal overhead during transaction execution (no\nlocking or checks)\nWorks well when transaction conflicts are rare.\nDisadvantages:\nIf conflicts are frequent, many transactions maybe\naborted and restarted, wasting resources.\nPhantom Phenomenon: Example:\nW WAYC LASEES\nTransaction T1:Reads allrowsin a table where\nPhantom phenomenon\noccurs\nsalary > 5000.\nconcurrent database systems when a\nTransaction T2: Inserts a new row with salary =\ntransaction retrieves a set of rows\n6000 while T1 is still executing.\nsatisfying a certain condition, and\nWhen T1re-executes the query,itseesan\nanother inserts\nor\nextra row (\"phantom row\") that was not\ndeletes rows that also meet that\npresent earlier.\ncondition.\nThis leads to inconsistent\nquery\nresults because the retrieved data\nchanges during\nexecution.\nTimestamp protocolthat avoid Handle operations:\n1.Read Operation (read_item X):\nphantom phenomena\nA transaction T can read a data item X only if TS(T)\nThe timestamp ordering protocol can avoid the\n(transaction's timestamp) is greater than or equal\nphantom phenomenon by ensuring that\nto the write timestamp (write _Ts) of X.\ntransactions are serialized according to their",
+     "(transaction's timestamp) is greater than or equal\nphantom phenomenon by ensuring that\nto the write timestamp (write _Ts) of X.\ntransactions are serialized according to their\nIf TS(T)< write TS(X), it means Tis trying to read an\ntimestamps.\nHere'show it works: item modified by a newer transaction,so it is\nAssign Timestamps: aborted.\nEach\nIS\nassigned a unique timestamp Ts(T) when\nit\nbegins. This determines its order relative\nto\n2. Write Operation ( write_item X):\nA transaction T can write to X only if\nTS(T) is greater than or equal to the read\ntimestamp (read_Ts) and write\ntimestamp (write_Ts) of X.\nIf TS(T)<read TS(X)or TS(T)< write TS(X),\nT conflicts with a previously completed\ntransaction, so it is aborted.\nRange Queries to Avoid Phantoms:\nTo handle range queries\n(e.g.,\" SELECT WHERE salary > 5000\"), the\nprotocol applies the following:\nLock on ranges of data rather than individual\nrows.\nThe transaction T checks the timestamps of all\nrows that currently exist in the range and also\nprevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protocol ensures that transactions\nserialized in the order of their\nare\nclass\ntimestamps, which avoids inconsistencies",
+     "prevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protocol ensures that transactions\nserialized in the order of their\nare\nclass\ntimestamps, which avoids inconsistencies\ncaused by the insertion or deletion\nof\nrows that match a query condition.\natewa\nAKTUPYQS\nQ.1 Discuss the timestamp ordering protocol for concurrency control. AKTU\nHow does strict timestamp ordering differ from basic timestamp 2023-24\nordering?\nQ.2 How do optimistic concurrency control techniques differ from other AKTU\nconcurrency control techniques? Why they are also called validation 2023-24\nor certification techniques? Discuss the typical phases of an\noptimistic concurrency control method.\nQ.3 Explain TimeStamp Based Concurrency Control technique AKTU\n2021-22\nAKTU PYQS\nQ.4 Explain the Validation Based protocolfor concurrency control AKTU2021-\n22\nQ.5 Whatis phantom phenomena Discuss the timestamp protocol that\nAKTU 2021-\navoid phantom phenomena 22\natew\nAK TU\nB.Tech Ill-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-4\nToday's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.",
+     "KEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties\nThe log is essential for theredo and undo\nConsistency, Isolation, Durability)\noperations during recovery,\nsystem crashes or failures that\ndespite\nduring the execution of concurrent\noccur\n2. Undo/Redo Recovery Process from Concurrent Transactions\nBefore and After lmages:\nMechanisms:\nA database keeps track of before and after images of a\nUndo: Reverts any\nincomplete changes made by\nBefore image: The Value of a data item before it is updated.\na transaction before it failed\nAfter image:The value of a data item after it has been\nor was aborted.\nupdated.\nRedo:Re-applies changes\nThese images help determine which actions need to be\nmade by transactions that\nundone orredone.\nwere committed but whose\nchanges were not written to\nthe database due to a failure.\nDuring recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been",
+     "During recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been\nterminated due to a failure.\nRecovery Protocols:\nin\nThe recovery protocols are designed to handle\nin\nscenarios where multiple transactions execute\nconcurrently,such as:\n1. Write-Ahead Logging (WAL):Ensures that\nits\nchanges to the database are first recorded in the\nlog before they are applied to the actual data. This\nhelps in preventing partial updates when a failure\noccurs before a transaction commits/\nSaves the transaction log locally to\nIf any participant replies No,the coordinator\nprepare for possible recovery.\nsends an ABORT request, and all participants abort\nParticipants respond to the coordinator:\nYes (Prepared): If they can commit.\nEach participant: Logs the commit or abort.\nNo (Abort):If they cannot commit.\nReleases any locks held for the transaction.\nPhase 2:Commit/Abort Phase\nBased on the responses:\n> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.",
+     "> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.\nsnapshot of the database's\nIt is a\ncurrent state,taken at a specific point\ntime, which includes information\nin\nabout active transactions and the data\nmodified by them. Checkpoints help in\nlimiting the amount of redo and undo\noperations required during recovery\nTwo phase commit protocol\nThe Two-Phase Commit (2PC) protocol ensures atomicity\nin distributed transactions, ensuring that all participating\nnodes in a transaction either commit or abort together,\neven in the presence of failures.\nPhases of the 2PC Protocol:\nPhase 1:Prepare Phase\nThe coordinatorsends a PREPARE request to all\nparticipating nodes, asking them if they can commit.\nEach participant checks:\nIfit can commit the transaction(e.g.,no resource\nconflicts,all changes can be applied)\nGW Phase 2:Commit/Abort Phase\nEach participant:\nBased on the responses:\nLogs the commit or abort.\nIf all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all participants, and\nrequest\na\nthey commit the transaction.\nIf any participant replies No, the"
+    ],
+    "positions": [
+     25,
+     26,
+     27,
+     29,
+     30,
+     31
+    ],
+    "neighbour": [
+     true,
+     false,
+     true,
+     true,
+     false,
+     true
+    ],
+    "pages": [
+     [
+      47,
+      48,
+      49
+     ],
+     [
+      49,
+      50,
+      51
+     ],
+     [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+     ],
+     [
+      56,
+      57,
+      58
+     ],
+     [
+      58,
+      59,
+      60
+     ],
+     [
+      59,
+      60,
+      61
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, picture this: you run a query that pulls every employee earning over 5,000, and while it’s scanning the table another transaction sneaks in a new row with a salary of 6,000. When your query finishes, that new “phantom” row shows up in the result set even though it wasn’t there when you started—so the data you read isn’t consistent. That’s the phantom phenomenon, and it can break the guarantees we rely on for correct concurrent execution. Understanding how to prevent those sneaky inserts—or deletes—within a query’s range is why we study phantom‑avoidance techniques now. It’s the missing piece that lets our timestamp and optimistic protocols keep the database both fast and reliable.",
+     "Alright, Kaustubh, let’s dig into *how* the system actually stops those phantom rows from sneaking in. When you run a range query—say, “SELECT * FROM Employees WHERE salary > 5000”—the concurrency‑control protocol doesn’t just lock each individual row it reads; it also places a **predicate lock** on the *condition* itself, essentially saying “no one may insert or delete any tuple that would satisfy salary > 5000 while I’m still working.” In a timestamp‑ordering scheme, each transaction gets a unique start‑time stamp, and before T1 can read the range it checks the **write‑timestamp** of every existing row in that range; if any row has a later write‑timestamp, T1 aborts because a newer transaction has already modified the set. Conversely, when T2 later tries to insert a new employee with a 6000 salary, the system looks at the **read‑timestamp** of the range lock held by T1; because T1’s timestamp is older, T2’s write is considered conflicting and T2 is forced to wait or abort, preserving serializability. If you’re using MVCC, the database will create a new version of the row with a higher commit timestamp, but the query’s snapshot view is anchored to T1’s start timestamp, so that new version is invisible to T1—again no phantom appears. The nuance is that predicate locks can be coarse (locking the whole table) or fine‑grained (locking index intervals), and the choice impacts performance: tighter locks prevent more phantoms but increase contention, while looser locks rely on timestamps and validation to catch conflicts at commit time. So, in practice, you’ll see a combination: the range is locked or its timestamps recorded, the transaction runs, and at the end the system validates that no newer writes have entered the range; if they have, the transaction rolls back and retries, guaranteeing that the result set you saw was a consistent snapshot.",
+     "Alright, Kaustubh, think of what we just covered as the glue that holds together everything else we’ve been building. With strict two‑phase locking we learned to lock individual rows, and with timestamp ordering and MVCC we saw how the system can order actions without holding those locks all the time. The phantom‑avoidance tricks—predicate locks, range‑timestamp checks, and validation at commit—extend those ideas so that even the *set* of rows you read stays stable, which is essential before we move on to optimistic validation and recovery where we rely on those same snapshots to decide whether to roll a transaction back. In short, preventing phantoms lets every concurrency‑control scheme give you a consistent view, no matter whether it’s locking, timestamp‑based, or version‑based. \n\nSo, quick check: when Transaction T2 tries to insert a new employee with a salary of 6,000 while T1 is still running a “salary > 5,000” range query, what does the system do to keep T1’s result set phantom‑free?"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 8173
+    },
+    "generation_s": 62.4
+   },
+   {
+    "title": "Recovery, Checkpoints, and Distributed Commit Protocols",
+    "chunks": [
+     "serializability while allowing\nhigher concurrency.\nVersion Management:\nMultiple versions of a data\nitem X are maintained.\nPhases of MV2PL:\n1.Growing Phase: Transactions\nacquire read, write, and certify\nIn a standard locking scheme,ifa transaction writes to a\ndata item,no other transaction can read or write thatitem\nuntil the first transaction is finished.\nMultiversion 2PL improves this by allowing other\ntransactions to read the old, committed version of the data\nwhile the current transaction writes to a new version.\nlocks. Two Versions of Each Item:\n2.Shrinking Phase: No\nnew\nlocks existing\nacquired;\nare\nlocks are released after the\nCommitted Version: Written by a completed transaction.\nUncommitted Version: Created by the current transaction\nholding the write lock.\nWhile one transaction writes,other transactions can still read\nthe committed version./\nSteps in Multiversion 2PL:\n..Write Lock:\nATE WAY CI\nWhen a transaction T starts writing\nitem X,it creates a new version of x\nOther transactions continue to read the\nold,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\nA certify lock ensures no other transaction\nis reading the old version while T commits.\n3.Replace the Old Version:",
+     "old,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\nA certify lock ensures no other transaction\nis reading the old version while T commits.\n3.Replace the Old Version:\nAfter getting the certify locks, T makes its\nto an\nupdated version the new committed version.\nThe old version is discarded\nRelease Locks:\nOnce done, T releases all locks\nAdvantages:\n1. Concurrent Reads: Other transactions can\ncertify\nread old version while write is\na\nhappening.\n2. Avoids Cascading Aborts: Transactions only\nread committed data, so rollbacks don't\ncause a chain of aborts\nValidation(optimistic) How It Works:(phases)\n1.Read Phase:\nconcurrency control technique\nreads committed data from the\nThis method assumes that conflicts\ndatabase.\nare rare and doesn't check for them\nUpdates are made to a local copy of the data (not the\nwhile transactions are running.\ndatabase).\nInstead, all the checking\nhappens\n2.Validation Phase.\nafter the finishes but\nAfter the transaction finishes,a check is performed to\nbefore it updates the database.\nensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a conflict, the transaction is aborted and\nwithout interference of\nmost",
+     "ensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a conflict, the transaction is aborted and\nwithout interference of\nmost\nrestarted.\ntime.\nGW 3.Write Phase:\nCondition 1:\nIf validation is successful, the updates\nTj's write phase ends before Ti starts its read\nfrom the local copy are written to the\nphase.\ndatabase.\nMeans Ti read data after Tj completed. No\nValidation Rules:\noverlap.\nWhen validating a transaction Ti, the\nCondition 2:\nsystem ensures it doesn't interfere\nTi's write phase starts after Tj's write phase ends,\nwith\nanother Tj\nvalidating). and Ti's read set and Tj's write set don't overlap.\n(committed\nor\nTo avoid conflicts, one of these three Tj and Ti didn't modify or read the same data\nconditions must hold:\nduring their active phases.\nGw Condition 3:\nTj' s read phase ends before Ti's\nends, and Ti's\nread phase\nread/ write sets don't overlap with\nTj's write set.\nEnsures no shared data between\nand Tj.\nIf Validation Fails:\nThe transaction Ti is aborted\nand\nrestarted because conflicts occurred.\nAdvantages:\nMinimal overhead during transaction execution (no\nlocking or checks)\nWorks well when transaction conflicts are rare.\nDisadvantages:",
+     "prevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protocol ensures that transactions\nserialized in the order of their\nare\nclass\ntimestamps, which avoids inconsistencies\ncaused by the insertion or deletion\nof\nrows that match a query condition.\natewa\nAKTUPYQS\nQ.1 Discuss the timestamp ordering protocol for concurrency control. AKTU\nHow does strict timestamp ordering differ from basic timestamp 2023-24\nordering?\nQ.2 How do optimistic concurrency control techniques differ from other AKTU\nconcurrency control techniques? Why they are also called validation 2023-24\nor certification techniques? Discuss the typical phases of an\noptimistic concurrency control method.\nQ.3 Explain TimeStamp Based Concurrency Control technique AKTU\n2021-22\nAKTU PYQS\nQ.4 Explain the Validation Based protocolfor concurrency control AKTU2021-\n22\nQ.5 Whatis phantom phenomena Discuss the timestamp protocol that\nAKTU 2021-\navoid phantom phenomena 22\natew\nAK TU\nB.Tech Ill-Year 5th Semester\nCS IT & CSAIlied\nD BMS: Database Management System\nUNIT -5\nConcurrency control technique\nLecture-4\nToday's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.",
+     "Today's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranularity locks B.Tech, M .Tech( C.S.E.)\nAKTUPY QS\nHow validation differ from 2PL\nValidation(Optimistic Concurrency\nControl)\nApproach: Transactions execute without locking\nresources,assuming conflicts are rare.\nPhase: Before committing,\nValidation\nsystem checks if the transaction conflicts with\nothers. lf it validation, it commits;\npasses\notherwise,it aborts.\nPerformance: Suitable for low-contention\nenvironments.\n2PL Protocol (Two-Phase Locking)\nApproach:Transactions acquire locks on resources to\nensure no conflicts occur during execution.\nPhases:\nGrowing Phase: Locks are acquired.\nShrinking Phase:Locks are released,and no new locks\ncan be acquired,\nPerformance:Provides strict consistency but may cause\ndelays due to locking contention.\nKey Difference: Validation allows optimistic execution with\na check at the end, while 2PL ensures safety by locking\nthroughoutthe transaction.\nGW Recovery from concurrenttransaction\nThere are various strategies and techniques\nfor handling from\nrecovery concurrent\nRecovery from Concurrent\nrefers to the ensuring\nprocess of\nKEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties",
+     "KEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the operations (read, write)\nexecuting concurrently. The goal is to\nchanges made by each transaction.\nand\n(Atom icity,\nmaintain the ACiD properties\nThe log is essential for theredo and undo\nConsistency, Isolation, Durability)\noperations during recovery,\nsystem crashes or failures that\ndespite\nduring the execution of concurrent\noccur\n2. Undo/Redo Recovery Process from Concurrent Transactions\nBefore and After lmages:\nMechanisms:\nA database keeps track of before and after images of a\nUndo: Reverts any\nincomplete changes made by\nBefore image: The Value of a data item before it is updated.\na transaction before it failed\nAfter image:The value of a data item after it has been\nor was aborted.\nupdated.\nRedo:Re-applies changes\nThese images help determine which actions need to be\nmade by transactions that\nundone orredone.\nwere committed but whose\nchanges were not written to\nthe database due to a failure.\nDuring recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been",
+     "During recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncompleted successfully and\nchanges are permanent.\nThe transaction is still\nActive:\nexecution and hasn't yet completed.\nAborted: The transaction has been\nterminated due to a failure.\nRecovery Protocols:\nin\nThe recovery protocols are designed to handle\nin\nscenarios where multiple transactions execute\nconcurrently,such as:\n1. Write-Ahead Logging (WAL):Ensures that\nits\nchanges to the database are first recorded in the\nlog before they are applied to the actual data. This\nhelps in preventing partial updates when a failure\noccurs before a transaction commits/\nSaves the transaction log locally to\nIf any participant replies No,the coordinator\nprepare for possible recovery.\nsends an ABORT request, and all participants abort\nParticipants respond to the coordinator:\nYes (Prepared): If they can commit.\nEach participant: Logs the commit or abort.\nNo (Abort):If they cannot commit.\nReleases any locks held for the transaction.\nPhase 2:Commit/Abort Phase\nBased on the responses:\n> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.",
+     "> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction.\n2.Checkpoints:\nA checkpoint in D BMS is a mechanism\nneeded during\nreduce the work\nto\ndatabase recovery after a failure.\nsnapshot of the database's\nIt is a\ncurrent state,taken at a specific point\ntime, which includes information\nin\nabout active transactions and the data\nmodified by them. Checkpoints help in\nlimiting the amount of redo and undo\noperations required during recovery\nTwo phase commit protocol\nThe Two-Phase Commit (2PC) protocol ensures atomicity\nin distributed transactions, ensuring that all participating\nnodes in a transaction either commit or abort together,\neven in the presence of failures.\nPhases of the 2PC Protocol:\nPhase 1:Prepare Phase\nThe coordinatorsends a PREPARE request to all\nparticipating nodes, asking them if they can commit.\nEach participant checks:\nIfit can commit the transaction(e.g.,no resource\nconflicts,all changes can be applied)\nGW Phase 2:Commit/Abort Phase\nEach participant:\nBased on the responses:\nLogs the commit or abort.\nIf all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all participants, and\nrequest\na\nthey commit the transaction.\nIf any participant replies No, the",
+     "If all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all participants, and\nrequest\na\nthey commit the transaction.\nIf any participant replies No, the\ncoordinator sends ABORT\nan\nrequest,and all participants abort\nRecovery Procedure:\nLTEW.ATCLA\nIdentify Transactions to Undo or Redo:\nFirst, identify\nneed to be undone or redone using\nTransactions that were active at the\ntime of failure must be undone\n(rollback).\nTransactions that were committed\nbefore the failure should have their\nchanges redone.\nUndo Phase: Active transactions are rolled back\nbefore images in the transaction log to restore\ndata to its state before the transaction started.\nRedo Phase: For transactions that were committed\nbut did not complete successfully before the crash,\ntheir changes are redone/using the after images from\nthe log to ensure their updates are applied.\nHandling Cascading Aborts:\nCascading aborts occur when one transaction failure leads to the need to abort other transactions\nthat depend on it.\nTo avoid this,protocols like Strict Two-Phase Locking(2PL) ensure that a transaction only reads\ncommitted data,thus preventing such scenarios.\nRecovery mechanisms, like Write-Ahead Logging, also help in ensuring that partial updates are not"
+    ],
+    "positions": [
+     22,
+     23,
+     24,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32
+    ],
+    "neighbour": [
+     true,
+     false,
+     true,
+     true,
+     false,
+     false,
+     false,
+     false,
+     true
+    ],
+    "pages": [
+     [
+      42,
+      43,
+      44
+     ],
+     [
+      44,
+      45
+     ],
+     [
+      45,
+      46,
+      47
+     ],
+     [
+      50,
+      51,
+      52,
+      53,
+      54,
+      55
+     ],
+     [
+      54,
+      55,
+      56
+     ],
+     [
+      56,
+      57,
+      58
+     ],
+     [
+      58,
+      59,
+      60
+     ],
+     [
+      59,
+      60,
+      61
+     ],
+     [
+      61,
+      62,
+      63
+     ]
+    ],
+    "beats": [
+     "Alright, Kaustubh, now that we’ve seen how locking and versioning let many transactions run at once, we have to ask what happens when the system crashes right in the middle of all that activity. That’s where recovery, checkpoints, and the two‑phase commit protocol come into play—they’re the safety net that makes sure the database can bounce back to a consistent state and that distributed updates either all succeed or all roll back together. Think of checkpoints as snapshots that limit how much work we need to redo or undo after a failure, and the commit protocol as the handshake that guarantees atomicity across multiple sites. Understanding these mechanisms is crucial because without them, even the smartest concurrency control would be useless the moment a power outage hits.",
+     "Alright, Kaustubh, picture this: the system crashes right after a transaction T₁ has written a new version of account A but before it has logged the commit. Because we’re using write‑ahead logging, the log already contains a “before‑image” of A and a “redo” record for the new value, even though the commit record is missing. When the database restarts, the recovery manager scans the log backward, sees that T₁’s commit isn’t there, and therefore treats T₁ as an unfinished transaction—it uses the before‑image to undo the change, restoring A to its old balance. At the same time, any transaction T₂ that did manage to commit before the crash will have its redo records applied, so its updates are re‑applied to the database. To keep this scan from having to walk through the entire log every time, we periodically take a checkpoint: we write a snapshot of the current data pages and record in the log the list of active transactions at that moment, so on recovery we only need to process log entries after the latest checkpoint. Now, imagine T₁ is actually a distributed transaction that updates a bank account on Server X and a loan record on Server Y; the coordinator runs the two‑phase commit. In the prepare phase each server writes a “prepare‑ok” entry to its own log and replies yes; if the crash happens before the coordinator can broadcast the final COMMIT, both servers will, upon restart, look at their logs, see the prepare record but no commit, and automatically roll back the tentative changes, guaranteeing atomicity across sites. This combination of WAL, checkpoints, and the two‑phase commit protocol is what lets the system recover to a consistent state without losing any committed work or leaving half‑done updates dangling.",
+     "So, when you look back at locking, timestamps, MVCC, and even the optimistic validation phases, you’ll see they’re all about letting transactions interleave safely—but none of that helps if the machine powers off right in the middle of the dance. That’s why recovery, checkpoints, and the two‑phase commit are the glue that holds everything together: they let the system pick up exactly where it left off, guarantee that every distributed update either fully happens or fully rolls back, and keep the high‑concurrency tricks we’ve been mastering from turning into a mess after a crash. In short, without these safety mechanisms, all the clever concurrency control we’ve studied would be meaningless the moment a failure occurs. Got it, Kaustubh—can you tell me what the recovery manager does with a transaction that has a “prepare‑ok” log entry but no final commit record?"
+    ],
+    "teacher_tokens": {
+     "openai/gpt-oss-120b": 10572
+    },
+    "generation_s": 82.5
+   }
+  ],
+  "planner_tokens": {
+   "openai/gpt-oss-20b": 4402
+  }
+ },
+ "scores": {
+  "sections": [
+   {
+    "title": "Fundamentals of Locking Mechanisms",
+    "chunks": 10,
+    "neighbours": 5,
+    "relevant_positions": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "precision": 0.6,
+    "direct_precision": 0.8,
+    "neighbour_precision": 0.4,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       12,
+       13,
+       14,
+       15
+      ],
+      "neighbour": true,
+      "start": "store the information on which transactions hold locks\non the item\nTwo-Phase Locking protocol If lock conversion is allo"
+     },
+     {
+      "page": [
+       18,
+       19,
+       20,
+       21
+      ],
+      "neighbour": true,
+      "start": "wait, even though T is done with X; schedule that is permitted is serializable),\nconversely, if Y is locked earlier than"
+     },
+     {
+      "page": [
+       20,
+       21,
+       22,
+       23
+      ],
+      "neighbour": false,
+      "start": "B.Tech, M .Tech( C.S.E.)\nMVcC protocol\nAKTU PY QS\nTwo-Phase Locking (2PL) Variants 3.Strict 2PL:\n1.Basic 2PL:\nTransactio"
+     },
+     {
+      "page": [
+       23,
+       24,
+       25
+      ],
+      "neighbour": true,
+      "start": "timestamps to order transaction execution for an ordering do not use locks;\nequivalent serial schedule. hence, deadlocks"
+     }
+    ],
+    "precision_reason": "0.60 — 6/10 chunks relevant (direct 4/5, neighbours 2/5). Left out: Chunks 7-10 cover Two-Phase Locking protocols, variants, and Timestamp Ordering, which are distinct topics from the fundamental locking mechanisms (binary, shared/exclusive, conversion) covered in chunks 1-6.",
+    "faithfulness": 1.0,
+    "accuracy": 0.9285714285714286,
+    "from_notes": 0.6428571428571429,
+    "sentence_counts": {
+     "notes": 9,
+     "own": 4,
+     "contradicts": 0,
+     "wrong": 1,
+     "none": 2,
+     "unlabeled": 0
+    },
+    "contradictions": [],
+    "wrong": [
+     {
+      "sentence": "Only after T2 writes and calls `unlock(A)` does the lock become free again, allowing any other transaction to proceed – and because each transaction obeyed the grow‑then‑shrink pattern, we’ve avoided lost updates, dirty reads, and even deadlocks.",
+      "reason": "The sentence claims that following the grow-then-shrink pattern (2PL) avoids deadlocks. The notes explicitly state that Basic 2PL can result in deadlocks (showing a deadlock example) and that Conservative 2PL avoids deadlocks due to pre-locking, not the basic 2PL protocol itself. Additionally, 2PL does not prevent dirty reads (only Strict/Rigorous 2PL does)."
+     }
+    ],
+    "depth": 1.0,
+    "depth_reason": "The response strongly aligns with the evaluation steps. It explains the mechanism and reasoning behind locking (preventing anomalies, ensuring serializability) rather than just defining terms. It provides a detailed, concrete scenario involving transactions T1 and T2 with specific operations (read_lock, write_lock, unlock) and state changes. It covers nuances such as lock conversion (shared to exclusive) and the two-phase locking rule (growing vs. shrinking phases). The technical terminology is accurate, and the content is specific to the topic, avoiding vague generalities. The conversational tone and direct address to the student are handled well without penalty.",
+    "judge_tokens": 0
+   },
+   {
+    "title": "Two-Phase Locking (2PL) and its Variants",
+    "chunks": 10,
+    "neighbours": 5,
+    "relevant_positions": [
+     6,
+     7,
+     8,
+     9,
+     21,
+     22,
+     23
+    ],
+    "precision": 0.7,
+    "direct_precision": 0.8,
+    "neighbour_precision": 0.6,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       39,
+       40,
+       41
+      ],
+      "neighbour": true,
+      "start": "(say Xi) specifically for T: X1: write_TS=5,read_TS=10.\nwrite_ TS(Xj)= TS(T) X2: write_TS=15,read_TS=20\n(the timestamp o"
+     },
+     {
+      "page": [
+       69,
+       70
+      ],
+      "neighbour": true,
+      "start": "To solve this, intention locks were introduced to indicate the type of locks needed for child nodes in a hierarchy (e.g."
+     },
+     {
+      "page": [
+       70,
+       71,
+       72
+      ],
+      "neighbour": false,
+      "start": "The multiple granularity locking (M GL) protocol consists of the following rules W\nThe lock compatibility must be adhere"
+     }
+    ],
+    "precision_reason": "0.70 — 7/10 chunks relevant (direct 4/5, neighbours 3/5). Left out: Chunks 5, 9, and 10 discuss Timestamp Ordering, Intention Locks, and Multiple Granularity Locking respectively, which are distinct concurrency control techniques separate from the 2PL protocol and its specific variants (Strict, Conservative, MV2PL, Optimistic) covered in the selected chunks.",
+    "faithfulness": 1.0,
+    "accuracy": 1.0,
+    "from_notes": 0.7857142857142857,
+    "sentence_counts": {
+     "notes": 11,
+     "own": 3,
+     "contradicts": 0,
+     "wrong": 0,
+     "none": 7,
+     "unlabeled": 0
+    },
+    "contradictions": [],
+    "wrong": [],
+    "depth": 0.8,
+    "depth_reason": "The response effectively explains the mechanism (growing/shrinking phases) and provides a concrete scenario with transactions T1 and T2 to illustrate conflict resolution and serializability. It accurately defines the protocol and its guarantees. However, it falls short on the 'nuances' criterion (Step 3) by only briefly mentioning variants like strict and conservative 2PL without explaining their specific trade-offs or how they differ in mechanism from basic 2PL, which was a key part of the requested section title.",
+    "judge_tokens": 0
+   },
+   {
+    "title": "Timestamp Ordering Protocols",
+    "chunks": 11,
+    "neighbours": 6,
+    "relevant_positions": [
+     12,
+     13,
+     14,
+     15,
+     16,
+     18,
+     19,
+     26
+    ],
+    "precision": 0.7272727272727273,
+    "direct_precision": 0.8,
+    "neighbour_precision": 0.6666666666666666,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       33,
+       34,
+       35
+      ],
+      "neighbour": true,
+      "start": "Multi-version\nconcurrency control technique\nMuitiversion Concurrency\nControl (MVCC) maintains\nmultiple versions of data "
+     },
+     {
+      "page": [
+       50,
+       51,
+       52,
+       53,
+       54,
+       55
+      ],
+      "neighbour": false,
+      "start": "prevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protoco"
+     },
+     {
+      "page": [
+       54,
+       55,
+       56
+      ],
+      "neighbour": true,
+      "start": "Today's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranulari"
+     }
+    ],
+    "precision_reason": "0.73 — 8/11 chunks relevant (direct 4/5, neighbours 4/6). Left out: Chunks 6, 10, and 11 are excluded because they focus on MVCC generalities, exam questions, validation/optimistic concurrency, 2PL, and recovery, which are distinct from the specific Timestamp Ordering Protocols (Basic, Strict, Thomas's Write Rule, and Phantom handling) covered in the selected chunks.",
+    "faithfulness": 1.0,
+    "accuracy": 1.0,
+    "from_notes": 0.6842105263157895,
+    "sentence_counts": {
+     "notes": 13,
+     "own": 6,
+     "contradicts": 0,
+     "wrong": 0,
+     "none": 2,
+     "unlabeled": 0
+    },
+    "contradictions": [],
+    "wrong": [],
+    "depth": 1.0,
+    "depth_reason": "The response strongly aligns with the evaluation steps. It explains the mechanism (how timestamps determine read/write validity) and the reasoning (avoiding deadlocks, ensuring serializability). It provides a detailed concrete example with specific transactions (T1, T2, T3) and timestamp values (5, 10, 8), walking through the logic step-by-step. It covers nuances such as Thomas's Write Rule, cascading rollbacks, and strict timestamp ordering. The technical terms are used accurately, and the content is specific to the topic rather than generic.",
+    "judge_tokens": 0
+   },
+   {
+    "title": "Multiversion Concurrency Control (MVCC)",
+    "chunks": 12,
+    "neighbours": 7,
+    "relevant_positions": [
+     23
+    ],
+    "precision": 0.08333333333333333,
+    "direct_precision": 0.0,
+    "neighbour_precision": 0.14285714285714285,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       45,
+       46,
+       47
+      ],
+      "neighbour": false,
+      "start": "ensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a"
+     },
+     {
+      "page": [
+       47,
+       48,
+       49
+      ],
+      "neighbour": true,
+      "start": "Ensures no shared data between\nand Tj.\nIf Validation Fails:\nThe transaction Ti is aborted\nand\nrestarted because conflict"
+     },
+     {
+      "page": [
+       54,
+       55,
+       56
+      ],
+      "neighbour": true,
+      "start": "Today's Target\nRecovery from concurrent transaction\nBy PRAGYA RAJVANSHI\nGranularity on data items and multiple\ngranulari"
+     },
+     {
+      "page": [
+       56,
+       57,
+       58
+      ],
+      "neighbour": false,
+      "start": "KEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the oper"
+     },
+     {
+      "page": [
+       58,
+       59,
+       60
+      ],
+      "neighbour": true,
+      "start": "During recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncomplet"
+     },
+     {
+      "page": [
+       59,
+       60,
+       61
+      ],
+      "neighbour": false,
+      "start": "> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction."
+     },
+     {
+      "page": [
+       61,
+       62,
+       63
+      ],
+      "neighbour": false,
+      "start": "If all participants y Yes, the\nreply\nReleases any locks held for the transaction.\ncoordinator sends COMMIT\na\nto all part"
+     },
+     {
+      "page": [
+       63,
+       64,
+       65
+      ],
+      "neighbour": true,
+      "start": "that depend on it.\nTo avoid this,protocols like Strict Two-Phase Locking(2PL) ensure that a transaction only reads\ncommi"
+     },
+     {
+      "page": [
+       64,
+       65,
+       66,
+       67
+      ],
+      "neighbour": true,
+      "start": "effort to manage locks).\nTradeoffs in Granularity\nFine Granularity (Small Items\n1.\nlike Records)\nMore Concurrency:Smalle"
+     },
+     {
+      "page": [
+       66,
+       67,
+       68
+      ],
+      "neighbour": false,
+      "start": "data in a file are read or μp dated.\nMultiple Granularity Level Locking\nProblem with Basic Locking\nfile\nIf a large locks"
+     },
+     {
+      "page": [
+       69,
+       70
+      ],
+      "neighbour": true,
+      "start": "To solve this, intention locks were introduced to indicate the type of locks needed for child nodes in a hierarchy (e.g."
+     }
+    ],
+    "precision_reason": "0.08 — 1/12 chunks relevant (direct 0/5, neighbours 1/7). Left out: Chunk 1 describes the commit phase of Multiversion Concurrency Control (MVCC) involving certify locks and version replacement, whereas the other chunks cover Optimistic Concurrency Control, Recovery, Timestamps, and Granularity Locking.",
+    "faithfulness": 1.0,
+    "accuracy": 1.0,
+    "from_notes": 0.4375,
+    "sentence_counts": {
+     "notes": 7,
+     "own": 9,
+     "contradicts": 0,
+     "wrong": 0,
+     "none": 3,
+     "unlabeled": 0
+    },
+    "contradictions": [],
+    "wrong": [],
+    "depth": 0.9,
+    "depth_reason": "The response strongly aligns with the evaluation steps. It explains the mechanism (snapshot timestamps, version chains, certify locks) and the 'why' (avoiding cascading aborts, high throughput). It provides a detailed concrete example with specific timestamps (T1 at 100, T2 at 110, commit at 120) and walks through the steps of reading, updating, and committing. It covers nuances by comparing MVCC to strict 2PL and timestamp ordering, and accurately describes the role of the certify lock in preventing readers from seeing inconsistent states during the version promotion. The tone is conversational and addresses the student by name as requested, without being penalized for style.",
+    "judge_tokens": 0
+   },
+   {
+    "title": "Phantom Phenomenon and Prevention Techniques",
+    "chunks": 6,
+    "neighbours": 4,
+    "relevant_positions": [
+     25,
+     26,
+     27
+    ],
+    "precision": 0.5,
+    "direct_precision": 0.5,
+    "neighbour_precision": 0.5,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       56,
+       57,
+       58
+      ],
+      "neighbour": true,
+      "start": "KEY POINTS\nconsistency of a database system after a\nfailure, where multiple transactions were\nA log records all the oper"
+     },
+     {
+      "page": [
+       58,
+       59,
+       60
+      ],
+      "neighbour": false,
+      "start": "During recovery, transactions can be\nhelp\nvarious states, which\ndetermining the recovery actions:\nCommitted: has\ncomplet"
+     },
+     {
+      "page": [
+       59,
+       60,
+       61
+      ],
+      "neighbour": true,
+      "start": "> If all participants reply Yes,\ncoordinator sends COMMIT\na\nrequest to all participants,and they\ncommit the transaction."
+     }
+    ],
+    "precision_reason": "0.50 — 3/6 chunks relevant (direct 1/2, neighbours 2/4). Left out: Chunks 4, 5, and 6 discuss recovery mechanisms (logs, undo/redo, checkpoints) and the Two-Phase Commit protocol, which are distinct from the phantom phenomenon and timestamp-based prevention techniques covered in the section.",
+    "faithfulness": 1.0,
+    "accuracy": 1.0,
+    "from_notes": 0.5,
+    "sentence_counts": {
+     "notes": 7,
+     "own": 7,
+     "contradicts": 0,
+     "wrong": 0,
+     "none": 2,
+     "unlabeled": 0
+    },
+    "contradictions": [],
+    "wrong": [],
+    "depth": 0.9,
+    "depth_reason": "The response strongly aligns with the evaluation steps. It explains the mechanism (predicate locks, timestamp checks, MVCC snapshots) and the 'why' (preserving serializability and consistent views). It provides a concrete, detailed example with specific values (salary > 5000, insert 6000) and walks through the conflict resolution steps. It covers nuances such as the trade-off between coarse and fine-grained locking and the difference between locking and timestamp-based approaches. The technical terms are used accurately. The conversational style and direct address to the student are appropriate and not penalized.",
+    "judge_tokens": 0
+   },
+   {
+    "title": "Recovery, Checkpoints, and Distributed Commit Protocols",
+    "chunks": 9,
+    "neighbours": 4,
+    "relevant_positions": [
+     28,
+     29,
+     30,
+     31,
+     32
+    ],
+    "precision": 0.5555555555555556,
+    "direct_precision": 0.8,
+    "neighbour_precision": 0.25,
+    "irrelevant_chunks": [
+     {
+      "page": [
+       42,
+       43,
+       44
+      ],
+      "neighbour": true,
+      "start": "serializability while allowing\nhigher concurrency.\nVersion Management:\nMultiple versions of a data\nitem X are maintained"
+     },
+     {
+      "page": [
+       44,
+       45
+      ],
+      "neighbour": false,
+      "start": "old,committed version.\n2.Commit Phase (Certify Lock):\nBefore T can commit, it must get a\nlock for all items it updated.\n"
+     },
+     {
+      "page": [
+       45,
+       46,
+       47
+      ],
+      "neighbour": true,
+      "start": "ensure that its updates won't conflict with other\nIt's called \"optimistic\" because\nit\nproceed\nassumes can p\nIf there's a"
+     },
+     {
+      "page": [
+       50,
+       51,
+       52,
+       53,
+       54,
+       55
+      ],
+      "neighbour": true,
+      "start": "prevents new rows from being inserted into\nthe range by conflicting transactions.\nEnsuring Serializ ability:\nThe protoco"
+     }
+    ],
+    "precision_reason": "0.56 — 5/9 chunks relevant (direct 4/5, neighbours 1/4). Left out: Chunks 1-4 focus on concurrency control techniques (MV2PL, Optimistic, Timestamp) rather than the specific recovery, checkpoint, and distributed commit protocols requested.",
+    "faithfulness": 0.9333333333333333,
+    "accuracy": 0.9333333333333333,
+    "from_notes": 0.7333333333333333,
+    "sentence_counts": {
+     "notes": 11,
+     "own": 3,
+     "contradicts": 1,
+     "wrong": 0,
+     "none": 1,
+     "unlabeled": 0
+    },
+    "contradictions": [
+     {
+      "sentence": "In the prepare phase each server writes a “prepare‑ok” entry to its own log and replies yes; if the crash happens before the coordinator can broadcast the final COMMIT, both servers will, upon restart, look at their logs, see the prepare record but no commit, and automatically roll back the tentative changes, guaranteeing atomicity across sites.",
+      "reason": "The notes state that in Phase 2, if all participants reply Yes, the coordinator sends COMMIT. They do not state that servers automatically roll back if the commit is missing after a crash; standard 2PC recovery involves the coordinator checking the log to decide whether to commit or abort, not the participants independently rolling back based solely on a missing commit record (which could lead to inconsistency if the coordinator actually intended to commit)."
+     }
+    ],
+    "wrong": [],
+    "depth": 0.9,
+    "depth_reason": "The response strongly aligns with the evaluation steps. It explains the mechanisms (WAL, checkpoints, 2PC) and their reasons (crash consistency, atomicity) rather than just definitions. It provides a concrete, detailed scenario involving specific transactions (T1, T2), servers (X, Y), and log states (before-image, prepare-ok) to illustrate the recovery process. It covers nuances such as the distinction between undoing uncommitted work and redoing committed work, and the specific behavior of distributed transactions during a crash. The technical terminology is accurate, and the conversational style is appropriate for the context.",
+    "judge_tokens": 0
+   }
+  ],
+  "errors": [],
+  "coverage": {
+   "score": 0.507070707070707,
+   "per_golden": {
+    "dbms_u5-001": {
+     "coverage": 0.8571428571428571,
+     "stated": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "missed": [
+      0
+     ],
+     "contradicted": [],
+     "sections": [
+      "Fundamentals of Locking Mechanisms"
+     ]
+    },
+    "dbms_u5-002": {
+     "coverage": 1.0,
+     "stated": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "missed": [],
+     "contradicted": [],
+     "sections": [
+      "Fundamentals of Locking Mechanisms",
+      "Two-Phase Locking (2PL) and its Variants"
+     ]
+    },
+    "dbms_u5-003": {
+     "coverage": 0.0,
+     "stated": [],
+     "missed": [
+      0,
+      1,
+      2
+     ],
+     "contradicted": [],
+     "sections": []
+    },
+    "dbms_u5-004": {
+     "coverage": 1.0,
+     "stated": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "missed": [],
+     "contradicted": [],
+     "sections": [
+      "Phantom Phenomenon and Prevention Techniques"
+     ]
+    },
+    "dbms_u5-005": {
+     "coverage": 0.6666666666666666,
+     "stated": [
+      1,
+      2
+     ],
+     "missed": [
+      0
+     ],
+     "contradicted": [],
+     "sections": [
+      "Multiversion Concurrency Control (MVCC)"
+     ]
+    },
+    "dbms_u5-006": {
+     "coverage": 1.0,
+     "stated": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "missed": [],
+     "contradicted": [],
+     "sections": [
+      "Fundamentals of Locking Mechanisms"
+     ]
+    },
+    "dbms_u5-007": {
+     "coverage": 0.0,
+     "stated": [],
+     "missed": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "contradicted": [],
+     "sections": []
+    },
+    "dbms_u5-008": {
+     "coverage": 0.7272727272727273,
+     "stated": [
+      0,
+      1,
+      3,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "missed": [
+      2,
+      4,
+      5
+     ],
+     "contradicted": [],
+     "sections": [
+      "Timestamp Ordering Protocols"
+     ]
+    },
+    "dbms_u5-009": {
+     "coverage": 0.6,
+     "stated": [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7
+     ],
+     "missed": [
+      4,
+      5,
+      8,
+      9
+     ],
+     "contradicted": [],
+     "sections": [
+      "Recovery, Checkpoints, and Distributed Commit Protocols"
+     ]
+    },
+    "dbms_u5-010": {
+     "coverage": 0.5,
+     "stated": [
+      3,
+      4,
+      5
+     ],
+     "missed": [
+      0,
+      1,
+      2
+     ],
+     "contradicted": [],
+     "sections": [
+      "Multiversion Concurrency Control (MVCC)"
+     ]
+    },
+    "dbms_u5-011": {
+     "coverage": 0.2857142857142857,
+     "stated": [
+      0,
+      1
+     ],
+     "missed": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "contradicted": [],
+     "sections": [
+      "Timestamp Ordering Protocols"
+     ]
+    },
+    "dbms_u5-012": {
+     "coverage": 0.8333333333333334,
+     "stated": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "missed": [
+      5
+     ],
+     "contradicted": [],
+     "sections": [
+      "Recovery, Checkpoints, and Distributed Commit Protocols"
+     ]
+    },
+    "dbms_u5-013": {
+     "coverage": 0.0,
+     "stated": [],
+     "missed": [
+      0,
+      1,
+      2
+     ],
+     "contradicted": [],
+     "sections": []
+    },
+    "dbms_u5-014": {
+     "coverage": 0.0,
+     "stated": [],
+     "missed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "contradicted": [],
+     "sections": []
+    },
+    "dbms_u5-015": {
+     "coverage": 0.0,
+     "stated": [],
+     "missed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "contradicted": [],
+     "sections": []
+    },
+    "dbms_u5-016": {
+     "coverage": 0.8571428571428571,
+     "stated": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+     ],
+     "missed": [
+      3
+     ],
+     "contradicted": [],
+     "sections": [
+      "Timestamp Ordering Protocols"
+     ]
+    },
+    "dbms_u5-017": {
+     "coverage": 0.5,
+     "stated": [
+      3,
+      4,
+      5,
+      6
+     ],
+     "missed": [
+      0,
+      1,
+      2,
+      7
+     ],
+     "contradicted": [],
+     "sections": [
+      "Timestamp Ordering Protocols"
+     ]
+    },
+    "dbms_u5-018": {
+     "coverage": 0.3,
+     "stated": [
+      5,
+      6,
+      7
+     ],
+     "missed": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      8,
+      9
+     ],
+     "contradicted": [],
+     "sections": [
+      "Fundamentals of Locking Mechanisms",
+      "Two-Phase Locking (2PL) and its Variants"
+     ]
+    }
+   }
+  },
+  "miss_diagnosis": {
+   "dbms_u5-001": [
+    {
+     "claim": "A lock is a variable.",
+     "why": "right section had it, not taught",
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ]
+    }
+   ],
+   "dbms_u5-002": [],
+   "dbms_u5-003": [
+    {
+     "claim": "Data item granularity is the size of the data item that a lock applies to, such as a record, a disk block, a file or the whole database.",
+     "why": "right section had it, not taught",
+     "pages": [
+      49,
+      50,
+      51,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+     ]
+    },
+    {
+     "claim": "Choosing the right granularity is important because it affects concurrency, i.e. how many transactions can run at the same time.",
+     "why": "only in an off-topic section",
+     "pages": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+     ]
+    },
+    {
+     "claim": "Choosing the right granularity also affects overhead, i.e. the system effort needed to manage locks.",
+     "why": "only in an off-topic section",
+     "pages": [
+      63,
+      64,
+      65,
+      66,
+      67,
+      68
+     ]
+    }
+   ],
+   "dbms_u5-004": [],
+   "dbms_u5-005": [
+    {
+     "claim": "A certify lock is the third type of lock that multiversion two-phase locking (MV2PL) adds to read and write locks.",
+     "why": "right section had it, not taught",
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ]
+    }
+   ],
+   "dbms_u5-006": [],
+   "dbms_u5-007": [
+    {
+     "claim": "Under two-phase locking, a transaction T may not be able to release an item X after it is done with it if transaction T must lock another item Y later.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+     ]
+    },
+    {
+     "claim": "Alternatively, transaction T must lock item Y before transaction T needs it so that transaction T can release item X.",
+     "why": "right section had it, not taught",
+     "pages": [
+      16,
+      17,
+      18
+     ]
+    },
+    {
+     "claim": "Other transactions that want item X are forced to wait even though transaction T is done with item X.",
+     "why": "right section had it, not taught",
+     "pages": [
+      10,
+      11,
+      12,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+     ]
+    },
+    {
+     "claim": "Other transactions that want item Y are forced to wait even though transaction T is not yet using item Y.",
+     "why": "right section had it, not taught",
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ]
+    },
+    {
+     "claim": "This is the price for guaranteeing serializability of all schedules without having to check the schedules themselves.",
+     "why": "right section had it, not taught",
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ]
+    }
+   ],
+   "dbms_u5-008": [
+    {
+     "claim": "Thomas's write rule does not enforce conflict serializability.",
+     "why": "right section had it, not taught",
+     "pages": [
+      31,
+      32,
+      33
+     ]
+    },
+    {
+     "claim": "When transaction T issues write_item(X) and read_TS(X) > TS(T), transaction T is rolled back.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      28,
+      31,
+      32,
+      33,
+      49,
+      50,
+      51
+     ]
+    },
+    {
+     "claim": "When transaction T issues write_item(X) and read_TS(X) > TS(T), the operation is rejected.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      28,
+      31,
+      32,
+      33,
+      37,
+      38,
+      39,
+      40,
+      41,
+      49,
+      50,
+      51
+     ]
+    }
+   ],
+   "dbms_u5-009": [
+    {
+     "claim": "If all participants reply Yes, the coordinator sends COMMIT.",
+     "why": "right section had it, not taught",
+     "pages": [
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+     ]
+    },
+    {
+     "claim": "The participants commit after receiving COMMIT.",
+     "why": "right section had it, not taught",
+     "pages": [
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+     ]
+    },
+    {
+     "claim": "Each participant logs the commit or abort.",
+     "why": "right section had it, not taught",
+     "pages": [
+      58,
+      59,
+      60,
+      61
+     ]
+    },
+    {
+     "claim": "Each participant releases any locks held for the transaction.",
+     "why": "right section had it, not taught",
+     "pages": [
+      44,
+      45,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+     ]
+    }
+   ],
+   "dbms_u5-010": [
+    {
+     "claim": "Strict 2PL releases all exclusive (write) locks only after the transaction commits or aborts.",
+     "why": "right section had it, not taught",
+     "pages": [
+      20,
+      21,
+      22,
+      23,
+      31,
+      32,
+      33
+     ]
+    },
+    {
+     "claim": "A transaction only reads committed data under Strict 2PL.",
+     "why": "no known chunk states it",
+     "pages": []
+    },
+    {
+     "claim": "Reading only committed data avoids cascading rollbacks.",
+     "why": "right section had it, not taught",
+     "pages": [
+      44,
+      45
+     ]
+    }
+   ],
+   "dbms_u5-011": [
+    {
+     "claim": "Conservative 2PL acquires all locks before the transaction begins execution.",
+     "why": "only in an off-topic section",
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ]
+    },
+    {
+     "claim": "Acquiring all locks before execution avoids deadlocks.",
+     "why": "only in an off-topic section",
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ]
+    },
+    {
+     "claim": "Acquiring all locks before execution can cause delays due to pre-locking.",
+     "why": "no known chunk states it",
+     "pages": []
+    },
+    {
+     "claim": "Strict timestamp ordering does not cause deadlock.",
+     "why": "right section had it, not taught",
+     "pages": [
+      23,
+      24,
+      25,
+      26,
+      27
+     ]
+    },
+    {
+     "claim": "A transaction T waits for another transaction T' only if TS(T) > TS(T').",
+     "why": "right section had it, not taught",
+     "pages": [
+      31,
+      32,
+      33
+     ]
+    }
+   ],
+   "dbms_u5-012": [
+    {
+     "claim": "The after image is the value of a data item after it has been updated.",
+     "why": "right section had it, not taught",
+     "pages": [
+      56,
+      57,
+      58
+     ]
+    }
+   ],
+   "dbms_u5-013": [
+    {
+     "claim": "IX is not compatible with S.",
+     "why": "only in an off-topic section",
+     "pages": [
+      69,
+      70
+     ]
+    },
+    {
+     "claim": "IS is compatible with SIX.",
+     "why": "only in an off-topic section",
+     "pages": [
+      69,
+      70
+     ]
+    },
+    {
+     "claim": "IS is compatible with every lock mode except X.",
+     "why": "only in an off-topic section",
+     "pages": [
+      69,
+      70
+     ]
+    }
+   ],
+   "dbms_u5-014": [
+    {
+     "claim": "The serial schedule T1 followed by T2 gives X=50.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ]
+    },
+    {
+     "claim": "The serial schedule T1 followed by T2 gives Y=80.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ]
+    },
+    {
+     "claim": "The serial schedule T2 followed by T1 gives X=70.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    },
+    {
+     "claim": "The serial schedule T2 followed by T1 gives Y=50.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    },
+    {
+     "claim": "The nonserializable schedule S that uses locks gives X=50.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    },
+    {
+     "claim": "The nonserializable schedule S that uses locks gives Y=50.",
+     "why": "right section had it, not taught",
+     "pages": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ]
+    }
+   ],
+   "dbms_u5-015": [
+    {
+     "claim": "For T3 the latest suitable version is X2.",
+     "why": "right section had it, not taught",
+     "pages": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+     ]
+    },
+    {
+     "claim": "write_TS(X2)=15 is less than or equal to 18.",
+     "why": "right section had it, not taught",
+     "pages": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+     ]
+    },
+    {
+     "claim": "read_TS(X2)=20 is greater than 18.",
+     "why": "right section had it, not taught",
+     "pages": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+     ]
+    },
+    {
+     "claim": "There is a conflict for T3.",
+     "why": "right section had it, not taught",
+     "pages": [
+      37,
+      38,
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "T3 is aborted.",
+     "why": "right section had it, not taught",
+     "pages": [
+      37,
+      38,
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "For T4 the suitable version is X2.",
+     "why": "right section had it, not taught",
+     "pages": [
+      39,
+      40,
+      41,
+      42,
+      43
+     ]
+    },
+    {
+     "claim": "read_TS(X2)=20 is less than or equal to 25.",
+     "why": "only in an off-topic section",
+     "pages": [
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "There is no conflict for T4.",
+     "why": "only in an off-topic section",
+     "pages": [
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "A new version X3 is created.",
+     "why": "only in an off-topic section",
+     "pages": [
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "write_TS(X3)=25.",
+     "why": "only in an off-topic section",
+     "pages": [
+      39,
+      40,
+      41
+     ]
+    },
+    {
+     "claim": "read_TS(X3)=25.",
+     "why": "only in an off-topic section",
+     "pages": [
+      39,
+      40,
+      41
+     ]
+    }
+   ],
+   "dbms_u5-016": [
+    {
+     "claim": "If write_TS(X)=12 then the read is rejected.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      49,
+      50,
+      51
+     ]
+    }
+   ],
+   "dbms_u5-017": [
+    {
+     "claim": "Basic timestamp ordering aborts a transaction whenever an operation would violate the timestamp order.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      49,
+      50,
+      51
+     ]
+    },
+    {
+     "claim": "Basic timestamp ordering rolls back a transaction whenever an operation would violate the timestamp order.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+     ]
+    },
+    {
+     "claim": "The schedules of basic timestamp ordering are not guaranteed to be recoverable.",
+     "why": "right section had it, not taught",
+     "pages": [
+      26,
+      27,
+      28
+     ]
+    },
+    {
+     "claim": "Strict timestamp ordering makes the schedules conflict serializable.",
+     "why": "right section had it, not taught",
+     "pages": [
+      29,
+      30,
+      31
+     ]
+    }
+   ],
+   "dbms_u5-018": [
+    {
+     "claim": "In validation (optimistic) concurrency control, transactions execute without locking resources.",
+     "why": "right section had it, not taught",
+     "pages": [
+      23,
+      24,
+      25,
+      26,
+      27,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "Validation (optimistic) concurrency control assumes conflicts are rare.",
+     "why": "right section had it, not taught",
+     "pages": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "Before committing, a validation phase checks whether the transaction conflicts with other transactions.",
+     "why": "right section had it, not taught",
+     "pages": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "If the validation phase passes, the transaction commits.",
+     "why": "right section had it, not taught",
+     "pages": [
+      45,
+      46,
+      47,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "If the validation phase fails, the transaction aborts.",
+     "why": "right section had it, not taught",
+     "pages": [
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "Two-phase locking (2PL) may cause delays due to lock contention.",
+     "why": "right section had it, not taught",
+     "pages": [
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      23,
+      54,
+      55,
+      56
+     ]
+    },
+    {
+     "claim": "Validation is suitable for low-contention environments.",
+     "why": "right section had it, not taught",
+     "pages": [
+      25,
+      26,
+      27,
+      45,
+      46,
+      47,
+      48,
+      49,
+      54,
+      55,
+      56
+     ]
+    }
+   ]
+  }
+ },
+ "structure": {
+  "sections": [
+   {
+    "title": "Fundamentals of Locking Mechanisms",
+    "beat_words": [
+     99,
+     332,
+     131
+    ],
+    "words": 562,
+    "minutes": 3.9,
+    "comprehension_check": true
+   },
+   {
+    "title": "Two-Phase Locking (2PL) and its Variants",
+    "beat_words": [
+     128,
+     350,
+     152
+    ],
+    "words": 630,
+    "minutes": 4.3,
+    "comprehension_check": true
+   },
+   {
+    "title": "Timestamp Ordering Protocols",
+    "beat_words": [
+     130,
+     360,
+     134
+    ],
+    "words": 624,
+    "minutes": 4.3,
+    "comprehension_check": true
+   },
+   {
+    "title": "Multiversion Concurrency Control (MVCC)",
+    "beat_words": [
+     131,
+     340,
+     153
+    ],
+    "words": 624,
+    "minutes": 4.3,
+    "comprehension_check": true
+   },
+   {
+    "title": "Phantom Phenomenon and Prevention Techniques",
+    "beat_words": [
+     114,
+     303,
+     160
+    ],
+    "words": 577,
+    "minutes": 4.0,
+    "comprehension_check": true
+   },
+   {
+    "title": "Recovery, Checkpoints, and Distributed Commit Protocols",
+    "beat_words": [
+     127,
+     292,
+     140
+    ],
+    "words": 559,
+    "minutes": 3.9,
+    "comprehension_check": true
+   }
+  ],
+  "total_words": 3576,
+  "total_minutes": 24.7,
+  "comprehension_checks": 6,
+  "repeated_sentences": [],
+  "chunks_in_index": 38,
+  "chunks_used": 38,
+  "chunks_shared": 14,
+  "unused_chunks": [],
+  "unused_pages": []
+ },
+ "summary": {
+  "sections_scored": 6,
+  "precision": 0.528,
+  "direct_precision": 0.617,
+  "neighbour_precision": 0.427,
+  "faithfulness": 0.989,
+  "accuracy": 0.977,
+  "from_notes": 0.631,
+  "contradicting_sentences": 1,
+  "wrong_sentences": 1,
+  "depth": 0.917,
+  "total_minutes": 24.7,
+  "comprehension_checks": "6/6",
+  "repeated_sentences": 0,
+  "chunks_used": "38/38",
+  "coverage": 0.507,
+  "goldens_fully_taught": 3,
+  "goldens_not_taught": 5,
+  "coverage_by_type": {
+   "comparison": 0.4,
+   "definition": 0.705,
+   "explanation": 0.582,
+   "multi-hop": 0.54,
+   "table": 0.0,
+   "worked-example": 0.429
+  },
+  "missed_claims": {
+   "no known chunk states it": 2,
+   "only in an off-topic section": 12,
+   "right section had it, not taught": 44
+  }
+ }
+}

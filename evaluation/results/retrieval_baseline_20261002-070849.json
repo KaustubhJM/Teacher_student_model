@@ -1,0 +1,5107 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20261002-070849",
+  "judge": "groq/openai/gpt-oss-120b",
+  "retriever": "search_document baseline {'k': 3, 'window': 1, 'neighbor_min_score': 0.3}",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "search_document_matches": "50/50",
+  "judge_usage": {
+   "calls": 0,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "new_calls": 0,
+   "cache_hits": 770
+  },
+  "errors": []
+ },
+ "summary": {
+  "in_document": {
+   "n": 42,
+   "recall": 0.992,
+   "sufficient_pct": 95.238,
+   "precision_sent_order": 0.956,
+   "precision_score_order": 0.927,
+   "precision_at_k": 0.753,
+   "first_useful_rank_sent": 1.048,
+   "chunks": 4.119,
+   "context_words": 796.786
+  },
+  "by_type": {
+   "comparison": {
+    "n": 5,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.95,
+    "precision_score_order": 0.967,
+    "precision_at_k": 0.9,
+    "first_useful_rank_sent": 1,
+    "chunks": 2.6,
+    "context_words": 504.6
+   },
+   "definition": {
+    "n": 10,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.981,
+    "precision_score_order": 0.911,
+    "precision_at_k": 0.662,
+    "first_useful_rank_sent": 1,
+    "chunks": 4.8,
+    "context_words": 924.1
+   },
+   "explanation": {
+    "n": 8,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.952,
+    "precision_score_order": 0.858,
+    "precision_at_k": 0.707,
+    "first_useful_rank_sent": 1,
+    "chunks": 4.125,
+    "context_words": 804.75
+   },
+   "figure": {
+    "n": 4,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 1.0,
+    "precision_score_order": 1.0,
+    "precision_at_k": 0.917,
+    "first_useful_rank_sent": 1,
+    "chunks": 2.5,
+    "context_words": 479.5
+   },
+   "list": {
+    "n": 7,
+    "recall": 0.99,
+    "sufficient_pct": 85.714,
+    "precision_sent_order": 0.957,
+    "precision_score_order": 0.91,
+    "precision_at_k": 0.61,
+    "first_useful_rank_sent": 1,
+    "chunks": 5,
+    "context_words": 967.714
+   },
+   "multi-hop": {
+    "n": 8,
+    "recall": 0.966,
+    "sufficient_pct": 87.5,
+    "precision_sent_order": 0.91,
+    "precision_score_order": 0.967,
+    "precision_at_k": 0.864,
+    "first_useful_rank_sent": 1.25,
+    "chunks": 4.25,
+    "context_words": 821.375
+   }
+  },
+  "out_of_document": [
+   {
+    "id": "tc_u5-043",
+    "top1_score": 0.478362113237381,
+    "useful_chunks": 0,
+    "n_chunks": 6
+   },
+   {
+    "id": "tc_u5-044",
+    "top1_score": 0.26201194524765015,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   },
+   {
+    "id": "tc_u5-045",
+    "top1_score": 0.4572713375091553,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   },
+   {
+    "id": "tc_u5-046",
+    "top1_score": 0.20855993032455444,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   },
+   {
+    "id": "tc_u5-047",
+    "top1_score": 0.4360172152519226,
+    "useful_chunks": 0,
+    "n_chunks": 1
+   },
+   {
+    "id": "tc_u5-048",
+    "top1_score": 0.3260567784309387,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   },
+   {
+    "id": "tc_u5-049",
+    "top1_score": 0.15353664755821228,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   },
+   {
+    "id": "tc_u5-050",
+    "top1_score": 0.11428267508745193,
+    "useful_chunks": 0,
+    "n_chunks": 0
+   }
+  ],
+  "in_document_top1": {
+   "min": 0.3650166392326355,
+   "median": 0.625834584236145,
+   "max": 0.7990028858184814
+  },
+  "weakest": [
+   "tc_u5-030",
+   "tc_u5-014",
+   "tc_u5-016",
+   "tc_u5-041",
+   "tc_u5-006"
+  ]
+ },
+ "rows": [
+  {
+   "id": "tc_u5-001",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is content creation?",
+   "source_pages": [
+    5
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Content creation is the process of creating various forms of media.",
+    "Various forms of media created by content creation appeal to the target audience.",
+    "Content creation needs planning.",
+    "Content creation needs designing.",
+    "Content creation needs sharing digital content on social platforms."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1373,
+   "top1_score": 0.7004437446594238,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 1,
+     "score": 0.7004,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines content creation and lists its steps, covering all claim facts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 2,
+     "score": 0.6304,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk lists the various media types created in content creation, defining it, which is relevant to the question."
+    },
+    {
+     "rank_sent": 3,
+     "position": 6,
+     "score": 0.3651,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk describes content creation as a process for podcasts, includes planning steps, and emphasizes audience‑focused, engaging media."
+    },
+    {
+     "rank_sent": 4,
+     "position": 0,
+     "score": 0.6304,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk defines content creation as a creative process and lists media types, supporting claim 1 and providing relevant information."
+    },
+    {
+     "rank_sent": 5,
+     "position": 3,
+     "score": 0.4522,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk discusses email content creation but does not state any of the specific claims."
+    },
+    {
+     "rank_sent": 6,
+     "position": 8,
+     "score": 0.3651,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk describes aspects of content creation such as appealing to the audience, planning through research, and designing blogs."
+    },
+    {
+     "rank_sent": 7,
+     "position": 7,
+     "score": 0.4057,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk describes creating podcasts and blogs, showing content creation involves producing various media, which supports claim 1 and helps define content creation."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-002",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a webinar?",
+   "source_pages": [
+    11
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The word \"webinar\" is a blend of \"web\" and \"seminar\".",
+    "A webinar is an interactive online event.",
+    "In a webinar, a group of participants listen to a speaker.",
+    "In a webinar, the speaker delivers a presentation or seminar.",
+    "In a webinar, the speaker shares a remote screen."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 586,
+   "top1_score": 0.6897984743118286,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 4,
+     "score": 0.6898,
+     "direct_hit": true,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines webinar and states all the claim facts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 5,
+     "score": 0.6208,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only gives tips for creating a webinar, not defining what a webinar is"
+    },
+    {
+     "rank_sent": 3,
+     "position": 0,
+     "score": 0.2716,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only mentions webinars as a topic and asks what they are, but provides no factual statements supporting any claim."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-003",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a podcast?",
+   "source_pages": [
+    14
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A podcast is a digital audio program.",
+    "A podcast consists of a series of audio episodes.",
+    "A listener can download a podcast from the internet.",
+    "A listener can stream a podcast from the internet."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.75,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 779,
+   "top1_score": 0.7990028858184814,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.799,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk defines a podcast as a digital audio program of series episodes and notes it can be downloaded or streamed, covering all claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.7191,
+     "direct_hit": true,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk describes podcasts as an audio medium with episodes, supporting the definition and series nature of podcasts."
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.5982,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "The chunk mentions releasing episodes regularly, indicating that a podcast consists of a series of audio episodes."
+    },
+    {
+     "rank_sent": 4,
+     "position": 4,
+     "score": 0.7191,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses webinars and contains no information about podcasts."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-004",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a blog?",
+   "source_pages": [
+    17
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A blog is short for web-blog.",
+    "A blog is an online journal.",
+    "A blog is an informational website.",
+    "A blog is run by an individual.",
+    "A blog is run by a group.",
+    "A blog is run by a corporation.",
+    "A blog offers regularly updated content about a topic.",
+    "A blog presents information in reverse chronological order.",
+    "A blog is written in an informal style.",
+    "A blog is written in a conversational style."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1173,
+   "top1_score": 0.7569928765296936,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 7,
+     "score": 0.757,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk defines a blog and includes all listed factual claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 8,
+     "score": 0.6813,
+     "direct_hit": true,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk mentions personal blogs, implying blogs can be run by individuals"
+    },
+    {
+     "rank_sent": 3,
+     "position": 9,
+     "score": 0.5232,
+     "direct_hit": false,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses social media ethics and mentions blog posts but does not state any facts defining what a blog is."
+    },
+    {
+     "rank_sent": 4,
+     "position": 5,
+     "score": 0.4306,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk talks about podcasts and does not state any facts about blogs."
+    },
+    {
+     "rank_sent": 5,
+     "position": 4,
+     "score": 0.3876,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses webinars and contains no information about blogs."
+    },
+    {
+     "rank_sent": 6,
+     "position": 6,
+     "score": 0.6813,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses podcasts and does not provide any information about blogs"
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-005",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What are social media ethics?",
+   "source_pages": [
+    20
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Social media ethics are a set of moral principles and guidelines.",
+    "Social media ethics govern the behaviour of individuals while using social media platforms.",
+    "Social media ethics govern the behaviour of organizations while using social media platforms.",
+    "Social media ethics are designed to ensure that users conduct themselves in a responsible manner.",
+    "Social media ethics are designed to ensure that users conduct themselves in a respectful manner.",
+    "Social media ethics are designed to ensure that users conduct themselves in an ethical manner."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 778,
+   "top1_score": 0.6922023296356201,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 9,
+     "score": 0.6509,
+     "direct_hit": true,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk defines social media ethics and lists their principles, covering all claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 10,
+     "score": 0.623,
+     "direct_hit": true,
+     "pages": [
+      21,
+      22
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists ethical principles (respect, authenticity, accountability, etc.) that define social media ethics and govern both individual and organizational behavior."
+    },
+    {
+     "rank_sent": 3,
+     "position": 11,
+     "score": 0.6922,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists moral guidelines (e.g., data protection, unbiased behavior, respectful content) that define social media ethics and show how they govern both individual and organizational conduct."
+    },
+    {
+     "rank_sent": 4,
+     "position": 12,
+     "score": 0.623,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25,
+      26
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk provides practical guidelines for ethical social media use, reflecting that social media ethics consist of moral principles/guidelines and govern individual behavior."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-006",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is personality analysis and what is its purpose?",
+   "source_pages": [
+    28
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Personality analysis is to analyze and evaluate the core qualities of an individual.",
+    "Core qualities of an individual include reliability, determination, confidence and gentleness.",
+    "Personality analysis aims to find out the weaknesses of an individual's personality.",
+    "Personality analysis aims to find out the strengths of an individual's personality.",
+    "Personality analysis aims to see the changes in an individual's personality.",
+    "Personality analysis aims to assess theories by examining which therapy would affect which type of personality."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.8095238095238094,
+   "precision_score_order": 0.8333333333333334,
+   "precision_at_k": 0.375,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 8,
+   "context_words": 1515,
+   "top1_score": 0.6062566041946411,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 14,
+     "score": 0.6063,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk defines personality analysis and lists its purposes, matching all six claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 26,
+     "score": 0.5951,
+     "direct_hit": true,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk defines personality assessment as evaluating traits and mentions its purposes, directly addressing the question."
+    },
+    {
+     "rank_sent": 3,
+     "position": 25,
+     "score": 0.5356,
+     "direct_hit": false,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only describes Jung's personality theory and does not state any of the claimed facts about personality analysis."
+    },
+    {
+     "rank_sent": 4,
+     "position": 13,
+     "score": 0.5456,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes how speech conveys personality traits but does not state what personality analysis is or its purpose, so it supports none of the claims and is not useful for answering the question."
+    },
+    {
+     "rank_sent": 5,
+     "position": 20,
+     "score": 0.4514,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes Freud's personality theory (id, ego, superego) and self-actualization, but does not state any facts about personality analysis or its purpose."
+    },
+    {
+     "rank_sent": 6,
+     "position": 21,
+     "score": 0.4063,
+     "direct_hit": false,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses id, ego, and superego but does not state any facts about personality analysis or its purpose."
+    },
+    {
+     "rank_sent": 7,
+     "position": 27,
+     "score": 0.5356,
+     "direct_hit": false,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk describes the MBTI questionnaire and its basis, providing relevant information about personality analysis but does not explicitly state any of the listed claims."
+    },
+    {
+     "rank_sent": 8,
+     "position": 15,
+     "score": 0.5456,
+     "direct_hit": false,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only lists personality traits and types, without defining personality analysis or its purpose."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-007",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is personality assessment and where is it used?",
+   "source_pages": [
+    55
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Personality assessment is a process of evaluating and measuring an individual's personality traits, characteristics, skills, potential and behavioral tendencies.",
+    "Personality assessment helps develop a deeper understanding of how a person thinks, feels, reacts and behaves in various situations.",
+    "Personality assessments are used in psychology.",
+    "Personality assessments are used in counseling.",
+    "Personality assessments are used in education.",
+    "Personality assessments are used in recruitment.",
+    "Personality assessments are used for career planning.",
+    "Personality assessments are used for team building.",
+    "Personality assessments are used for individual development.",
+    "Personality assessments are used for clinical diagnosis."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.5,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1131,
+   "top1_score": 0.6274707317352295,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 26,
+     "score": 0.6275,
+     "direct_hit": true,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk defines personality assessment and lists all the listed applications, directly covering each claim."
+    },
+    {
+     "rank_sent": 2,
+     "position": 14,
+     "score": 0.503,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      9
+     ],
+     "reason": "The chunk defines personality assessment and its purpose, supporting the definition claim and indicating its role in personal development, thus aiding the answer."
+    },
+    {
+     "rank_sent": 3,
+     "position": 27,
+     "score": 0.5647,
+     "direct_hit": false,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      3
+     ],
+     "reason": "The chunk defines a personality assessment (MBTI) as a questionnaire that evaluates traits and is based on psychological theory, supporting the definition and its use in psychology."
+    },
+    {
+     "rank_sent": 4,
+     "position": 13,
+     "score": 0.4527,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses how speech reflects personality but does not define personality assessment or list any of its applications."
+    },
+    {
+     "rank_sent": 5,
+     "position": 25,
+     "score": 0.5647,
+     "direct_hit": false,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes Jung's personality concepts and archetypes, but does not mention personality assessment or its uses."
+    },
+    {
+     "rank_sent": 6,
+     "position": 21,
+     "score": 0.3925,
+     "direct_hit": false,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Freud's id, ego, and superego, not personality assessment or its applications."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-008",
+   "type": "definition",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What is the MBTI?",
+   "source_pages": [
+    56
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The Myers-Briggs Type Indicator (MBTI) is also called the Myers-Briggs test.",
+    "The Myers-Briggs Type Indicator (MBTI) is a self-reported questionnaire.",
+    "The Myers-Briggs Type Indicator (MBTI) was first developed in the 1940s by Isabel Briggs Myers and Katharine Cook Briggs.",
+    "The Myers-Briggs Type Indicator (MBTI) is rooted in Carl Jung's theory of psychological types.",
+    "The Myers-Briggs Type Indicator (MBTI) categorizes individuals on four dichotomies into 16 personality types."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 363,
+   "top1_score": 0.5204237699508667,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 27,
+     "score": 0.5204,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      4,
+      5
+     ],
+     "reason": "The chunk defines MBTI, its name, format, theory basis and type structure, covering most claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 26,
+     "score": 0.4684,
+     "direct_hit": true,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk defines MBTI, its alternate name, self‑report format, development history, and Jungian basis, directly addressing the question."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-009",
+   "type": "definition",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What is the shadow archetype in Jung's theory?",
+   "source_pages": [
+    53
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Jung believed that all people have two sides, a light side and a dark side.",
+    "The dark side is the shadow.",
+    "People choose to repress the dark side.",
+    "The shadow consists of the aspects of people's personality that people do not appreciate.",
+    "The shadow consists of the aspects of people's personality that people are not even aware of."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 389,
+   "top1_score": 0.5954795479774475,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 25,
+     "score": 0.5955,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines the shadow as the repressed dark side containing unappreciated or unconscious aspects, directly answering the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 26,
+     "score": 0.5359,
+     "direct_hit": true,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines the shadow as the repressed dark side and lists its hidden, unappreciated aspects, directly answering the question."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-010",
+   "type": "definition",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What is the id in Freud's theory of personality?",
+   "source_pages": [
+    43,
+    44
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The id contains innate biological instincts and desires.",
+    "When the id achieves its demands, people experience pleasure.",
+    "When the id's demands are denied, people experience \"un-pleasure\" or tension.",
+    "The id is not affected by reality.",
+    "The id is not affected by logic.",
+    "The id is not affected by the everyday world.",
+    "The id operates within the unconscious part of the mind."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1154,
+   "top1_score": 0.6701606512069702,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 20,
+     "score": 0.6702,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk explicitly describes the id's innate instincts, pleasure when satisfied, un‑pleasure when denied, and its independence from reality, logic, and everyday world, noting it operates in the unconscious."
+    },
+    {
+     "rank_sent": 2,
+     "position": 21,
+     "score": 0.6031,
+     "direct_hit": true,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk states that the id is unaffected by reality, logic, and everyday world and operates in the unconscious."
+    },
+    {
+     "rank_sent": 3,
+     "position": 25,
+     "score": 0.5296,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Jung's theories and does not mention Freud's id or any related claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 19,
+     "score": 0.6031,
+     "direct_hit": false,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only discusses Maslow's hierarchy and briefly mentions Freud without stating any facts about the id."
+    },
+    {
+     "rank_sent": 5,
+     "position": 26,
+     "score": 0.4767,
+     "direct_hit": false,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk discusses Jungian concepts and MBTI, not Freud's id."
+    },
+    {
+     "rank_sent": 6,
+     "position": 24,
+     "score": 0.4767,
+     "direct_hit": false,
+     "pages": [
+      49,
+      50,
+      51,
+      52
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses personality concepts unrelated to Freud's id and does not state any of the listed claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-011",
+   "type": "list",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What are the goals of content creation?",
+   "source_pages": [
+    6
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The goals of content creation are to engage the audience.",
+    "The goals of content creation are to connect the audience.",
+    "The goals of content creation are to inform the audience.",
+    "The goals of content creation are to update the audience.",
+    "The goals of content creation are to upgrade the audience.",
+    "The goals of content creation are to instruct the audience.",
+    "The goals of content creation are to convince the audience.",
+    "The goals of content creation are to persuade the audience.",
+    "The goals of content creation are to motivate the audience.",
+    "The goals of content creation are to influence the audience.",
+    "The goals of content creation are to inspire the audience.",
+    "The goals of content creation are to entertain the audience.",
+    "Good content builds brand awareness.",
+    "Good content builds engagement.",
+    "Good content builds loyalty.",
+    "Good content helps achieve marketing goals."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.7333333333333333,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1173,
+   "top1_score": 0.7092631459236145,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 1,
+     "score": 0.7093,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     "reason": "The chunk explicitly lists the content‑creation goals and benefits that match the claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 2,
+     "score": 0.6383,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      13,
+      14,
+      15,
+      16
+     ],
+     "reason": "The chunk states that good content builds brand awareness, engagement, loyalty and helps achieve marketing goals, matching claims 13‑16."
+    },
+    {
+     "rank_sent": 3,
+     "position": 8,
+     "score": 0.4013,
+     "direct_hit": true,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      11,
+      12
+     ],
+     "reason": "The chunk explicitly states that posts should be entertaining, inspiring, and informative, matching claims about entertaining, inspiring, and informing the audience."
+    },
+    {
+     "rank_sent": 4,
+     "position": 7,
+     "score": 0.3611,
+     "direct_hit": false,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      11,
+      12
+     ],
+     "reason": "The chunk states that blog posts should be entertaining, inspiring, and informative, which directly supports those goal claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 3,
+     "score": 0.4374,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk provides email history and formatting tips, but does not state any of the listed content‑creation goals."
+    },
+    {
+     "rank_sent": 6,
+     "position": 0,
+     "score": 0.6383,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only defines content creation and lists syllabus items, without stating any of the goal-related claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-012",
+   "type": "list",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What forms can content creation take?",
+   "source_pages": [
+    8
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Text is a form of content creation.",
+    "Images are a form of content creation.",
+    "Videos are a form of content creation.",
+    "Email is a form of content creation.",
+    "Podcasts are a form of content creation.",
+    "GIFs are a form of content creation.",
+    "Animated series are a form of content creation.",
+    "E-newsletters are a form of content creation.",
+    "E-books are a form of content creation.",
+    "Blogs are a form of content creation."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 981,
+   "top1_score": 0.6338559985160828,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 1,
+     "score": 0.6339,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5,
+      10
+     ],
+     "reason": "The chunk lists blogs, email, podcasts and YouTube as content forms, directly answering the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 2,
+     "score": 0.5705,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk lists all the content forms mentioned in the claims, directly answering the question."
+    },
+    {
+     "rank_sent": 3,
+     "position": 3,
+     "score": 0.4125,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      8
+     ],
+     "reason": "The chunk describes email content creation and lists newsletter emails, supporting claims about email and e‑newsletters as content forms."
+    },
+    {
+     "rank_sent": 4,
+     "position": 0,
+     "score": 0.5705,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5,
+      10
+     ],
+     "reason": "The chunk explicitly mentions emails, podcasts, and blogs as forms of content creation, matching claims 4, 5, and 10."
+    },
+    {
+     "rank_sent": 5,
+     "position": 8,
+     "score": 0.3219,
+     "direct_hit": true,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      10
+     ],
+     "reason": "The chunk states that blogs are a form of content creation"
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-013",
+   "type": "list",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What are the four types of webinars?",
+   "source_pages": [
+    11
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "There are generally four types of webinars.",
+    "Live webinars are one of the types of webinars.",
+    "Automated webinars are one of the types of webinars.",
+    "Hybrid webinars are one of the types of webinars.",
+    "On-demand webinars are one of the types of webinars."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.2,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 945,
+   "top1_score": 0.6428822875022888,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 4,
+     "score": 0.6429,
+     "direct_hit": true,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk states there are four webinar types and lists live, automated, hybrid, and on‑demand webinars."
+    },
+    {
+     "rank_sent": 2,
+     "position": 0,
+     "score": 0.4219,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk only mentions webinars without stating any of the four types"
+    },
+    {
+     "rank_sent": 3,
+     "position": 5,
+     "score": 0.5786,
+     "direct_hit": false,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk talks about podcasts and content creation, with no mention of webinar types."
+    },
+    {
+     "rank_sent": 4,
+     "position": 3,
+     "score": 0.5786,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk talks about email history and types, not webinars, so it provides no supporting facts for any claim."
+    },
+    {
+     "rank_sent": 5,
+     "position": 27,
+     "score": 0.3342,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Myers‑Briggs personality types and contains no information about webinars."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-014",
+   "type": "list",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What are the characteristics of a perfectionist personality?",
+   "source_pages": [
+    29
+   ],
+   "recall": 0.9285714285714286,
+   "sufficient": false,
+   "claims": [
+    "Perfectionists have high standards.",
+    "Perfectionists have high expectations.",
+    "Perfectionists are driven by a desire to be accurate.",
+    "Perfectionists are driven by a desire to be systematic.",
+    "Perfectionists are driven by a desire to be correct always.",
+    "Perfectionists' self-worth is contingent upon success.",
+    "Perfectionists' self-worth is attached to Perfectionists' performance and achievements.",
+    "Perfectionists believe Perfectionists either win or lose with no middle ground.",
+    "Perfectionists find it hard to say no.",
+    "Perfectionists do not easily ask for help.",
+    "Perfectionists do not easily show vulnerability.",
+    "Perfectionists do not tolerate mistakes of others.",
+    "Perfectionists do not tolerate Perfectionists' own mistakes.",
+    "Perfectionists stay in their own comfort zone."
+   ],
+   "missing_claims": [
+    "Perfectionists do not easily show vulnerability."
+   ],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.6,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 970,
+   "top1_score": 0.583774983882904,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 14,
+     "score": 0.5838,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "reason": "The chunk lists multiple traits matching the claimed characteristics of perfectionists."
+    },
+    {
+     "rank_sent": 2,
+     "position": 16,
+     "score": 0.4758,
+     "direct_hit": true,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk describes perfectionists as systematic, directly supporting claim 4."
+    },
+    {
+     "rank_sent": 3,
+     "position": 15,
+     "score": 0.5254,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14
+     ],
+     "reason": "The chunk states multiple traits that match the listed claims, directly describing perfectionist characteristics."
+    },
+    {
+     "rank_sent": 4,
+     "position": 13,
+     "score": 0.5254,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses speaking style and general personality traits, not the characteristics of perfectionists."
+    },
+    {
+     "rank_sent": 5,
+     "position": 17,
+     "score": 0.4282,
+     "direct_hit": false,
+     "pages": [
+      33,
+      34,
+      35,
+      36
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Asserters, Adventurers, and Peacemakers, not perfectionist traits, so it provides no supporting claims or useful information for the question."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-015",
+   "type": "list",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What other tacts are suggested for effective ethical use of social media by text and technique?",
+   "source_pages": [
+    24
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "One should be careful with humour and sarcasm.",
+    "The tone and manner should not be fake or sarcastic.",
+    "One should not overuse signatures, watermarks, and taglines.",
+    "One should not type in all capital letters.",
+    "One should not be too formal.",
+    "One should not be too informal.",
+    "One should maintain a moderate approach.",
+    "One should not use fake or false thumbnails and titles."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.8,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 975,
+   "top1_score": 0.6946470737457275,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 12,
+     "score": 0.6252,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25,
+      26
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk lists all the suggested tacts matching the claims, directly answering the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 9,
+     "score": 0.6433,
+     "direct_hit": true,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk provides ethical tactics such as transparency, privacy, and respect, which are relevant to the question, but it does not state any of the listed claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 11,
+     "score": 0.6946,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk lists 'Be careful with humor and sarcasm', matching claim 1 and providing a suggested tactic for ethical social media use."
+    },
+    {
+     "rank_sent": 4,
+     "position": 10,
+     "score": 0.6371,
+     "direct_hit": true,
+     "pages": [
+      21,
+      22
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk provides relevant ethical tactics (respect, authenticity, clarity, brevity, etc.) but does not explicitly state any of the listed claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 8,
+     "score": 0.579,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only lists blog types and a heading about ethical use, but provides no specific tactics matching any claim."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-016",
+   "type": "list",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "According to Freud, what does human behaviour depend on, and what are the three aspects of the psyche?",
+   "source_pages": [
+    41
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Sigmund Freud's theory suggests that human behaviour is influenced by unconscious memories.",
+    "Sigmund Freud's theory suggests that human behaviour is influenced by unconscious thoughts.",
+    "Sigmund Freud's theory suggests that human behaviour is influenced by unconscious urges.",
+    "Freud's theory proposes that the psyche comprises three aspects.",
+    "The three aspects of the psyche are the id, the ego and the superego.",
+    "The id represents instincts.",
+    "The ego represents reality.",
+    "The superego represents morality."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.7,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1152,
+   "top1_score": 0.5579291582107544,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 20,
+     "score": 0.5579,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk states that behaviour depends on unconscious memories, thoughts and urges and lists the id, ego, and superego as the three aspects of the psyche."
+    },
+    {
+     "rank_sent": 2,
+     "position": 26,
+     "score": 0.4428,
+     "direct_hit": false,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses anima, animus, and personality assessments, not Freud's ideas about unconscious influences or the id, ego, and superego."
+    },
+    {
+     "rank_sent": 3,
+     "position": 19,
+     "score": 0.5021,
+     "direct_hit": false,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk only gives a vague statement that Freud's theory suggests behavior is influenced, without specifying unconscious factors or the three aspects of the psyche."
+    },
+    {
+     "rank_sent": 4,
+     "position": 25,
+     "score": 0.492,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes Jungian personality concepts and does not mention Freud's ideas about unconscious influences or the id, ego, and superego."
+    },
+    {
+     "rank_sent": 5,
+     "position": 21,
+     "score": 0.5021,
+     "direct_hit": false,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5,
+      7,
+      8
+     ],
+     "reason": "The chunk details the id, ego, and superego and their functions, confirming the three aspects of the psyche and the ego’s link to reality and the superego’s link to morality."
+    },
+    {
+     "rank_sent": 6,
+     "position": 23,
+     "score": 0.3966,
+     "direct_hit": false,
+     "pages": [
+      47,
+      48,
+      49
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Swami Vivekananda's concepts and does not mention Freud or his theory"
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-017",
+   "type": "list",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What are Swami Vivekananda's three golden rules?",
+   "source_pages": [
+    47
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Swami Vivekananda gave three golden rules.",
+    "Swami Vivekananda's first golden rule is \"who is helping you, do not ever forget them\".",
+    "Swami Vivekananda's second golden rule is \"who is loving you, do not hate them\".",
+    "Swami Vivekananda's third golden rule is \"who is believing you, do not cheat them\"."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 578,
+   "top1_score": 0.6004971861839294,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 22,
+     "score": 0.6005,
+     "direct_hit": true,
+     "pages": [
+      45,
+      46,
+      47,
+      48
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk lists all three golden rules, directly answering the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 23,
+     "score": 0.5404,
+     "direct_hit": true,
+     "pages": [
+      47,
+      48,
+      49
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk lists all three golden rules matching the claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 24,
+     "score": 0.4625,
+     "direct_hit": true,
+     "pages": [
+      49,
+      50,
+      51,
+      52
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses intellect and personality but does not mention Vivekananda's golden rules."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-018",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What do privacy, respect and authenticity require in social media ethics?",
+   "source_pages": [
+    21
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Privacy means a user's privacy should be maintained.",
+    "The provider must seek the user's consent before publishing the user's personal information.",
+    "The user's dignity should not be disturbed.",
+    "Respect means avoiding harsh, rough, abusive or offensive language and negative criticism.",
+    "Respect means being respectful and polite instead.",
+    "Authenticity means honesty.",
+    "Avoid tactics like inflating follower counts.",
+    "Avoid tactics like using fake reviews.",
+    "Provide accurate information.",
+    "Be transparent when a product has risks for children."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 778,
+   "top1_score": 0.7282532453536987,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 10,
+     "score": 0.6649,
+     "direct_hit": true,
+     "pages": [
+      21,
+      22
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk provides the respect and authenticity guidelines that correspond to several listed claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 9,
+     "score": 0.7283,
+     "direct_hit": true,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk explicitly mentions maintaining privacy, seeking consent before publishing personal info, protecting dignity, and giving proper respect, which directly support the relevant claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 11,
+     "score": 0.6147,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      7
+     ],
+     "reason": "Chunk states personal data should not be revealed (privacy) and advises building followers organically (avoiding inflated counts)."
+    },
+    {
+     "rank_sent": 4,
+     "position": 12,
+     "score": 0.5532,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25,
+      26
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      9
+     ],
+     "reason": "The chunk advises against fake or sarcastic tone and false thumbnails, supporting claims about authenticity (honesty) and providing accurate information."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-019",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How should content for emails be created?",
+   "source_pages": [
+    10,
+    11
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The subject line should be self-explanatory and attention-grabbing.",
+    "The email content should be clear and transparent.",
+    "Bullet points should be used.",
+    "Calls to action should be highlighted.",
+    "The email should be short and to the point without muddling the content.",
+    "The communication should be collegial.",
+    "The tone should sound sweet, mannered and sophisticated.",
+    "Emojis should not be used.",
+    "Quotes that could be offensive to others should not be used.",
+    "Relevant visuals such as images, graphics and videos should be incorporated."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.8333333333333333,
+   "precision_score_order": 0.5,
+   "precision_at_k": 0.4,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 2,
+   "n_chunks": 5,
+   "context_words": 983,
+   "top1_score": 0.6421352624893188,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 3,
+     "score": 0.619,
+     "direct_hit": true,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "reason": "The chunk lists the recommended email content guidelines matching the claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.5779,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only describes general content creation and does not state any of the email content claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 4,
+     "score": 0.5571,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk gives concrete email guidelines on emojis, offensive quotes, and relevant visuals, directly addressing the question."
+    },
+    {
+     "rank_sent": 4,
+     "position": 2,
+     "score": 0.6421,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only defines email as a content type and gives marketing stats, without addressing any of the email content guidelines."
+    },
+    {
+     "rank_sent": 5,
+     "position": 0,
+     "score": 0.4752,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only lists topics and syllabus items without stating any of the email content guidelines."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-020",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What tips are given for designing content for a webinar?",
+   "source_pages": [
+    12,
+    13
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Define the objective of the webinar.",
+    "Define the expected outcomes of the webinar.",
+    "Get to know the audience's demographics.",
+    "Get to know the audience's level of understanding.",
+    "Get to know the audience's needs.",
+    "Get to know the audience's priorities.",
+    "Create well-researched topics.",
+    "Create informative topics.",
+    "Create easy topics.",
+    "Create engaging topics.",
+    "Draft a compelling narrative using storytelling techniques.",
+    "Structure the content with a clear introduction.",
+    "Structure the content with main points.",
+    "Structure the content with supporting examples.",
+    "Structure the content with a memorable conclusion.",
+    "Rehearse the content multiple times before the live event."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.95,
+   "precision_score_order": 0.95,
+   "precision_at_k": 0.8,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 982,
+   "top1_score": 0.6421200633049011,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 4,
+     "score": 0.6421,
+     "direct_hit": true,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk lists concrete tips that directly match many of the claimed design guidelines for webinar content."
+    },
+    {
+     "rank_sent": 2,
+     "position": 5,
+     "score": 0.5779,
+     "direct_hit": false,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+     ],
+     "reason": "The chunk lists audience insights, topic creation guidelines, narrative drafting, content structure, and rehearsal tips that directly match the claimed webinar design recommendations."
+    },
+    {
+     "rank_sent": 3,
+     "position": 8,
+     "score": 0.3545,
+     "direct_hit": true,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      5,
+      7
+     ],
+     "reason": "The chunk mentions knowing the audience and doing proper research, which correspond to claims about audience needs and creating well‑researched topics, relevant to webinar content design."
+    },
+    {
+     "rank_sent": 4,
+     "position": 0,
+     "score": 0.3655,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only lists syllabus topics and questions about webinars, without providing any of the specific design tips mentioned in the claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 1,
+     "score": 0.4061,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      8,
+      10
+     ],
+     "reason": "The chunk outlines content creation goals such as informing and engaging the audience, which align with claims about creating informative and engaging topics."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-021",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "Why do audio quality and voice delivery matter for a podcast?",
+   "source_pages": [
+    16
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Audio quality is essential in a podcast for retaining listeners.",
+    "Audio quality is essential in a podcast for attracting listeners.",
+    "Podcasters should invest in good quality audio equipment to ensure clear and professional sound.",
+    "Podcasters should invest in editing software to ensure clear and professional sound.",
+    "Podcasters should pay attention to voice delivery.",
+    "Podcasters should speak clearly.",
+    "Podcasters should vary their tone.",
+    "Podcasters should use voice modulation with proper pitch.",
+    "Podcasters should use voice modulation with proper rhythm.",
+    "Podcasters should use voice modulation with proper rate.",
+    "Podcasters should use voice modulation with proper pace.",
+    "Podcasters should use voice modulation with proper intonation."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 580,
+   "top1_score": 0.5964864492416382,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 7,
+     "score": 0.5368,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+     ],
+     "reason": "The chunk explicitly mentions audio quality retaining/attracting listeners and details voice‑delivery practices, covering the claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.5965,
+     "direct_hit": true,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk states audio quality is essential for retaining and attracting listeners and advises investing in good equipment and editing software, directly supporting those claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 5,
+     "score": 0.5371,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only defines podcasts and lists types, without stating any of the claims about audio quality or voice delivery."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-022",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What do the notes say about buying and using user data for social media marketing?",
+   "source_pages": [
+    22,
+    23
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Buying and using user data to fuel social media marketing campaigns is an ethical gray area.",
+    "One should never reveal personal data through social media.",
+    "One should never exploit personal data through social media.",
+    "Revealing personal data through social media is very bad business ethics.",
+    "Exploiting personal data through social media is very bad business ethics.",
+    "One should build audience and followers organically.",
+    "Building audience and followers organically builds up a strong market for the business."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 579,
+   "top1_score": 0.6085953712463379,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 11,
+     "score": 0.567,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk directly states the ethical stance and recommendations regarding buying, revealing, exploiting user data and building audience organically."
+    },
+    {
+     "rank_sent": 2,
+     "position": 10,
+     "score": 0.6086,
+     "direct_hit": true,
+     "pages": [
+      21,
+      22
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk explicitly states that buying and using user data for social media marketing is an ethical gray area, matching claim 1."
+    },
+    {
+     "rank_sent": 3,
+     "position": 9,
+     "score": 0.5477,
+     "direct_hit": true,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3
+     ],
+     "reason": "The chunk stresses privacy and not publishing personal information, supporting claims that personal data should not be revealed or exploited."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-023",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "Why should one be unbiased on social media?",
+   "source_pages": [
+    23
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Being unbiased means eliminating a biased, inclined approach.",
+    "Being unbiased means maintaining an even and balanced presence online.",
+    "Being unbiased means steering away from sharing political preferences.",
+    "Being unbiased means steering away from sharing cultural preferences.",
+    "Being unbiased means steering away from sharing religious preferences.",
+    "Being unbiased means steering away from sharing political opinions.",
+    "Being unbiased means steering away from sharing cultural opinions.",
+    "Being unbiased means steering away from sharing religious opinions.",
+    "Political, cultural, and religious preferences or opinions are sensitive topics.",
+    "One potentially biased tweet can cause a brand to lose many followers and customers."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.8333333333333333,
+   "precision_score_order": 0.75,
+   "precision_at_k": 0.5,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 778,
+   "top1_score": 0.5861767530441284,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 11,
+     "score": 0.5862,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk explicitly states each claim about unbiased behavior and its impact on social media."
+    },
+    {
+     "rank_sent": 2,
+     "position": 10,
+     "score": 0.5276,
+     "direct_hit": true,
+     "pages": [
+      21,
+      22
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses general ethical guidelines but does not state any of the listed unbiased claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 9,
+     "score": 0.4258,
+     "direct_hit": true,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk discusses general social media ethics (transparency, privacy, respect) which can inform why to be unbiased, but it does not state any of the specific listed claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 12,
+     "score": 0.5276,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25,
+      26
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk talks about speech and social‑media etiquette, not about being unbiased or its importance."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-024",
+   "type": "explanation",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "When did Abraham Maslow introduce the hierarchy of needs, and how is it displayed?",
+   "source_pages": [
+    37
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Abraham Maslow first introduced the hierarchy of needs in 1943.",
+    "Abraham Maslow introduced the hierarchy of needs in his paper titled 'Theory of Motivation'.",
+    "The hierarchy of needs starts with the most basic needs and moves on to higher levels.",
+    "The hierarchy of needs is displayed like a pyramid.",
+    "In the pyramid display, the most fundamental need is at the bottom.",
+    "In the pyramid display, the highest need is at the top."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 385,
+   "top1_score": 0.6241984367370605,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 18,
+     "score": 0.6242,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk states the 1943 introduction, paper title, and pyramid display of the hierarchy."
+    },
+    {
+     "rank_sent": 2,
+     "position": 19,
+     "score": 0.5864,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [
+      3
+     ],
+     "reason": "The chunk lists the hierarchy stages from basic physiological needs up to self-actualization, confirming the progression from lower to higher needs."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-025",
+   "type": "explanation",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "What statistics show the utility of content creation?",
+   "source_pages": [
+    7
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Content creation is the ultimate inbound marketing practice.",
+    "Almost 40% of marketers say content marketing is an essential part of the marketers' marketing strategy.",
+    "81% of marketers say the marketers' company sees content as a business strategy.",
+    "B2B marketers report content marketing is successful for nurturing leads, with 60% indicating success.",
+    "B2B marketers report content marketing is successful for generating revenue, with 51% indicating success.",
+    "B2B marketers report content marketing is successful for building an audience of subscribers, with 47% indicating success.",
+    "10% of marketers who blog say content marketing generates the biggest return on investment."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.2857142857142857,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1373,
+   "top1_score": 0.6086031198501587,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 2,
+     "score": 0.5477,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "Chunk provides the exact statistics matching all claims, directly answering the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.6086,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk only provides a qualitative claim about content creation, without any statistical data."
+    },
+    {
+     "rank_sent": 3,
+     "position": 0,
+     "score": 0.5477,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk contains no statistical data about content creation."
+    },
+    {
+     "rank_sent": 4,
+     "position": 6,
+     "score": 0.3034,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only gives podcast creation tips and contains no statistics about content creation utility."
+    },
+    {
+     "rank_sent": 5,
+     "position": 3,
+     "score": 0.427,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk provides email guidelines and history but contains no statistics supporting any of the listed claims about content creation utility."
+    },
+    {
+     "rank_sent": 6,
+     "position": 8,
+     "score": 0.3034,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk contains no statistical facts about content creation utility."
+    },
+    {
+     "rank_sent": 7,
+     "position": 7,
+     "score": 0.3371,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk provides no statistical facts about content creation utility, only general advice and definitions."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-026",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "How does speech influence personality?",
+   "source_pages": [
+    25,
+    26,
+    27
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Speech is the ability to communicate with other people effectively.",
+    "Speech is one of the prime factors that decides a person's personality.",
+    "The first word a person utters is enough to give other people an idea about a person's personality.",
+    "Speaking in a metered, measured, precise and to-the-point way gives other people an idea of the decency of a person's personality.",
+    "A confident, smart and open speaker leaves an indelible impression.",
+    "An unbiased, impartial approach with constructive feedback instead of negative criticism gives height to a person's personality."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 586,
+   "top1_score": 0.6745302081108093,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 12,
+     "score": 0.6745,
+     "direct_hit": true,
+     "pages": [
+      23,
+      24,
+      25,
+      26
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk states that speech enables communication, is a prime factor in personality, and that the first word shapes others' perception, directly addressing how speech influences personality."
+    },
+    {
+     "rank_sent": 2,
+     "position": 13,
+     "score": 0.6715,
+     "direct_hit": true,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists several ways speech style and content affect perceived personality, matching multiple claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 14,
+     "score": 0.6043,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "The chunk links being a successful speaker to establishing one's personality, supporting claim 2 and providing relevant info."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-027",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "What are the five dimensions of personality described by Swami Vivekananda?",
+   "source_pages": [
+    48,
+    49,
+    50,
+    51
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Swami Vivekananda described five dimensions of personality.",
+    "The physical self is one of the five dimensions described by Swami Vivekananda.",
+    "The energy self is one of the five dimensions described by Swami Vivekananda.",
+    "The intellectual self is one of the five dimensions described by Swami Vivekananda.",
+    "The mental self is one of the five dimensions described by Swami Vivekananda.",
+    "The blissful self is one of the five dimensions described by Swami Vivekananda."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 578,
+   "top1_score": 0.6815426349639893,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 22,
+     "score": 0.6815,
+     "direct_hit": true,
+     "pages": [
+      45,
+      46,
+      47,
+      48
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk states Vivekananda taught five dimensions, supporting claim 1, but does not list the specific dimensions."
+    },
+    {
+     "rank_sent": 2,
+     "position": 23,
+     "score": 0.6134,
+     "direct_hit": true,
+     "pages": [
+      47,
+      48,
+      49
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk explicitly lists Physical, Energy, and Intellectual selves as part of Swami Vivekananda's five dimensions, confirming those claims and showing he described five dimensions."
+    },
+    {
+     "rank_sent": 3,
+     "position": 24,
+     "score": 0.5895,
+     "direct_hit": true,
+     "pages": [
+      49,
+      50,
+      51,
+      52
+     ],
+     "useful": true,
+     "supported_claims": [
+      5,
+      6
+     ],
+     "reason": "The chunk explicitly mentions Mental Self and Blissful Self as aspects of personality, supporting claims 5 and 6, making it relevant to the question."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-028",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "What is Swami Vivekananda's theory of personality?",
+   "source_pages": [
+    46,
+    47
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Swami Vivekananda held that each soul is potentially divine.",
+    "Swami Vivekananda held that the goal is to manifest this divinity within by controlling nature, external and internal.",
+    "Swami Vivekananda held that the manifestation of divinity within is achieved through work, worship, mental discipline or philosophy.",
+    "Swami Vivekananda said the greatest sin is to think oneself weak.",
+    "Swami Vivekananda said all power is within a person.",
+    "Swami Vivekananda said personality development starts from the mind, not from the body.",
+    "Swami Vivekananda said the mind acts as a person's enemy.",
+    "Swami Vivekananda said a trained mind acts as a person's friend."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.95,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.8,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 959,
+   "top1_score": 0.7185630798339844,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 22,
+     "score": 0.7186,
+     "direct_hit": true,
+     "pages": [
+      45,
+      46,
+      47,
+      48
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk directly states Vivekananda's views on the soul, goal, methods, and mind, covering all listed claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 24,
+     "score": 0.6317,
+     "direct_hit": true,
+     "pages": [
+      49,
+      50,
+      51,
+      52
+     ],
+     "useful": true,
+     "supported_claims": [
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk describes Vivekananda’s emphasis on the mind’s role, its regulation, and mental discipline as essential to personality development."
+    },
+    {
+     "rank_sent": 3,
+     "position": 23,
+     "score": 0.6467,
+     "direct_hit": true,
+     "pages": [
+      47,
+      48,
+      49
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk outlines Vivekananda's dimensions of self, relevant to his personality theory, but does not state any of the specific claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 25,
+     "score": 0.5685,
+     "direct_hit": false,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Jung's personality concepts and does not mention Vivekananda or his theory."
+    },
+    {
+     "rank_sent": 5,
+     "position": 21,
+     "score": 0.6467,
+     "direct_hit": false,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk contains Vivekananda's quote that the greatest sin is to think oneself weak, supporting claim 4 and providing a relevant point about his view of personality."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-029",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "In which parts of the mind do the id, the ego and the superego operate?",
+   "source_pages": [
+    44,
+    45
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The id operates within the unconscious part of the mind.",
+    "The superego is present in the conscious, preconscious and unconscious.",
+    "The ego also functions in the conscious, preconscious and unconscious mind."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 382,
+   "top1_score": 0.7320367097854614,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 21,
+     "score": 0.732,
+     "direct_hit": true,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk explicitly states where the id, ego, and superego operate, matching all three claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 20,
+     "score": 0.6995,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk states the id operates in the unconscious, supporting claim 1, but gives no location details for ego or superego."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-030",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "Which of the personality types described in the notes are creative or innovative?",
+   "source_pages": [
+    31,
+    32,
+    33,
+    35
+   ],
+   "recall": 0.7272727272727273,
+   "sufficient": false,
+   "claims": [
+    "Romantics are creative by nature.",
+    "Adventurers are introverted.",
+    "Adventurers are creative.",
+    "Adventurers are curious.",
+    "Adventurers are spontaneous.",
+    "Achievers perform work in a highly creative way.",
+    "Achievers perform work in an original way.",
+    "Achievers perform work in an innovative way.",
+    "Observers are insightful.",
+    "Observers are innovative.",
+    "Observers are independent."
+   ],
+   "missing_claims": [
+    "Achievers perform work in a highly creative way.",
+    "Achievers perform work in an original way.",
+    "Achievers perform work in an innovative way."
+   ],
+   "precision_sent_order": 0.3666666666666667,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.4,
+   "first_useful_rank_sent": 3,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 981,
+   "top1_score": 0.47563448548316956,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 1,
+     "score": 0.3905,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses content creation, not the personality types, so it does not support any claim or help answer the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 0,
+     "score": 0.3514,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk does not mention any personality types being creative or innovative."
+    },
+    {
+     "rank_sent": 3,
+     "position": 16,
+     "score": 0.4756,
+     "direct_hit": true,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      9,
+      10,
+      11
+     ],
+     "reason": "The chunk states Romantics are creative and Observers are insightful, innovative, and independent, directly supporting those claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 15,
+     "score": 0.4281,
+     "direct_hit": false,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk only describes Achievers' traits without mentioning creativity or innovation, so no claims are supported and it does not aid the answer."
+    },
+    {
+     "rank_sent": 5,
+     "position": 17,
+     "score": 0.4281,
+     "direct_hit": false,
+     "pages": [
+      33,
+      34,
+      35,
+      36
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "Chunk states Adventurers are creative, directly answering the question."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-031",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "Who are named as the pioneers of email, blogging and podcasting in the notes?",
+   "source_pages": [
+    9,
+    14,
+    17,
+    18
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The first e-mail was created by Ray Tomlinson in 1971.",
+    "The first blog is believed to be Links.net.",
+    "Links.net was created by Justin Hall in 1994.",
+    "India's first professional blogger was Amit Agarwal.",
+    "Ben Hammersley first used the term podcast in 2004."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.9666666666666666,
+   "precision_score_order": 0.9028571428571428,
+   "precision_at_k": 0.7142857142857143,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1362,
+   "top1_score": 0.47339802980422974,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.4434,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      5
+     ],
+     "reason": "The chunk states that Ben Hammersley first used the term podcast in 2004, supporting claim 5."
+    },
+    {
+     "rank_sent": 2,
+     "position": 3,
+     "score": 0.4092,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk states that Ray Tomlinson created the first e‑mail, supporting claim 1."
+    },
+    {
+     "rank_sent": 3,
+     "position": 8,
+     "score": 0.4261,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk states that Justin Hall created the first blog (Links.net) and that Amit Agarwal is India’s first professional blogger, supporting claims 2, 3 and 4."
+    },
+    {
+     "rank_sent": 4,
+     "position": 7,
+     "score": 0.4734,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3
+     ],
+     "reason": "The chunk states that the first blog was Links.net and that it was created by Justin Hall in 1994, supporting claims 2 and 3."
+    },
+    {
+     "rank_sent": 5,
+     "position": 1,
+     "score": 0.4092,
+     "direct_hit": false,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk mentions blogs, email, and podcasts but does not name any pioneers."
+    },
+    {
+     "rank_sent": 6,
+     "position": 2,
+     "score": 0.4546,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "Chunk mentions Ray Tomlinson as creator of the first email, providing a pioneer name relevant to the question"
+    },
+    {
+     "rank_sent": 7,
+     "position": 6,
+     "score": 0.4261,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only discusses podcast types and creation tips, without mentioning any pioneers or the factual claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-032",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "How is the MBTI related to Carl Jung's typology?",
+   "source_pages": [
+    52,
+    53,
+    56,
+    57
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Carl Jung believed that the four functions thinking, feeling, sensation, and intuition control the way people view and act in the world.",
+    "Carl Jung described extroversion as moving a person's energy to the external world.",
+    "Carl Jung described introversion as moving a person's energy within the self.",
+    "The Myers-Briggs Type Indicator (MBTI) is rooted in Jung's theory of psychological types.",
+    "The MBTI categorizes individuals on four dichotomies: introversion-extraversion (I or E), sensing-intuition (S or N), thinking-feeling (T or F), and judging-perceiving (J or P)."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 553,
+   "top1_score": 0.5291603803634644,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 27,
+     "score": 0.5292,
+     "direct_hit": true,
+     "pages": [
+      56,
+      57,
+      58
+     ],
+     "useful": true,
+     "supported_claims": [
+      4,
+      5
+     ],
+     "reason": "The chunk states MBTI is rooted in Jung’s theory and lists the four dichotomies, directly linking MBTI to Jung’s typology."
+    },
+    {
+     "rank_sent": 2,
+     "position": 26,
+     "score": 0.4762,
+     "direct_hit": false,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk states that MBTI is rooted in Jung’s theory of psychological types, directly linking the two."
+    },
+    {
+     "rank_sent": 3,
+     "position": 25,
+     "score": 0.5085,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk states Jung's four functions and his definitions of introversion and extroversion, which are the core concepts the MBTI builds on."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-033",
+   "type": "multi-hop",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "What do the notes say about knowing your audience for webinars, podcasts, blogs and social media?",
+   "source_pages": [
+    12,
+    15,
+    16,
+    19,
+    23
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "For webinars, one should get to know the audience's demographics such as age, sex, cultural background, level of understanding, likes, dislikes, needs and priorities.",
+    "For podcasts, one should talk about things the audience is interested in and focus on the target audience.",
+    "For blogs, one should know the audience in and out and offer the audience exactly what the audience wants.",
+    "On social media, knowing the target audience's needs, requirements, priorities and interests lets demographics inform the content that is shared."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1170,
+   "top1_score": 0.5075011253356934,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.4568,
+     "direct_hit": false,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk lists audience demographics for webinars, matching claim 1."
+    },
+    {
+     "rank_sent": 2,
+     "position": 7,
+     "score": 0.4811,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "The chunk mentions focusing on the target audience for podcasts, supporting claim 2, but provides no audience information for webinars, blogs, or social media."
+    },
+    {
+     "rank_sent": 3,
+     "position": 4,
+     "score": 0.5075,
+     "direct_hit": true,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk includes a tip to get to know the audience's demographics for webinars, matching claim 1."
+    },
+    {
+     "rank_sent": 4,
+     "position": 6,
+     "score": 0.433,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "The chunk advises talking about topics the audience is interested in, matching claim 2."
+    },
+    {
+     "rank_sent": 5,
+     "position": 11,
+     "score": 0.4746,
+     "direct_hit": true,
+     "pages": [
+      22,
+      23,
+      24
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk mentions getting to know your audience and using demographics for social media content, matching claim 4."
+    },
+    {
+     "rank_sent": 6,
+     "position": 8,
+     "score": 0.433,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      3
+     ],
+     "reason": "The chunk includes a statement about knowing your audience for blogs, matching claim 3."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-034",
+   "type": "figure",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "In the Maslow pyramid figure, which needs are shown at the physiological level?",
+   "source_pages": [
+    38
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The physiological level is at the bottom of the pyramid.",
+    "The physiological level shows breathing.",
+    "The physiological level shows food.",
+    "The physiological level shows water.",
+    "The physiological level shows sex.",
+    "The physiological level shows sleep.",
+    "The physiological level shows homeostasis.",
+    "The physiological level shows excretion."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 385,
+   "top1_score": 0.4617864489555359,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 18,
+     "score": 0.4156,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+     ],
+     "reason": "The chunk lists the physiological needs and notes they are at the bottom of the pyramid."
+    },
+    {
+     "rank_sent": 2,
+     "position": 19,
+     "score": 0.4618,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk lists the physiological needs (air, water, food, warmth, shelter, sleep, sex) matching those claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-035",
+   "type": "figure",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "In the Maslow pyramid figure, what does the self-actualization level include?",
+   "source_pages": [
+    38
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The self-actualization level at the top of the pyramid includes morality.",
+    "The self-actualization level at the top of the pyramid includes creativity.",
+    "The self-actualization level at the top of the pyramid includes spontaneity.",
+    "The self-actualization level at the top of the pyramid includes problem solving.",
+    "The self-actualization level at the top of the pyramid includes lack of prejudice.",
+    "The self-actualization level at the top of the pyramid includes acceptance of facts."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 576,
+   "top1_score": 0.4655083417892456,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 19,
+     "score": 0.4655,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk describes self‑actualization as self‑fulfilment, personal growth and realizing potential, but does not mention morality, creativity, spontaneity, problem solving, lack of prejudice, or acceptance of facts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.419,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "Chunk lists morality, creativity, spontaneity, problem solving, lack of prejudice, and acceptance of facts as part of self‑actualization"
+    },
+    {
+     "rank_sent": 3,
+     "position": 20,
+     "score": 0.419,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk mentions self‑actualization but does not state any of the listed claim items."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-036",
+   "type": "figure",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "In the Freud figure, what does each part of the psyche say?",
+   "source_pages": [
+    42
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "In the figure, the id says \"I want that right now!\".",
+    "In the figure, the superego says \"Good people don't think about those things.\".",
+    "In the figure, the ego says \"Let's figure out a way to work together.\"."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.6666666666666666,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 572,
+   "top1_score": 0.529600977897644,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 20,
+     "score": 0.5296,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk includes the exact quoted statements for the id, superego, and ego as shown in the figure."
+    },
+    {
+     "rank_sent": 2,
+     "position": 21,
+     "score": 0.4766,
+     "direct_hit": false,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk describes the id, superego, and ego functions, matching the gist of each quoted statement."
+    },
+    {
+     "rank_sent": 3,
+     "position": 25,
+     "score": 0.4572,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Jungian personality concepts and does not mention Freud's id, ego, or superego statements."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-037",
+   "type": "figure",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "According to the Maslow pyramid figure, what are the safety needs?",
+   "source_pages": [
+    38
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "In the pyramid figure, the safety level shows security of body.",
+    "In the pyramid figure, the safety level shows security of employment.",
+    "In the pyramid figure, the safety level shows security of resources.",
+    "In the pyramid figure, the safety level shows security of morality.",
+    "In the pyramid figure, the safety level shows security of the family.",
+    "In the pyramid figure, the safety level shows security of health.",
+    "In the pyramid figure, the safety level shows security of property."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 385,
+   "top1_score": 0.3650166392326355,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 19,
+     "score": 0.365,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "Chunk defines safety needs generally but does not state any of the specific claim items."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.3488,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk lists security of body, employment, resources, morality, family, health, and property as safety needs, matching all claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-038",
+   "type": "comparison",
+   "difficulty": "hard",
+   "in_document": true,
+   "question": "How does Maslow's original five-stage model differ from the extended eight-stage model?",
+   "source_pages": [
+    39,
+    40
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The original model has five stages.",
+    "The five stages are biological and physiological needs.",
+    "The five stages are safety needs.",
+    "The five stages are love and belonging needs.",
+    "The five stages are esteem needs.",
+    "The five stages are self-actualization needs.",
+    "In the 1960s and 1970s the original model was extended to an eight-stage model.",
+    "The added stages include cognitive needs.",
+    "Cognitive needs include exploration.",
+    "Cognitive needs include curiosity.",
+    "Cognitive needs include understanding.",
+    "Cognitive needs include knowledge.",
+    "Cognitive needs include predictability.",
+    "The added stages include aesthetic needs.",
+    "Aesthetic needs include search for beauty.",
+    "Aesthetic needs include appreciation.",
+    "The added stages include self-actualization needs as stage 8."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 2,
+   "context_words": 385,
+   "top1_score": 0.5524613857269287,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 19,
+     "score": 0.5525,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+     ],
+     "reason": "The chunk lists all original five stages and the three added stages, directly showing how the eight‑stage model expands the original."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.4972,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk describes the original five-stage hierarchy, which is needed to contrast with the eight-stage version."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-039",
+   "type": "comparison",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is the difference between the anima and the animus?",
+   "source_pages": [
+    54
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The anima is a reflection of the opposite gender ideal.",
+    "The anima represents femininity in a man's psyche.",
+    "The animus represents masculinity in a woman's psyche."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 1,
+   "context_words": 199,
+   "top1_score": 0.4081898033618927,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 26,
+     "score": 0.4082,
+     "direct_hit": true,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk directly states that the anima reflects the opposite gender ideal and represents femininity in a man, while the animus represents masculinity in a woman, covering all three claims."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-040",
+   "type": "comparison",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How do peacemakers differ from asserters?",
+   "source_pages": [
+    34,
+    36
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Peacemakers are gentle.",
+    "Peacemakers are kind enough to maintain harmony and unity with everyone.",
+    "Peacemakers avoid conflict and strife.",
+    "Peacemakers aim to be the glue that holds the group together.",
+    "Asserters are very self-confident.",
+    "Asserters have a natural abundance of energy.",
+    "Asserters fight tough circumstances without feeling pressurized.",
+    "Asserters use their energy to protect the weaker and needy.",
+    "Asserters will defend truth and justice at all costs."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 578,
+   "top1_score": 0.7200900912284851,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 17,
+     "score": 0.7201,
+     "direct_hit": true,
+     "pages": [
+      33,
+      34,
+      35,
+      36
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      5,
+      6,
+      7,
+      8,
+      9
+     ],
+     "reason": "The chunk lists characteristic traits of both peacemakers and asserters, covering the relevant claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.6481,
+     "direct_hit": true,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "Chunk provides peacemaker traits that are part of the answer"
+    },
+    {
+     "rank_sent": 3,
+     "position": 15,
+     "score": 0.4002,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "Chunk describes helpers as selfless and nurturing, matching claim 2 about peacemakers being kind and maintaining harmony"
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-041",
+   "type": "comparison",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How do helpers differ from achievers as personality types?",
+   "source_pages": [
+    30,
+    31
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Helpers are people-oriented.",
+    "Helpers are often selfless individuals.",
+    "Helpers derive satisfaction from assisting and helping others.",
+    "Helpers seek to nurture the people around Helpers.",
+    "Achievers are focused on accomplishments and success.",
+    "Achievers are competitive.",
+    "Achievers are goal-oriented.",
+    "Achievers are ambitious.",
+    "Achievers tolerate a lot of stress.",
+    "Achievers treat challenges as opportunities."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.75,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.5,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 783,
+   "top1_score": 0.72527015209198,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 15,
+     "score": 0.7253,
+     "direct_hit": true,
+     "pages": [
+      29,
+      30,
+      31
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      9,
+      10
+     ],
+     "reason": "The chunk states multiple helper and achiever traits, covering most listed claims."
+    },
+    {
+     "rank_sent": 2,
+     "position": 14,
+     "score": 0.6527,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk does not mention helpers or achievers, so it provides no supporting facts or useful information."
+    },
+    {
+     "rank_sent": 3,
+     "position": 26,
+     "score": 0.4049,
+     "direct_hit": false,
+     "pages": [
+      53,
+      54,
+      55,
+      56
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses personality assessment and Jungian concepts, not helpers or achievers."
+    },
+    {
+     "rank_sent": 4,
+     "position": 16,
+     "score": 0.6527,
+     "direct_hit": false,
+     "pages": [
+      31,
+      32,
+      33
+     ],
+     "useful": true,
+     "supported_claims": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk lists several achiever traits that match claims 5‑10, giving information needed to contrast helpers with achievers."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-042",
+   "type": "comparison",
+   "difficulty": "medium",
+   "in_document": true,
+   "question": "How does the superego differ from the ego?",
+   "source_pages": [
+    44,
+    45
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The superego internalizes societal rules and morals.",
+    "The superego tries to perfect and civilize human behaviour.",
+    "The superego struggles to make the ego act upon idealistic standards rather than realistic principles.",
+    "The ego mediates between the demands of the id, the superego and reality.",
+    "The ego keeps a person grounded in reality.",
+    "Having a strong ego means having a strong sense of self-awareness."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 3,
+   "context_words": 578,
+   "top1_score": 0.7120835781097412,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 21,
+     "score": 0.7121,
+     "direct_hit": true,
+     "pages": [
+      43,
+      44,
+      45,
+      46
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "reason": "The chunk describes the superego’s functions and contrasts them with the ego, directly addressing the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 20,
+     "score": 0.6409,
+     "direct_hit": true,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      5
+     ],
+     "reason": "The chunk states that the superego represents morality and the ego represents reality, distinguishing the two."
+    },
+    {
+     "rank_sent": 3,
+     "position": 22,
+     "score": 0.6409,
+     "direct_hit": false,
+     "pages": [
+      45,
+      46,
+      47,
+      48
+     ],
+     "useful": true,
+     "supported_claims": [
+      6
+     ],
+     "reason": "The chunk only states that a strong ego means strong self‑awareness and does not discuss the superego or its contrast with the ego."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-043",
+   "type": "out-of-document",
+   "difficulty": "hard",
+   "in_document": false,
+   "question": "What is the Big Five model of personality?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "The Big Five model describes personality using five broad traits.",
+    "The five broad traits are openness, conscientiousness, extraversion, agreeableness, and neuroticism.",
+    "Each trait is measured on a continuum rather than as a fixed type."
+   ],
+   "missing_claims": [
+    "The Big Five model describes personality using five broad traits.",
+    "The five broad traits are openness, conscientiousness, extraversion, agreeableness, and neuroticism.",
+    "Each trait is measured on a continuum rather than as a fixed type."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 6,
+   "context_words": 1153,
+   "top1_score": 0.478362113237381,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 19,
+     "score": 0.4568,
+     "direct_hit": true,
+     "pages": [
+      39,
+      40,
+      41
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Maslow's hierarchy of needs and Freud, not the Big Five personality traits."
+    },
+    {
+     "rank_sent": 2,
+     "position": 18,
+     "score": 0.4111,
+     "direct_hit": false,
+     "pages": [
+      35,
+      36,
+      37,
+      38,
+      39
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk discusses Maslow's hierarchy and unrelated personality concepts, not the Big Five model."
+    },
+    {
+     "rank_sent": 3,
+     "position": 25,
+     "score": 0.4784,
+     "direct_hit": true,
+     "pages": [
+      51,
+      52,
+      53
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses Jungian personality concepts and extroversion/introversion, but does not mention the Big Five model, its five traits, or their continuum measurement."
+    },
+    {
+     "rank_sent": 4,
+     "position": 13,
+     "score": 0.4015,
+     "direct_hit": false,
+     "pages": [
+      25,
+      26,
+      27
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses speaking style and personality impressions but does not mention the Big Five model, its five traits, or measurement on a continuum."
+    },
+    {
+     "rank_sent": 5,
+     "position": 14,
+     "score": 0.4461,
+     "direct_hit": true,
+     "pages": [
+      27,
+      28,
+      29
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses personality analysis and types but does not mention the Big Five model or its traits."
+    },
+    {
+     "rank_sent": 6,
+     "position": 20,
+     "score": 0.4111,
+     "direct_hit": false,
+     "pages": [
+      40,
+      41,
+      42,
+      43,
+      44
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "Chunk discusses Freud's theory and does not mention the Big Five model."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-044",
+   "type": "out-of-document",
+   "difficulty": "medium",
+   "in_document": false,
+   "question": "What is search engine optimization (SEO)?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "Search engine optimization (SEO) is the practice of improving a website's content and structure.",
+    "Improving a website's content and structure helps the website rank higher in organic search engine results.",
+    "Search engine optimization (SEO) involves using relevant keywords.",
+    "Search engine optimization (SEO) involves creating quality content.",
+    "Search engine optimization (SEO) involves earning backlinks.",
+    "Search engine optimization (SEO) involves improving technical factors such as page speed."
+   ],
+   "missing_claims": [
+    "Search engine optimization (SEO) is the practice of improving a website's content and structure.",
+    "Improving a website's content and structure helps the website rank higher in organic search engine results.",
+    "Search engine optimization (SEO) involves using relevant keywords.",
+    "Search engine optimization (SEO) involves creating quality content.",
+    "Search engine optimization (SEO) involves earning backlinks.",
+    "Search engine optimization (SEO) involves improving technical factors such as page speed."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.26201194524765015,
+   "matches_search_document": true,
+   "chunks": []
+  },
+  {
+   "id": "tc_u5-045",
+   "type": "out-of-document",
+   "difficulty": "hard",
+   "in_document": false,
+   "question": "What is Erik Erikson's theory of psychosocial development?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "Erik Erikson proposed that personality develops through eight psychosocial stages across the lifespan.",
+    "Each stage involves a conflict.",
+    "Trust versus mistrust in infancy is an example of a conflict.",
+    "Identity versus role confusion in adolescence is an example of a conflict.",
+    "The resolution of each conflict shapes personality."
+   ],
+   "missing_claims": [
+    "Erik Erikson proposed that personality develops through eight psychosocial stages across the lifespan.",
+    "Each stage involves a conflict.",
+    "Trust versus mistrust in infancy is an example of a conflict.",
+    "Identity versus role confusion in adolescence is an example of a conflict.",
+    "The resolution of each conflict shapes personality."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.4572713375091553,
+   "matches_search_document": true,
+   "chunks": []
+  },
+  {
+   "id": "tc_u5-046",
+   "type": "out-of-document",
+   "difficulty": "hard",
+   "in_document": false,
+   "question": "What is the Johari window?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "The Johari window is a self-awareness model",
+    "The Johari window was created by Joseph Luft",
+    "The Johari window was created by Harrington Ingham",
+    "The Johari window was created in 1955",
+    "The Johari window has four quadrants",
+    "One quadrant of the Johari window is the open area",
+    "The open area is known to self and others",
+    "One quadrant of the Johari window is the blind area",
+    "The blind area is known to others but not to self",
+    "One quadrant of the Johari window is the hidden area",
+    "The hidden area is known to self but not to others",
+    "One quadrant of the Johari window is the unknown area",
+    "The unknown area is known to neither"
+   ],
+   "missing_claims": [
+    "The Johari window is a self-awareness model",
+    "The Johari window was created by Joseph Luft",
+    "The Johari window was created by Harrington Ingham",
+    "The Johari window was created in 1955",
+    "The Johari window has four quadrants",
+    "One quadrant of the Johari window is the open area",
+    "The open area is known to self and others",
+    "One quadrant of the Johari window is the blind area",
+    "The blind area is known to others but not to self",
+    "One quadrant of the Johari window is the hidden area",
+    "The hidden area is known to self but not to others",
+    "One quadrant of the Johari window is the unknown area",
+    "The unknown area is known to neither"
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.20855993032455444,
+   "matches_search_document": true,
+   "chunks": []
+  },
+  {
+   "id": "tc_u5-047",
+   "type": "out-of-document",
+   "difficulty": "medium",
+   "in_document": false,
+   "question": "What are the 7 Cs of communication?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "The 7 Cs of communication are guidelines for effective messages.",
+    "Clear is one of the 7 Cs of communication.",
+    "Concise is one of the 7 Cs of communication.",
+    "Concrete is one of the 7 Cs of communication.",
+    "Correct is one of the 7 Cs of communication.",
+    "Coherent is one of the 7 Cs of communication.",
+    "Complete is one of the 7 Cs of communication.",
+    "Courteous is one of the 7 Cs of communication."
+   ],
+   "missing_claims": [
+    "The 7 Cs of communication are guidelines for effective messages.",
+    "Clear is one of the 7 Cs of communication.",
+    "Concise is one of the 7 Cs of communication.",
+    "Concrete is one of the 7 Cs of communication.",
+    "Correct is one of the 7 Cs of communication.",
+    "Coherent is one of the 7 Cs of communication.",
+    "Complete is one of the 7 Cs of communication.",
+    "Courteous is one of the 7 Cs of communication."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 1,
+   "context_words": 199,
+   "top1_score": 0.4360172152519226,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.436,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk contains no mention of the 7 Cs of communication or related facts."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-048",
+   "type": "out-of-document",
+   "difficulty": "hard",
+   "in_document": false,
+   "question": "What did Alfred Adler say about the inferiority complex?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "Alfred Adler held that feelings of inferiority are universal.",
+    "Alfred Adler held that feelings of inferiority motivate people to strive for superiority or competence.",
+    "When feelings of inferiority become exaggerated and overwhelming, feelings of inferiority form an inferiority complex."
+   ],
+   "missing_claims": [
+    "Alfred Adler held that feelings of inferiority are universal.",
+    "Alfred Adler held that feelings of inferiority motivate people to strive for superiority or competence.",
+    "When feelings of inferiority become exaggerated and overwhelming, feelings of inferiority form an inferiority complex."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.3260567784309387,
+   "matches_search_document": true,
+   "chunks": []
+  },
+  {
+   "id": "tc_u5-049",
+   "type": "out-of-document",
+   "difficulty": "easy",
+   "in_document": false,
+   "question": "What is the difference between TCP and UDP?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "TCP is a connection-oriented protocol.",
+    "TCP provides reliable delivery.",
+    "TCP provides ordered delivery.",
+    "TCP uses acknowledgements.",
+    "TCP uses retransmission.",
+    "UDP is connectionless.",
+    "UDP sends datagrams without delivery guarantees.",
+    "UDP is faster.",
+    "UDP has lower overhead."
+   ],
+   "missing_claims": [
+    "TCP is a connection-oriented protocol.",
+    "TCP provides reliable delivery.",
+    "TCP provides ordered delivery.",
+    "TCP uses acknowledgements.",
+    "TCP uses retransmission.",
+    "UDP is connectionless.",
+    "UDP sends datagrams without delivery guarantees.",
+    "UDP is faster.",
+    "UDP has lower overhead."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.15353664755821228,
+   "matches_search_document": true,
+   "chunks": []
+  },
+  {
+   "id": "tc_u5-050",
+   "type": "out-of-document",
+   "difficulty": "easy",
+   "in_document": false,
+   "question": "What is Newton's second law of motion?",
+   "source_pages": [],
+   "recall": 0.0,
+   "sufficient": false,
+   "claims": [
+    "Newton's second law states that the net force on an object equals the object's mass multiplied by the object's acceleration.",
+    "The equation representing Newton's second law is F = ma."
+   ],
+   "missing_claims": [
+    "Newton's second law states that the net force on an object equals the object's mass multiplied by the object's acceleration.",
+    "The equation representing Newton's second law is F = ma."
+   ],
+   "precision_sent_order": 0.0,
+   "precision_score_order": 0.0,
+   "precision_at_k": 0.0,
+   "first_useful_rank_sent": null,
+   "first_useful_rank_score": null,
+   "n_chunks": 0,
+   "context_words": 0,
+   "top1_score": 0.11428267508745193,
+   "matches_search_document": true,
+   "chunks": []
+  }
+ ]
+}

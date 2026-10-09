@@ -1,0 +1,79 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20261005-001650",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": []
+ },
+ "summary": {
+  "n": 1,
+  "in_document": {
+   "faithfulness": 0.929,
+   "groundedness": 0.714,
+   "relevancy": 1.0,
+   "correctness": 0.429,
+   "got_document_context": 1.0
+  },
+  "out_of_document": {
+   "correctness": null,
+   "relevancy": null,
+   "got_document_context": null,
+   "used_web": null
+  },
+  "latency_s_mean": 3.33,
+  "teacher_tokens_per_q": null,
+  "judge_tokens_per_q": 7823
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-011",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "Which concurrency control techniques in this unit avoid deadlocks, and why?",
+   "answer": "Great question, Kaustubh! In this unit the techniques that **don’t suffer from deadlocks are the timestamp‑ordering protocols (both basic and strict), the optimistic/validation‑based concurrency control, and the multi‑version (MVCC) schemes that are built on timestamps**.  \n\n- **Timestamp ordering** never makes a transaction wait for another; if a conflict is detected it simply aborts the younger transaction, so a circular wait can’t form.  \n- **Optimistic (validation) control** runs transactions without any locks at all and only checks for conflicts at commit time, so there’s nothing for a transaction to block on.  \n- **MVCC** keeps several versions of each data item, allowing reads to proceed on older versions while writes create new ones; because most operations don’t need to lock the same item simultaneously, deadlocks are effectively eliminated.  \n\nIn contrast, classic 2‑Phase Locking can still deadlock because it relies on acquiring and holding locks. Keep these distinctions in mind when you choose a protocol for a given workload!",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "concurrency control techniques avoid deadlocks timestamp ordering wound-wait wait-die optimistic"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 3.33,
+   "teacher_tokens": 0,
+   "judge_tokens": 7823,
+   "faithfulness": 0.9285714285714286,
+   "groundedness": 0.7142857142857143,
+   "answer_claims": 14,
+   "unsupported_claims": [
+    "Multi-version (MVCC) schemes built on timestamps do not suffer from deadlocks.",
+    "Timestamp ordering never makes a transaction wait for another.",
+    "In MVCC, most operations do not need to lock the same item simultaneously.",
+    "In MVCC, deadlocks are effectively eliminated."
+   ],
+   "contradicted_claims": [
+    "Timestamp ordering never makes a transaction wait for another."
+   ],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 14 statements address the question.",
+   "correctness": 0.42857142857142855,
+   "missed_ideal_claims": [
+    "Conservative 2PL acquires all locks before the transaction begins execution.",
+    "Acquiring all locks before execution avoids deadlocks.",
+    "Acquiring all locks before execution can cause delays due to pre-locking.",
+    "A transaction T waits for another transaction T' only if TS(T) > TS(T')."
+   ],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

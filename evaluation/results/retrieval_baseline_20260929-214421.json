@@ -1,0 +1,586 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20260929-214421",
+  "judge": "groq/openai/gpt-oss-120b",
+  "retriever": "search_document baseline {'k': 3, 'window': 1, 'neighbor_min_score': 0.3}",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "search_document_matches": "4/4",
+  "judge_usage": {
+   "calls": 33,
+   "input_tokens": 17237,
+   "output_tokens": 13038,
+   "new_calls": 33,
+   "cache_hits": 75
+  },
+  "errors": [
+   {
+    "id": "tc_u5-005",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199338, Requested 1104. Please try again in 3m10.944s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-006",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200000, Requested 1015. Please try again in 7m18.479999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   },
+   {
+    "id": "tc_u5-007",
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m0p41rakeger7zp54zrxd91t` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 200000, Requested 890. Please try again in 6m24.48s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+   }
+  ]
+ },
+ "summary": {
+  "in_document": {
+   "n": 4,
+   "recall": 1.0,
+   "sufficient_pct": 100.0,
+   "precision_sent_order": 0.574,
+   "precision_score_order": 0.91,
+   "precision_at_k": 0.533,
+   "first_useful_rank_sent": 2.5,
+   "chunks": 5.75,
+   "context_words": 1125.75
+  },
+  "by_type": {
+   "definition": {
+    "n": 4,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.574,
+    "precision_score_order": 0.91,
+    "precision_at_k": 0.533,
+    "first_useful_rank_sent": 2.5,
+    "chunks": 5.75,
+    "context_words": 1125.75
+   }
+  },
+  "out_of_document": [],
+  "in_document_top1": {
+   "min": 0.6897984743118286,
+   "median": 0.7287183105945587,
+   "max": 0.7990028858184814
+  },
+  "weakest": [
+   "tc_u5-004",
+   "tc_u5-002",
+   "tc_u5-003",
+   "tc_u5-001"
+  ]
+ },
+ "rows": [
+  {
+   "id": "tc_u5-001",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is content creation?",
+   "source_pages": [
+    5
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "Content creation is the process of creating various forms of media.",
+    "Various forms of media created by content creation appeal to the target audience.",
+    "Content creation needs planning.",
+    "Content creation needs designing.",
+    "Content creation needs sharing digital content on social platforms."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1373,
+   "top1_score": 0.7004437446594238,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.6304,
+     "direct_hit": false,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk defines content creation as a creative process and lists media types, supporting claim 1 and providing relevant information."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.7004,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines content creation and lists its steps, covering all claim facts."
+    },
+    {
+     "rank_sent": 3,
+     "position": 2,
+     "score": 0.6304,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7,
+      8,
+      9
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk lists the various media types created in content creation, defining it, which is relevant to the question."
+    },
+    {
+     "rank_sent": 4,
+     "position": 3,
+     "score": 0.4522,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk discusses email content creation but does not state any of the specific claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 6,
+     "score": 0.3651,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3
+     ],
+     "reason": "The chunk describes content creation as a process for podcasts, includes planning steps, and emphasizes audience‑focused, engaging media."
+    },
+    {
+     "rank_sent": 6,
+     "position": 7,
+     "score": 0.4057,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1
+     ],
+     "reason": "The chunk describes creating podcasts and blogs, showing content creation involves producing various media, which supports claim 1 and helps define content creation."
+    },
+    {
+     "rank_sent": 7,
+     "position": 8,
+     "score": 0.3651,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk describes aspects of content creation such as appealing to the audience, planning through research, and designing blogs."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-002",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a webinar?",
+   "source_pages": [
+    11
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "The word \"webinar\" is a blend of \"web\" and \"seminar\".",
+    "A webinar is an interactive online event.",
+    "In a webinar, a group of participants listen to a speaker.",
+    "In a webinar, the speaker delivers a presentation or seminar.",
+    "In a webinar, the speaker shares a remote screen."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.3333333333333333,
+   "precision_score_order": 1.0,
+   "precision_at_k": 0.2,
+   "first_useful_rank_sent": 3,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 981,
+   "top1_score": 0.6897984743118286,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.2716,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only mentions webinars as a topic and asks what they are, but provides no factual statements supporting any claim."
+    },
+    {
+     "rank_sent": 2,
+     "position": 3,
+     "score": 0.6208,
+     "direct_hit": false,
+     "pages": [
+      9,
+      10,
+      11
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses email topics and contains no information about webinars."
+    },
+    {
+     "rank_sent": 3,
+     "position": 4,
+     "score": 0.6898,
+     "direct_hit": true,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines webinar and states all the claim facts."
+    },
+    {
+     "rank_sent": 4,
+     "position": 5,
+     "score": 0.6208,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only gives tips for creating a webinar, not defining what a webinar is"
+    },
+    {
+     "rank_sent": 5,
+     "position": 6,
+     "score": 0.305,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses podcasts and contains no information about webinars."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-003",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a podcast?",
+   "source_pages": [
+    14
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A podcast is a digital audio program.",
+    "A podcast consists of a series of audio episodes.",
+    "A listener can download a podcast from the internet.",
+    "A listener can stream a podcast from the internet."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.6388888888888888,
+   "precision_score_order": 0.8055555555555555,
+   "precision_at_k": 0.6,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 5,
+   "context_words": 976,
+   "top1_score": 0.7990028858184814,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 4,
+     "score": 0.7191,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses webinars and contains no information about podcasts."
+    },
+    {
+     "rank_sent": 2,
+     "position": 5,
+     "score": 0.799,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "reason": "The chunk defines a podcast as a digital audio program of series episodes and notes it can be downloaded or streamed, covering all claims."
+    },
+    {
+     "rank_sent": 3,
+     "position": 6,
+     "score": 0.7191,
+     "direct_hit": true,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2
+     ],
+     "reason": "The chunk describes podcasts as an audio medium with episodes, supporting the definition and series nature of podcasts."
+    },
+    {
+     "rank_sent": 4,
+     "position": 7,
+     "score": 0.5982,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      2
+     ],
+     "reason": "The chunk mentions releasing episodes regularly, indicating that a podcast consists of a series of audio episodes."
+    },
+    {
+     "rank_sent": 5,
+     "position": 8,
+     "score": 0.5177,
+     "direct_hit": false,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses blogs and their history, not podcasts, so it provides no relevant facts about what a podcast is."
+    }
+   ]
+  },
+  {
+   "id": "tc_u5-004",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a blog?",
+   "source_pages": [
+    17
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A blog is short for web-blog.",
+    "A blog is an online journal.",
+    "A blog is an informational website.",
+    "A blog is run by an individual.",
+    "A blog is run by a group.",
+    "A blog is run by a corporation.",
+    "A blog offers regularly updated content about a topic.",
+    "A blog presents information in reverse chronological order.",
+    "A blog is written in an informal style.",
+    "A blog is written in a conversational style."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.325,
+   "precision_score_order": 0.8333333333333333,
+   "precision_at_k": 0.3333333333333333,
+   "first_useful_rank_sent": 4,
+   "first_useful_rank_score": 1,
+   "n_chunks": 6,
+   "context_words": 1173,
+   "top1_score": 0.7569928765296936,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 4,
+     "score": 0.3876,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses webinars and contains no information about blogs."
+    },
+    {
+     "rank_sent": 2,
+     "position": 5,
+     "score": 0.4306,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk talks about podcasts and does not state any facts about blogs."
+    },
+    {
+     "rank_sent": 3,
+     "position": 6,
+     "score": 0.6813,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses podcasts and does not provide any information about blogs"
+    },
+    {
+     "rank_sent": 4,
+     "position": 7,
+     "score": 0.757,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "reason": "The chunk defines a blog and includes all listed factual claims."
+    },
+    {
+     "rank_sent": 5,
+     "position": 8,
+     "score": 0.6813,
+     "direct_hit": true,
+     "pages": [
+      17,
+      18,
+      19,
+      20
+     ],
+     "useful": true,
+     "supported_claims": [
+      4
+     ],
+     "reason": "The chunk mentions personal blogs, implying blogs can be run by individuals"
+    },
+    {
+     "rank_sent": 6,
+     "position": 9,
+     "score": 0.5232,
+     "direct_hit": false,
+     "pages": [
+      19,
+      20,
+      21
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk discusses social media ethics and mentions blog posts but does not state any facts defining what a blog is."
+    }
+   ]
+  }
+ ]
+}

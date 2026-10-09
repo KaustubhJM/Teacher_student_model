@@ -1,0 +1,343 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20260929-023354",
+  "judge": "groq/openai/gpt-oss-120b",
+  "retriever": "search_document baseline {'k': 3, 'window': 1, 'neighbor_min_score': 0.3}",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "search_document_matches": "2/2",
+  "judge_usage": {
+   "calls": 13,
+   "input_tokens": 8191,
+   "output_tokens": 8616,
+   "new_calls": 13,
+   "cache_hits": 33
+  },
+  "errors": []
+ },
+ "summary": {
+  "in_document": {
+   "n": 2,
+   "recall": 1.0,
+   "sufficient_pct": 100.0,
+   "precision_sent_order": 0.855,
+   "precision_score_order": 0.963,
+   "precision_at_k": 0.857,
+   "first_useful_rank_sent": 1.5,
+   "chunks": 5.5,
+   "context_words": 1082.5
+  },
+  "by_type": {
+   "definition": {
+    "n": 2,
+    "recall": 1.0,
+    "sufficient_pct": 100.0,
+    "precision_sent_order": 0.855,
+    "precision_score_order": 0.963,
+    "precision_at_k": 0.857,
+    "first_useful_rank_sent": 1.5,
+    "chunks": 5.5,
+    "context_words": 1082.5
+   }
+  },
+  "out_of_document": [],
+  "in_document_top1": {
+   "min": 0.7072935104370117,
+   "median": 0.7092767357826233,
+   "max": 0.7112599611282349
+  },
+  "weakest": [
+   "dbms_u5-002",
+   "dbms_u5-001"
+  ]
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-001",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is a lock in a DBMS?",
+   "source_pages": [
+    4
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A lock is a variable.",
+    "A lock variable is associated with a data item.",
+    "A lock variable describes the status of the data item.",
+    "The status described by a lock variable is with respect to the operations that can be applied to the data item.",
+    "There is one lock for each data item in the database.",
+    "Locks are used to synchronize access to database items.",
+    "The access synchronized by locks is performed by concurrent transactions."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 1.0,
+   "precision_score_order": 1.0,
+   "precision_at_k": 1.0,
+   "first_useful_rank_sent": 1,
+   "first_useful_rank_score": 1,
+   "n_chunks": 4,
+   "context_words": 782,
+   "top1_score": 0.7072935104370117,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 0,
+     "score": 0.7073,
+     "direct_hit": true,
+     "pages": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "reason": "The chunk defines a lock as a variable linked to a data item, describes its status (including operation‑based meaning), and states that each item has one lock, directly addressing the question."
+    },
+    {
+     "rank_sent": 2,
+     "position": 1,
+     "score": 0.6366,
+     "direct_hit": true,
+     "pages": [
+      4,
+      5,
+      6
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk defines lock variables, their per-item association, status, one-per-item rule, and use for synchronizing concurrent transactions."
+    },
+    {
+     "rank_sent": 3,
+     "position": 2,
+     "score": 0.5823,
+     "direct_hit": true,
+     "pages": [
+      6,
+      7
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk describes lock association, states, and their role in synchronizing concurrent transaction access."
+    },
+    {
+     "rank_sent": 4,
+     "position": 3,
+     "score": 0.5241,
+     "direct_hit": false,
+     "pages": [
+      7,
+      8,
+      9,
+      10
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      6,
+      7
+     ],
+     "reason": "The chunk describes lock variables, their states, and how they synchronize concurrent transactions."
+    }
+   ]
+  },
+  {
+   "id": "dbms_u5-002",
+   "type": "definition",
+   "difficulty": "easy",
+   "in_document": true,
+   "question": "What is the two-phase locking protocol?",
+   "source_pages": [
+    13
+   ],
+   "recall": 1.0,
+   "sufficient": true,
+   "claims": [
+    "A transaction follows the two-phase locking protocol if all its locking operations (read_lock, write_lock) precede the first unlock operation in the transaction.",
+    "That transaction has an expanding (growing) phase.",
+    "During the expanding phase, new locks can be acquired.",
+    "During the expanding phase, no locks can be released.",
+    "The transaction then has a shrinking phase.",
+    "During the shrinking phase, existing locks can be released.",
+    "During the shrinking phase, no new locks can be acquired."
+   ],
+   "missing_claims": [],
+   "precision_sent_order": 0.7100000000000001,
+   "precision_score_order": 0.9266666666666665,
+   "precision_at_k": 0.7142857142857143,
+   "first_useful_rank_sent": 2,
+   "first_useful_rank_score": 1,
+   "n_chunks": 7,
+   "context_words": 1383,
+   "top1_score": 0.7112599611282349,
+   "matches_search_document": true,
+   "chunks": [
+    {
+     "rank_sent": 1,
+     "position": 5,
+     "score": 0.6401,
+     "direct_hit": false,
+     "pages": [
+      11,
+      12,
+      13
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk only talks about lock conversion and mentions two-phase locking without defining its phases or ordering of lock/unlock operations."
+    },
+    {
+     "rank_sent": 2,
+     "position": 6,
+     "score": 0.7113,
+     "direct_hit": true,
+     "pages": [
+      12,
+      13,
+      14,
+      15
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk defines the two-phase locking rules and describes expanding and shrinking phases"
+    },
+    {
+     "rank_sent": 3,
+     "position": 7,
+     "score": 0.6401,
+     "direct_hit": false,
+     "pages": [
+      14,
+      15,
+      16,
+      17
+     ],
+     "useful": true,
+     "supported_claims": [],
+     "reason": "The chunk mentions two-phase locking and shows lock/unlock ordering, but it does not explicitly state any of the listed claims."
+    },
+    {
+     "rank_sent": 4,
+     "position": 8,
+     "score": 0.6777,
+     "direct_hit": true,
+     "pages": [
+      16,
+      17,
+      18
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      4,
+      6
+     ],
+     "reason": "The chunk describes that a transaction must keep locks until all required items are locked before any unlock, capturing the core two‑phase locking rule (no unlocks during the growing phase and releases only after acquiring all locks)."
+    },
+    {
+     "rank_sent": 5,
+     "position": 9,
+     "score": 0.6264,
+     "direct_hit": false,
+     "pages": [
+      18,
+      19,
+      20,
+      21
+     ],
+     "useful": true,
+     "supported_claims": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "The chunk outlines the growing and shrinking phases and their lock acquisition/release rules, which are central to the two‑phase locking protocol."
+    },
+    {
+     "rank_sent": 6,
+     "position": 10,
+     "score": 0.696,
+     "direct_hit": true,
+     "pages": [
+      20,
+      21,
+      22,
+      23
+     ],
+     "useful": true,
+     "supported_claims": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ],
+     "reason": "Chunk describes the growing (expanding) and shrinking phases of 2PL, matching all listed claims."
+    },
+    {
+     "rank_sent": 7,
+     "position": 11,
+     "score": 0.6264,
+     "direct_hit": false,
+     "pages": [
+      23,
+      24,
+      25
+     ],
+     "useful": false,
+     "supported_claims": [],
+     "reason": "The chunk describes timestamp ordering and only mentions 2PL in contrast, without stating any of the specific 2PL phase claims."
+    }
+   ]
+  }
+ ]
+}

@@ -34,3 +34,10 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .claude/settings.local.json
+
+# --- Website backend data (uploaded sources, class records) ---
+server/data/
+
+# --- Evaluation caches (LLM-judge results, DeepEval run cache) ---
+evaluation/.judge_cache/
+.deepeval/
