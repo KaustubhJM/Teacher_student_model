@@ -15,6 +15,9 @@ from tools import search_document, search_web
 
 EXPLAINER_MODEL = "openai/gpt-oss-120b"
 MAX_TOOL_ROUNDS = 3
+# Spoken instead of crashing the lecture when answering a doubt fails.
+DOUBT_FALLBACK = ("Sorry {name}, I couldn't put a proper answer together for "
+                  "that just now. Let's keep going, and ask me again in a moment.")
 
 # How many prior doubt Q/A pairs (from THIS lecture) get replayed as real
 # conversation history before the current question. Capped so a lecture
@@ -287,12 +290,16 @@ def _doubt_system_prompt(state: VoiceTeachState, section: str) -> str:
         "- search_web: checks the web for information the document likely "
         "doesn't cover — current events, broader context, or anything "
         "clearly outside the document's scope.\n\n"
-        "Use a tool if it would genuinely improve your answer. Don't use "
-        "one if you already know the answer confidently and it's not "
-        "something the document would specifically cover — general "
-        "knowledge questions don't need tools. You may use both tools, one, "
-        "or neither, and you may call a tool more than once if the first "
-        "result wasn't enough.\n\n"
+        "If they asked a question about this subject, ALWAYS call "
+        "search_document first — even if you already know the answer. "
+        "Their notes are what their exam follows, so base your answer on "
+        "the notes' own definitions, terms, lists and examples; where the "
+        "notes and your own knowledge differ, follow the notes. You can add "
+        "a short explanation or example of your own on top of what the "
+        "notes say. Use search_web only for things the notes don't cover. "
+        "Skip the tools only when they're answering your comprehension "
+        "check or making a comment. You may call a tool more than once if "
+        "the first result wasn't enough.\n\n"
         "Once you're ready, respond the way a real teacher would: if they "
         "answered a comprehension check, tell them clearly whether it's "
         "right and add insight; if it's a genuine question, answer it "
@@ -325,15 +332,27 @@ def answer_doubt(state: VoiceTeachState, section: str, student_input: str,
 
     messages.append(HumanMessage(content=student_input))
 
-    for _ in range(MAX_TOOL_ROUNDS):
-        response = llm.invoke(messages)
-        messages.append(response)
-        if not response.tool_calls:
-            return response.content
-        for call in response.tool_calls:
-            fn = tool_map.get(call["name"])
-            result = fn.invoke(call["args"]) if fn else f"Unknown tool: {call['name']}"
-            messages.append(ToolMessage(content=str(result), tool_call_id=call["id"]))
+    try:
+        for _ in range(MAX_TOOL_ROUNDS):
+            response = llm.invoke(messages)
+            messages.append(response)
+            if not response.tool_calls:
+                return response.content
+            for call in response.tool_calls:
+                fn = tool_map.get(call["name"])
+                result = fn.invoke(call["args"]) if fn else f"Unknown tool: {call['name']}"
+                messages.append(ToolMessage(content=str(result), tool_call_id=call["id"]))
 
-    final = _get_explainer_llm().invoke(messages)
-    return final.content
+        # Out of tool rounds: this last call has no tools bound, but gpt-oss can
+        # still try to search (Groq 400 "Tool choice is none, but model called
+        # a tool"), so tell it plainly to answer with what it has.
+        messages.append(SystemMessage(content=(
+            "You've used all your searches — answer now in 2-5 conversational "
+            "sentences with what you have, without calling a tool.")))
+        final = _get_explainer_llm().invoke(messages)
+        return final.content
+    except Exception as e:
+        # A failed doubt must never end the lecture (nothing above this catches
+        # it): say so out loud and keep teaching.
+        print(f"(doubt answer failed — spoken fallback used: {e})")
+        return DOUBT_FALLBACK.format(name=state["student_name"])

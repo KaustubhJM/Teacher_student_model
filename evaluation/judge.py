@@ -40,7 +40,10 @@ class GroqJudge(DeepEvalBaseLLM):
         if not os.environ.get("GROQ_API_KEY"):
             raise RuntimeError("GroqJudge needs GROQ_API_KEY in .env")
         from langchain_groq import ChatGroq
-        return ChatGroq(model=self.model_name, temperature=self.temperature)
+        # Qwen3 models can emit <think> text before the answer; ask Groq to hide
+        # it so replies stay plain JSON. gpt-oss keeps its reasoning separate.
+        extra = {"reasoning_format": "hidden"} if self.model_name.startswith("qwen/") else {}
+        return ChatGroq(model=self.model_name, temperature=self.temperature, **extra)
 
     def _invoke(self, prompt: str, json_mode: bool) -> str:
         client = self.model.bind(response_format={"type": "json_object"}) if json_mode else self.model

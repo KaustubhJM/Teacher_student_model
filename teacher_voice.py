@@ -47,6 +47,12 @@ import json
 # takes over and records for as long as needed).
 POST_SECTION_LISTEN_SECONDS = 4
 
+# When the section ended with a comprehension check (see
+# comprehension_check.py): how long to wait for the student to START
+# answering. Once they speak, the answer is recorded until they pause
+# (up to voice_io.MAX_RECORD_SECONDS) — not cut off like the 4 s window.
+CHECK_ANSWER_WAIT_SECONDS = 8
+
 
 class VoiceTeachState(TypedDict):
     topic: str
@@ -77,6 +83,16 @@ def _listen_briefly() -> str:
     """A short post-section listening window. Returns transcribed text,
     or '' if the student stayed quiet."""
     audio = record_until_silence(max_seconds=POST_SECTION_LISTEN_SECONDS)
+    if audio.size == 0:
+        return ""
+    return transcribe(audio)
+
+
+def _listen_for_answer() -> str:
+    """The student's answer to the section's comprehension check: waits up
+    to CHECK_ANSWER_WAIT_SECONDS for them to start, then records the whole
+    answer. Returns transcribed text, or '' if they stayed quiet."""
+    audio = record_until_silence(start_timeout=CHECK_ANSWER_WAIT_SECONDS)
     if audio.size == 0:
         return ""
     return transcribe(audio)

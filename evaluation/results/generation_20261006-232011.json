@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20261006-232011",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": []
+ },
+ "summary": {
+  "n": 1,
+  "in_document": {
+   "faithfulness": 0.933,
+   "groundedness": 0.467,
+   "relevancy": null,
+   "correctness": 0.429,
+   "got_document_context": 1.0
+  },
+  "out_of_document": {
+   "correctness": null,
+   "relevancy": null,
+   "got_document_context": null,
+   "used_web": null
+  },
+  "latency_s_mean": 2.38,
+  "teacher_tokens_per_q": null,
+  "judge_tokens_per_q": 8197
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-011",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "Which concurrency control techniques in this unit avoid deadlocks, and why?",
+   "answer": "The unit points out three techniques that are **dead‑lock‑free**:\n\n1. **Timestamp‑ordering (basic and strict) protocols** – every transaction gets a unique timestamp at start. When a conflict is detected the protocol simply aborts the younger transaction rather than making it wait for the older one, so no circular wait can ever form.\n\n2. **Optimistic (validation) concurrency control** – transactions run without acquiring any locks. At commit time a validation phase checks whether the transaction would have conflicted with any concurrent one; if it would, the transaction is aborted. Because no locks are held, there is nothing for another transaction to wait on, so deadlocks cannot arise.\n\n3. **Multi‑Version Concurrency Control (MVCC)** – reads are served from a suitable older version of a data item while writes create a new version. Since readers never block writers (and vice‑versa) and the protocol resolves conflicts by timestamp comparison rather than waiting, the system cannot enter a deadlock cycle.\n\nIn contrast, two‑phase locking (2PL) does involve waiting for locks and can deadlock, which is why the notes highlight the above three as the deadlock‑avoidance options.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "concurrency control techniques deadlock avoid"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 2.38,
+   "teacher_tokens": 0,
+   "judge_tokens": 8197,
+   "faithfulness": 0.9333333333333333,
+   "groundedness": 0.4666666666666667,
+   "answer_claims": 15,
+   "unsupported_claims": [
+    "The unit points out three techniques that are deadlock-free.",
+    "In Timestamp-ordering (basic and strict) protocols, every transaction gets a unique timestamp at start.",
+    "In Timestamp-ordering (basic and strict) protocols, when a conflict is detected, the protocol aborts the younger transaction rather than making it wait for the older one.",
+    "In Timestamp-ordering (basic and strict) protocols, no circular wait can ever form because the younger transaction is aborted instead of waiting.",
+    "In Optimistic (validation) concurrency control, deadlocks cannot arise because no locks are held for another transaction to wait on.",
+    "In Multi-Version Concurrency Control (MVCC), conflicts are resolved by timestamp comparison rather than waiting.",
+    "In Multi-Version Concurrency Control (MVCC), the system cannot enter a deadlock cycle.",
+    "The notes highlight Timestamp-ordering, Optimistic concurrency control, and MVCC as the deadlock-avoidance options in contrast to two-phase locking."
+   ],
+   "contradicted_claims": [
+    "In Timestamp-ordering (basic and strict) protocols, when a conflict is detected, the protocol aborts the younger transaction rather than making it wait for the older one."
+   ],
+   "relevancy": null,
+   "relevancy_reason": "not scored: judge returned 20 verdicts for 19 statements",
+   "correctness": 0.42857142857142855,
+   "missed_ideal_claims": [
+    "Conservative 2PL acquires all locks before the transaction begins execution.",
+    "Acquiring all locks before execution avoids deadlocks.",
+    "Acquiring all locks before execution can cause delays due to pre-locking.",
+    "A transaction T waits for another transaction T' only if TS(T) > TS(T')."
+   ],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

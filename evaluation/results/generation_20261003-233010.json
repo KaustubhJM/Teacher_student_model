@@ -1,0 +1,104 @@
+{
+ "meta": {
+  "golden": "golden/tc_u5.jsonl",
+  "timestamp": "20261003-233010",
+  "judge": "groq/openai/gpt-oss-120b",
+  "index": {
+   "TC-U-5-ONE-SHOT-Notes.pdf": {
+    "chunks": 28,
+    "fingerprint": "af70e47cf8fe",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": []
+ },
+ "summary": {
+  "n": 2,
+  "in_document": {
+   "faithfulness": 1.0,
+   "groundedness": 0.929,
+   "relevancy": 1.0,
+   "correctness": 0.829,
+   "got_document_context": 1.0
+  },
+  "out_of_document": {
+   "correctness": null,
+   "relevancy": null,
+   "got_document_context": null,
+   "used_web": null
+  },
+  "latency_s_mean": 22.35,
+  "teacher_tokens_per_q": 3764,
+  "judge_tokens_per_q": 7859.5
+ },
+ "rows": [
+  {
+   "id": "tc_u5-025",
+   "type": "explanation",
+   "in_document": true,
+   "question": "What statistics show the utility of content creation?",
+   "answer": "Sure, Kaustubh — the data in our notes give a few concrete numbers that illustrate just how useful content creation is for businesses:\n\n* **Around 40 % of marketers** say that content marketing is an essential part of their overall marketing strategy.  \n* **About 81 %** say their company treats content as a core business strategy, not just a side‑project.  \n* For B2B marketers, the impact breaks down further: **60 %** say content helps nurture leads, **51 %** say it drives revenue, and **47 %** say it builds a solid audience of subscribers.  \n* And among those who blog, **10 %** claim blogging delivers the biggest return on investment of any tactic they use.\n\nThese figures show that a large majority of marketers view content creation as a strategic driver of lead generation, sales, and brand growth.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "statistics utility of content creation"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 8.09,
+   "teacher_tokens": 2916,
+   "judge_tokens": 8708,
+   "faithfulness": 1.0,
+   "groundedness": 0.8571428571428571,
+   "answer_claims": 7,
+   "unsupported_claims": [
+    "These figures show that a large majority of marketers view content creation as a strategic driver of lead generation, sales, and brand growth."
+   ],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 0.8571428571428571,
+   "missed_ideal_claims": [
+    "Content creation is the ultimate inbound marketing practice."
+   ],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "tc_u5-031",
+   "type": "multi-hop",
+   "in_document": true,
+   "question": "Who are named as the pioneers of email, blogging and podcasting in the notes?",
+   "answer": "The notes point to three key pioneers:\n\n* **Email** – Ray Tomlinson, who sent the first networked e‑mail in 1971.  \n* **Blogging** – Justin Hall, whose 1994 site Links.net is credited as the world’s first blog.  \n* **Podcasting** – Ben Hamersley, who coined the term “podcast” in 2004 to describe audio‑blogging.",
+   "tools": [
+    "search_document",
+    "search_document"
+   ],
+   "queries": [
+    "pioneers of email blogging podcasting",
+    "pioneer email"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": true,
+   "latency_s": 36.61,
+   "teacher_tokens": 4612,
+   "judge_tokens": 7011,
+   "faithfulness": 1.0,
+   "groundedness": 1.0,
+   "answer_claims": 3,
+   "unsupported_claims": [],
+   "contradicted_claims": [],
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 4 statements address the question.",
+   "correctness": 0.8,
+   "missed_ideal_claims": [
+    "India's first professional blogger was Amit Agarwal."
+   ],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

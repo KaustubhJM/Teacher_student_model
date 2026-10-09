@@ -1,0 +1,86 @@
+{
+ "meta": {
+  "golden": "golden/dbms_u5.jsonl",
+  "timestamp": "20261003-234037",
+  "judge": "groq/qwen/qwen3.8-27b",
+  "index": {
+   "DBMS_U_5_ONE_SHOT.pdf": {
+    "chunks": 38,
+    "fingerprint": "f2c51b079de7",
+    "incomplete": true,
+    "cache_version": "v8-code"
+   }
+  },
+  "section": "Revision of the whole unit",
+  "errors": []
+ },
+ "summary": {
+  "n": 2,
+  "in_document": {
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "correctness": 1.0,
+   "got_document_context": 0.0
+  },
+  "out_of_document": {
+   "correctness": 1.0,
+   "relevancy": 1.0,
+   "got_document_context": 0.0,
+   "used_web": 0.0
+  },
+  "latency_s_mean": 1.63,
+  "teacher_tokens_per_q": null,
+  "judge_tokens_per_q": 1406
+ },
+ "rows": [
+  {
+   "id": "dbms_u5-002",
+   "type": "definition",
+   "in_document": true,
+   "question": "What is the two-phase locking protocol?",
+   "answer": "The two‑phase locking (2PL) protocol is a concurrency‑control method that guarantees serializable schedules by forcing each transaction to acquire all the locks it needs **before** it releases any of them.  \n\n- **Growing phase** – the transaction may request and obtain read (shared) or write (exclusive) locks, but it cannot release any lock yet.  \n- **Shrinking phase** – once the transaction releases its first lock, it enters the shrinking phase and may no longer obtain new locks; it can only release the remaining ones.\n\nBecause all lock‑acquire actions happen before any lock‑release actions, the lock points of different transactions can be ordered, which ensures that the resulting execution is conflict‑serializable. This is the core idea behind strict 2PL (where all exclusive locks are held until commit) and other variants used in most DBMSs.",
+   "tools": [],
+   "queries": [],
+   "searched_document": false,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 1.01,
+   "teacher_tokens": 0,
+   "judge_tokens": 1445,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 5 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  },
+  {
+   "id": "dbms_u5-019",
+   "type": "out-of-document",
+   "in_document": false,
+   "question": "What is Boyce-Codd Normal Form (BCNF)?",
+   "answer": "Boyce‑Codd Normal Form (BCNF) is a stricter version of 3NF. A relation is in BCNF when **every non‑trivial functional dependency X → Y has X as a superkey** (i.e., X determines all attributes of the relation). This eliminates the remaining anomalies that can still appear in 3NF when a non‑key attribute determines another attribute. In practice, you decompose any table that violates this rule into two (or more) tables so that each resulting table satisfies the “X is a superkey” condition. This ensures loss‑less‑join decomposition and eliminates update, insertion, and deletion anomalies.",
+   "tools": [
+    "search_document"
+   ],
+   "queries": [
+    "Boyce-Codd Normal Form"
+   ],
+   "searched_document": true,
+   "used_web": false,
+   "got_document_context": false,
+   "latency_s": 2.25,
+   "teacher_tokens": 0,
+   "judge_tokens": 1367,
+   "faithfulness": null,
+   "groundedness": null,
+   "relevancy": 1.0,
+   "relevancy_reason": "1.00 — all 8 statements address the question.",
+   "correctness": 1.0,
+   "missed_ideal_claims": [],
+   "contradicted_ideal_claims": []
+  }
+ ]
+}

@@ -181,19 +181,26 @@ def speak_interruptible(text: str, debug: bool = False) -> tuple[bool, int]:
 def record_until_silence(
     silence_blocks_to_stop: int = SILENCE_BLOCKS_TO_STOP,
     max_seconds: float = MAX_RECORD_SECONDS,
+    start_timeout: Optional[float] = None,
 ) -> np.ndarray:
     """Records mic audio starting immediately, stopping after you've been
-    quiet for a bit. Returns a 1-D int16 numpy array."""
+    quiet for a bit. Returns a 1-D int16 numpy array.
+
+    start_timeout (optional): if nobody starts speaking within this many
+    seconds, stop and return an EMPTY array (nothing to transcribe). Once
+    speech starts, recording continues until silence or max_seconds. None
+    (the default) = the original behaviour, used by every older caller."""
     blocks = []
     silence_streak = 0
     heard_any_speech = False
     max_blocks = int(max_seconds / BLOCK_DURATION)
+    start_blocks = int(start_timeout / BLOCK_DURATION) if start_timeout is not None else None
 
     try:
         with sd.InputStream(
             samplerate=SAMPLE_RATE, channels=1, dtype="int16", blocksize=BLOCK_SIZE
         ) as stream:
-            for _ in range(max_blocks):
+            for n in range(max_blocks):
                 block, _ = stream.read(BLOCK_SIZE)
                 blocks.append(block[:, 0].copy())
                 level = _rms(block[:, 0])
@@ -204,6 +211,8 @@ def record_until_silence(
                     silence_streak += 1
                 if heard_any_speech and silence_streak >= silence_blocks_to_stop:
                     break
+                if start_blocks is not None and not heard_any_speech and n + 1 >= start_blocks:
+                    return np.array([], dtype=np.int16)   # nobody started talking
     except Exception as e:
         raise RuntimeError(
             "Couldn't open a microphone to record. Check Windows Settings "
