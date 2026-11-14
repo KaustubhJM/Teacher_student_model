@@ -511,6 +511,54 @@ that errors mid-section regenerates from beat 1 on retry (later beats may
 not match an already-spoken beat 1); no auth; one lecture at a time;
 browser voice ≠ edge-tts outside Edge. NOT yet run with real Groq.
 
+### Deployment: website on Vercel, backend on Render (2026-11-14, approved)
+- `vercel.json` (Vercel Services mode): ONE service `web` (root `web/`,
+  vite, `/(.*)` → `/index.html` so `/class/<id>` survives a reload);
+  top-level `/api/:path*` → EXTERNAL rewrite to
+  `https://ai-classroom-api.onrender.com/api/:path*` (the browser keeps
+  calling same-origin `/api`, so api.js / vite proxy unchanged; no CORS;
+  no bindings — no server-to-server calls). Rewrite caching forced off
+  for /api. Vercel proxy timeout 120 s (longest call: 25 s beats
+  long-poll; quiz with Gemini retry). If Render assigns another URL,
+  change it here.
+- Why NOT the backend on Vercel Functions (all measured): import crash
+  without PortAudio (`app.py:30 → engine → explainer → teacher_natural →
+  neural_tts.py:37`; voice_io also imports sounddevice unguarded); torch
+  alone 506 MB > 500 MB function limit; read-only disk
+  (`vector_index.save_index` makedirs unguarded → every plan fails;
+  classes.db/uploads); planning/beats run in threads with in-memory
+  `_jobs`/`_indexes` → frozen/swapped instances.
+- `render.yaml` (Blueprint) + `Dockerfile` + `.dockerignore`: service
+  `ai-classroom-api`, docker, plan `1c-2g` (backend idles ~700 MB RSS on
+  Windows with embedding model + reranker loaded → 512 MB plans OOM),
+  health `/api/health`, disk `/var/data` 1 GB (paid plans only; pins the
+  service to 1 instance — fine, single user). Image: python:3.11-slim-
+  trixie (pinned: package names are Debian 13's, glib = libglib2.0-0t64)
+  + apt libportaudio2 (fixes the import crash WITHOUT code changes),
+  libgl1/libglib2.0-0t64 (OpenCV for RapidOCR), libgomp1; CPU-only torch
+  installed BEFORE requirements.txt (else CUDA build, GBs); both HF models
+  baked in at build (HF_HOME=/app/.hf_cache; code loads local_files_only
+  first). Persistent state via env: CLASSROOM_WEB_DB_PATH,
+  CLASSROOM_WEB_UPLOAD_DIR, OCR_CACHE_DIR, VISION_CACHE_DIR → /var/data;
+  `.rag_cache` is a fixed relative path in code, so the CMD symlinks
+  /app/.rag_cache → /var/data/rag_cache. Secrets GROQ_API_KEY /
+  GOOGLE_API_KEY entered in the Render dashboard (`sync: false`); `.env`
+  never in the image. No Python code changed for deployment.
+- Tested (no Docker on this laptop → same steps in WSL Ubuntu, Python
+  3.11 via uv, offline stubs): import WITHOUT PortAudio → OSError (real
+  Linux); WITH it (+ ALSA config, which apt installs) → OK, 0 audio
+  devices needed. CPU-only venv 1.9 GB + models 176 MB (→ Vercel's 500 MB
+  impossible even without CUDA). Server via the Dockerfile CMD: up in 3 s,
+  sample PDF planned (4 sections, 8 s), beats, doubt, progress; files land
+  on the "disk" (classes.db, uploads/, ocr_cache/, rag_cache/ via the
+  symlink); restart → class + cached beats + history intact. Linux RSS
+  828 MB after planning. `vite build` OK. NOT tested: a real Render
+  build, real Groq/Gemini calls in the container.
+- Open: API has NO auth and is public (Vercel URL and the .onrender.com
+  URL) → anyone can create classes and spend the Groq/Gemini quota;
+  requirements.txt is unpinned, so the image gets the newest versions
+  (may differ from the local venv).
+
 ### rag/ package
 - `ingest.py` — loaders per extension; PDFs via pdfplumber with table
   detection, diagram detection, garbled-text detection, OCR fallbacks;
