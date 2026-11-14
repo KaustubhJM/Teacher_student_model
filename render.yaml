@@ -1,0 +1,28 @@
+# Render Blueprint for the website backend (FastAPI, server/app.py), built
+# from the Dockerfile. The website (web/) is on Vercel, which forwards /api/*
+# to this service — if Render gives the service a different .onrender.com URL,
+# update the /api rewrite in vercel.json to match.
+services:
+  - type: web
+    name: ai-classroom-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    # 1 CPU / 2 GB: the backend idles at ~700 MB RAM once the embedding model
+    # and reranker are loaded, so the 512 MB plans (incl. free) run out of memory.
+    plan: 1c-2g
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    # Class records, uploads and rag caches (paths set in the Dockerfile).
+    # A disk needs a paid plan and keeps the service to one instance — fine
+    # here: the server is single-user (one global active index in tools.py).
+    disk:
+      name: classroom-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      # Entered in the Render dashboard when the Blueprint is created.
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GOOGLE_API_KEY
+        sync: false
